@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.graphics.Color" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookListViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:clipToPadding="false"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="2dp"
+        tools:visibility="visible">
+
+        <View
+            android:layout_width="100dp"
+            android:background="@drawable/circle_grey"
+            android:layout_height="20dp"/>
+        <View
+            android:layout_width="150dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/circle_grey"
+            android:layout_height="14dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorGreyDecor"
+            app:layout_constraintTop_toBottomOf="@id/description" />
+
+    </LinearLayout>
+</layout>

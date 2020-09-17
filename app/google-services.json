@@ -1,0 +1,74 @@
+{
+  "project_info": {
+    "project_number": "406556698241",
+    "firebase_url": "https://dzikir-qu.firebaseio.com",
+    "project_id": "dzikir-qu",
+    "storage_bucket": "dzikir-qu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406556698241:android:355542ea8dd8862d",
+        "android_client_info": {
+          "package_name": "com.mayburger.dzikirqu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406556698241-jeqbam5f2k2pc0sb87t3e33op9fd36h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd1tl6c8bj8EwoUs_RdTUmDql1vAtq2GU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      },
+      "admob_app_id": "ca-app-pub-5975314110211506~7373253447"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406556698241:android:d71ea356f0d8463b",
+        "android_client_info": {
+          "package_name": "com.mayburger.dzikirqu_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406556698241-jeqbam5f2k2pc0sb87t3e33op9fd36h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd1tl6c8bj8EwoUs_RdTUmDql1vAtq2GU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

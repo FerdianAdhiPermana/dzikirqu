@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.graphics.Color" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookListViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:clipToPadding="false"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="2dp"
+        tools:visibility="visible">
+
+        <com.mayburger.dzikirqu.util.textfont.TextFont
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:alpha="0.8"
+            android:text="@{viewModel.data.title}"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Evening Dzikir" />
+
+        <com.mayburger.dzikirqu.util.textfont.TextFont
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="6"
+            android:text="@{viewModel.size}"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/title"
+            app:layout_constraintRight_toRightOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="24 items" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorGreyDecor"
+            app:layout_constraintTop_toBottomOf="@id/description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

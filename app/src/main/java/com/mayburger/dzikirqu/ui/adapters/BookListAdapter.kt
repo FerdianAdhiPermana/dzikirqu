@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.databinding.ItemBookListBinding
 import com.mayburger.dzikirqu.databinding.ItemBookListEmptyBinding
-import com.mayburger.dzikirqu.model.PrayerDataModele
+import com.mayburger.dzikirqu.model.PrayerDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookListViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
 
@@ -82,7 +82,7 @@ class BookListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     interface Callback {
-        fun onSelectedItem(restaurant: PrayerDataModele.Data)
+        fun onSelectedItem(restaurant: PrayerDataModel.Data)
     }
 
     inner class BookEmptyViewHolder(private val mBinding: ItemBookListEmptyBinding) :
@@ -97,7 +97,7 @@ class BookListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         override fun onBind(position: Int) {
             if (data.isNotEmpty()) {
                 val viewModel = data[position]
-                mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
+//                mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
                 mBinding.viewModel = viewModel
             }
         }

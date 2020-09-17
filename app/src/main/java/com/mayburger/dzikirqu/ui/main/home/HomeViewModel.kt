@@ -30,11 +30,12 @@ class HomeViewModel @ViewModelInject constructor(
 
     val books = liveData(IO) {
         try {
-            emit(dataManager.getBooks().map {
-                it
+            val books = dataManager.getBooks()
+            emit(books.filter {
+                it.data.language == dataManager.language
             })
         } catch (e: Exception) {
-            navigator?.onError(e.message)
+            println("EX ${e.message}")
         }
     }
 

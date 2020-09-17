@@ -3,16 +3,16 @@ package com.mayburger.dzikirqu.ui.main.home
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
 import android.view.View
-import android.view.animation.AlphaAnimation
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.google.android.material.appbar.AppBarLayout
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentHomeBinding
@@ -22,11 +22,14 @@ import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.main.book.BookListFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStreamWriter
 import javax.inject.Inject
-import kotlin.math.abs
+
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),BookAdapter.Callback{
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), BookAdapter.Callback {
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -45,6 +48,42 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),BookAdap
         bookAdapter.setListener(this)
         buildLocationPermission()
         viewModel.buildPrayerTime()
+
+//        CoroutineScope(IO).launch {
+//            val books = viewModel.dataManager.getBooks()
+//            books.filter {
+//                it.data.status != "3" && it.data.type != "qur"
+//            }.map { book ->
+//                val hey = viewModel.dataManager.getBookData(book.data.type).filter {
+//                    it.data.language == book.data.language
+//                }.map {it ->
+//                    PrayerDataModel.create(it.data)
+//                }
+//                Firebase.firestore.collection("books").add(
+//                    BookDataModel.create(book.data,hey)
+//                )
+////                if (hey.isNotEmpty()) {
+////                    Firebase.firestore.collection("books").add(
+////                        BookDataModel.create(book.data,PrayerDataModel.create(
+////                            hey[0].data
+////                        ))
+////                    )
+////                }
+//            }
+//        }
+    }
+
+    private fun writeToFile(data: String, context: Context) {
+        val downloads =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        try {
+            val outputStreamWriter =
+                OutputStreamWriter(FileOutputStream(downloads.path + "/dzan"))
+            outputStreamWriter.write(data)
+            outputStreamWriter.close()
+        } catch (e: IOException) {
+            Log.e("Exception", "File write failed: " + e.toString())
+        }
     }
 
     private val LOCATION_PERMISSION_CODE = 9928
@@ -113,15 +152,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),BookAdap
         }
     }
 
-    override fun onSelectedItem(restaurant: BookDataModel) {
+    override fun onSelectedItem(book: BookDataModel) {
         val fragment = BookListFragment()
-        fragment.arguments = BookListFragment.getBundle(restaurant.type)
-        fragment.show(requireActivity().supportFragmentManager,"")
-//        navController.navigate(
-//            R.id.action_home_to_book_list,
-//            BookListFragment.getBundle(restaurant.type),
-//            null,
-//            null
-//        )
+        fragment.arguments = BookListFragment.getBundle(book.type)
+        fragment.show(requireActivity().supportFragmentManager, "")
     }
 }

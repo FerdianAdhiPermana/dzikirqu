@@ -37,12 +37,6 @@ class AppDataManager @Inject constructor(
         return mFirebaseHelper.getBooks()
     }
 
-    override suspend fun getBookData(type: String): ArrayList<ItemBookListViewModel> {
-        return mFirebaseHelper.getBookData(type)
-    }
-
-
-
     override suspend fun getPrayerTime(): PrayerTime {
         return PrayerTimeHelper.getPrayerTime(mContext)
     }

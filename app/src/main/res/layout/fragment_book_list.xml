@@ -34,7 +34,6 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBookList"
-            bookListAdapter="@{viewModel.book}"
             android:layout_marginTop="16dp"
             recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
             android:layout_width="match_parent"

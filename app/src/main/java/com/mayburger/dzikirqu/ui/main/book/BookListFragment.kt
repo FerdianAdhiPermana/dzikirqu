@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentBookListBinding
-import com.mayburger.dzikirqu.model.PrayerDataModele
+import com.mayburger.dzikirqu.model.PrayerDataModel
 import com.mayburger.dzikirqu.ui.adapters.BookListAdapter
 import com.mayburger.dzikirqu.ui.base.BaseBSDFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,7 +42,7 @@ class BookListFragment : BaseBSDFragment<FragmentBookListBinding, BookListViewMo
         bookListAdapter.setListener(this)
     }
 
-    override fun onSelectedItem(restaurant: PrayerDataModele.Data) {
+    override fun onSelectedItem(restaurant: PrayerDataModel.Data) {
 
     }
 }

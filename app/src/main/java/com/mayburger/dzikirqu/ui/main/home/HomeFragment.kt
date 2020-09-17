@@ -19,7 +19,7 @@ import com.mayburger.dzikirqu.databinding.FragmentHomeBinding
 import com.mayburger.dzikirqu.model.BookDataModel
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
-import com.mayburger.dzikirqu.ui.main.book.BookListFragment
+import com.mayburger.dzikirqu.ui.main.book.PrayerFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.io.FileOutputStream
@@ -29,7 +29,8 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), BookAdapter.Callback {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), HomeNavigator,
+    BookAdapter.Callback {
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -40,15 +41,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), BookAda
     @Inject
     lateinit var bookAdapter: BookAdapter
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewDataBinding?.lifecycleOwner = viewLifecycleOwner
+        viewModel.navigator = this
         navController = Navigation.findNavController(view)
         rvBooks.adapter = bookAdapter
         bookAdapter.setListener(this)
         buildLocationPermission()
         viewModel.buildPrayerTime()
-
 //        CoroutineScope(IO).launch {
 //            val books = viewModel.dataManager.getBooks()
 //            books.filter {
@@ -138,7 +140,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), BookAda
         builder.show()
     }
 
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>, grantResults: IntArray
@@ -153,8 +154,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), BookAda
     }
 
     override fun onSelectedItem(book: BookDataModel) {
-        val fragment = BookListFragment()
-        fragment.arguments = BookListFragment.getBundle(book.type)
+        val fragment = PrayerFragment()
+        fragment.arguments = PrayerFragment.getBundle(book.id)
         fragment.show(requireActivity().supportFragmentManager, "")
     }
 }

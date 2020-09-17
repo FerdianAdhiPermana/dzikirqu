@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.databinding.ItemBookListBinding
 import com.mayburger.dzikirqu.databinding.ItemBookListEmptyBinding
 import com.mayburger.dzikirqu.model.PrayerDataModel
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookListViewModel
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
 
 
-class BookListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
+class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
-    private val data: MutableList<ItemBookListViewModel>
+    private val data: MutableList<ItemPrayerViewModel>
     private var mListener: Callback? = null
 
     init {
@@ -65,7 +65,7 @@ class BookListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
 
-    fun addItems(data: ArrayList<ItemBookListViewModel>) {
+    fun addItems(data: ArrayList<ItemPrayerViewModel>) {
         this.data.addAll(data)
         notifyDataSetChanged()
     }

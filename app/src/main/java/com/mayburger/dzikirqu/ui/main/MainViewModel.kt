@@ -13,6 +13,6 @@ class MainViewModel @ViewModelInject constructor(dataManager: DataManager,schedu
     }
 
     init {
-        dataManager.language = "id"
+        dataManager.language = "en"
     }
 }

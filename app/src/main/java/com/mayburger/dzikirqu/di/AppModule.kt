@@ -8,6 +8,9 @@ import com.mayburger.dzikirqu.data.firebase.AppFirebaseHelper
 import com.mayburger.dzikirqu.data.firebase.FirebaseHelper
 import com.mayburger.dzikirqu.data.hawk.AppHawkHelper
 import com.mayburger.dzikirqu.data.hawk.HawkHelper
+import com.mayburger.dzikirqu.db.AppDatabase
+import com.mayburger.dzikirqu.data.room.AppRoomHelper
+import com.mayburger.dzikirqu.data.room.RoomHelper
 import com.mayburger.dzikirqu.util.rx.AppSchedulerProvider
 import com.mayburger.dzikirqu.util.rx.SchedulerProvider
 import dagger.Module
@@ -29,6 +32,18 @@ object AppModule {
     @Singleton
     internal fun provideDataManager(appDataManager: AppDataManager): DataManager {
         return appDataManager
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideAppDatabase(context:Context): AppDatabase {
+        return AppDatabase.invoke(context)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideRoomHelper(appRoomHelper: AppRoomHelper):RoomHelper{
+        return appRoomHelper
     }
 
     @Provides

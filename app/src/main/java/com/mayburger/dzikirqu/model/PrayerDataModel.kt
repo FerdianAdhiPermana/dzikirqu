@@ -3,33 +3,34 @@ package com.mayburger.dzikirqu.model
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.firebase.firestore.IgnoreExtraProperties
 import kotlinx.android.parcel.Parcelize
 
 @IgnoreExtraProperties
 @Parcelize
-@Entity(tableName = "book")
+@Entity(tableName = "prayer")
 class PrayerDataModel(
-
+    @ColumnInfo(name = "ids")
+    @PrimaryKey(autoGenerate = true)
+    var ids: Int? = null,
     @ColumnInfo(name = "id")
-    var id: String? = null,
+    var id: String = "",
+    @ColumnInfo(name = "book_id")
+    var bookId:String = "",
     @ColumnInfo(name = "language")
     var language: String? = null,
     @ColumnInfo(name = "title")
     var title: String? = null,
+    @ColumnInfo(name = "data")
     var data: List<Data>? = ArrayList()
 ) : Parcelable {
     @Parcelize
     class Data(
-        @ColumnInfo(name = "arabic")
         var arabic: String? = null,
-        @ColumnInfo(name = "translation")
         var translation: String? = null,
-        @ColumnInfo(name = "source")
         var source: String? = null,
-        @ColumnInfo(name = "notes")
         var notes: String? = null,
-        @ColumnInfo(name = "audio")
         var audio: String? = null
     ) : Parcelable
 

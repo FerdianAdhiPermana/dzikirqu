@@ -35,10 +35,10 @@ android {
 
     productFlavors {
         create("production") {
-            dimension= "default"
+            dimension = "default"
         }
         create("development") {
-            dimension= "default"
+            dimension = "default"
         }
     }
 
@@ -158,9 +158,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
 
-    //dependency for room persistance database
-    implementation("android.arch.persistence.room:runtime:1.1.1")
-    kapt("android.arch.persistence.room:compiler:1.1.1")
+    implementation("androidx.room:room-ktx:2.2.5")
+    kapt("androidx.room:room-compiler:2.2.5")
 
 
     val lifecycle_version = "2.2.0"

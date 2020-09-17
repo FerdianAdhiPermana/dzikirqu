@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookListViewModel" />
+            type="com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel" />
 
     </data>
 

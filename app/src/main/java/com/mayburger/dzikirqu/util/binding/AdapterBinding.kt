@@ -6,9 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
-import com.mayburger.dzikirqu.ui.adapters.BookListAdapter
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookListViewModel
+import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
 
 
 object AdapterBinding {
@@ -50,13 +50,13 @@ object AdapterBinding {
         }
     }
 
-    @BindingAdapter("bookListAdapter")
+    @BindingAdapter("prayerAdapter")
     @JvmStatic
     fun addBookListItems(
         recyclerView: RecyclerView,
-        items: LiveData<List<ItemBookListViewModel>>
+        items: LiveData<List<ItemPrayerViewModel>>
     ) {
-        val adapter = recyclerView.adapter as BookListAdapter?
+        val adapter = recyclerView.adapter as PrayerAdapter?
         if (adapter != null) {
             items.value?.let {
                 adapter.clearItems()

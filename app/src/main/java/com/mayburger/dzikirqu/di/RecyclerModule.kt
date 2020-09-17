@@ -3,7 +3,7 @@ package com.mayburger.dzikirqu.di
 import android.app.Activity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
-import com.mayburger.dzikirqu.ui.adapters.BookListAdapter
+import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,8 +24,8 @@ object RecyclerModule {
         return BookAdapter()
     }
     @Provides
-    internal fun provideBookListAdapter():BookListAdapter{
-        return BookListAdapter()
+    internal fun provideBookListAdapter():PrayerAdapter{
+        return PrayerAdapter()
     }
 
 //    @Provides

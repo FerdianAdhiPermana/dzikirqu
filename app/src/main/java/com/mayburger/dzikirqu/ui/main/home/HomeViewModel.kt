@@ -10,6 +10,7 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.mayburger.dzikirqu.data.DataManager
 import com.mayburger.dzikirqu.model.PrayerTime
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
 import com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper
 import com.mayburger.dzikirqu.util.rx.SchedulerProvider
@@ -28,11 +29,17 @@ class HomeViewModel @ViewModelInject constructor(
 
     }
 
-    val books = liveData(IO) {
-        try {
-            emit(dataManager.getBooks().filter { it.data.language == dataManager.language })
-        } catch (e: Exception) {
-            println("EX ${e.message}")
+    val _refreshBooks = MutableLiveData(false)
+    val books = _refreshBooks.switchMap {
+        liveData(IO) {
+            try {
+                if (dataManager.getAllBooks().isNotEmpty()){
+                    emit(dataManager.getAllBooks().filter { it.language == dataManager.language }.map{ ItemBookViewModel(it) }.toList())
+                }
+                emit(dataManager.getBooks().filter { it.data.language == dataManager.language })
+            } catch (e: Exception) {
+                println("EX ${e.message}")
+            }
         }
     }
 

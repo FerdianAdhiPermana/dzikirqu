@@ -1,9 +1,12 @@
 package com.mayburger.dzikirqu.ui.main.book
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentPrayerBinding

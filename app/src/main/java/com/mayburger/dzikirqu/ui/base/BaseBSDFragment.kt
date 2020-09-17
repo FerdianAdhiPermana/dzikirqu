@@ -93,8 +93,9 @@ abstract class BaseBSDFragment<T : ViewDataBinding, V : BaseViewModel<*>> :
             val d = dialog as BottomSheetDialog
             val bottomSheet =
                 d.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout?
-            BottomSheetBehavior.from<FrameLayout?>(bottomSheet!!).state = BottomSheetBehavior.STATE_EXPANDED
-            BottomSheetBehavior.from<FrameLayout?>(bottomSheet).skipCollapsed
+            val sheet =BottomSheetBehavior.from<FrameLayout?>(bottomSheet!!)
+//            sheet.state = BottomSheetBehavior.STATE_EXPANDED
+//            sheet.skipCollapsed
         }
         return dialog
     }

@@ -3,8 +3,8 @@ package com.mayburger.dzikirqu.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mayburger.dzikirqu.databinding.ItemBookListBinding
-import com.mayburger.dzikirqu.databinding.ItemBookListEmptyBinding
+import com.mayburger.dzikirqu.databinding.ItemPrayerBinding
+import com.mayburger.dzikirqu.databinding.ItemPrayerEmptyBinding
 import com.mayburger.dzikirqu.model.PrayerDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
@@ -47,17 +47,17 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return when (viewType) {
             VIEW_TYPE_NORMAL -> {
-                val viewBinding = ItemBookListBinding
+                val viewBinding = ItemPrayerBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
                 BookListViewHolder(viewBinding)
             }
             VIEW_TYPE_LOADING -> {
-                val viewBinding = ItemBookListEmptyBinding
+                val viewBinding = ItemPrayerEmptyBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
                 BookEmptyViewHolder(viewBinding)
             }
             else -> {
-                val viewBinding = ItemBookListEmptyBinding
+                val viewBinding = ItemPrayerEmptyBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
                 BookEmptyViewHolder(viewBinding)
             }
@@ -85,13 +85,13 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         fun onSelectedItem(restaurant: PrayerDataModel.Data)
     }
 
-    inner class BookEmptyViewHolder(private val mBinding: ItemBookListEmptyBinding) :
+    inner class BookEmptyViewHolder(private val mBinding: ItemPrayerEmptyBinding) :
         BaseViewHolder(mBinding.root) {
         override fun onBind(position: Int) {
         }
     }
 
-    inner class BookListViewHolder(private val mBinding: ItemBookListBinding) :
+    inner class BookListViewHolder(private val mBinding: ItemPrayerBinding) :
         BaseViewHolder(mBinding.root) {
 
         override fun onBind(position: Int) {

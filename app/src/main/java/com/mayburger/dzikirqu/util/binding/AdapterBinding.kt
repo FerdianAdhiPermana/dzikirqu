@@ -1,14 +1,21 @@
 package com.mayburger.dzikirqu.util.binding
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.R
+import com.mayburger.dzikirqu.databinding.ItemTaskBinding
+import com.mayburger.dzikirqu.model.TaskDataModel
+import com.mayburger.dzikirqu.model.events.UpdateTaskEvent
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
 import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemTaskViewModel
+import com.mayburger.dzikirqu.util.rx.RxBus
 
 
 object AdapterBinding {
@@ -46,6 +53,27 @@ object AdapterBinding {
                     recyclerView.scheduleLayoutAnimation()
                     adapter.isLoaded = true
                 }
+            }
+        }
+    }
+
+    @BindingAdapter("tasks")
+    @JvmStatic
+    fun addTasks(view: ViewGroup, items:LiveData<List<TaskDataModel>>){
+        view.removeAllViews()
+        items.value?.let{
+            for (i in it) {
+                val mLayoutInflater = LayoutInflater.from(view.context)
+                val binding = ItemTaskBinding.inflate(mLayoutInflater, view, false)
+                binding.root.setOnClickListener {
+                    if(i.taskCount < i.totalTask){
+                        val task = i
+                        task.taskCount += 1
+                        RxBus.getDefault().send(UpdateTaskEvent(task))
+                    }
+                }
+                binding.viewModel = ItemTaskViewModel(i)
+                view.addView(binding.root)
             }
         }
     }

@@ -8,6 +8,7 @@ import com.mayburger.dzikirqu.data.room.RoomHelper
 import com.mayburger.dzikirqu.model.BookDataModel
 import com.mayburger.dzikirqu.model.PrayerDataModel
 import com.mayburger.dzikirqu.model.PrayerTime
+import com.mayburger.dzikirqu.model.TaskDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper
 import java.io.*
@@ -50,6 +51,18 @@ class AppDataManager @Inject constructor(
         return mRoomHelper.getBookById(id)
     }
 
+    override suspend fun setTasks(items: List<TaskDataModel>) {
+        mRoomHelper.setTasks(items)
+    }
+
+    override suspend fun getTasks(): List<TaskDataModel> {
+        return mRoomHelper.getTasks()
+    }
+
+    override suspend fun updateTask(task: TaskDataModel) {
+        mRoomHelper.updateTask(task)
+    }
+
     override suspend fun setBooks(items: List<BookDataModel>) {
         mRoomHelper.setBooks(items)
     }
@@ -61,6 +74,7 @@ class AppDataManager @Inject constructor(
     override suspend fun getPrayerByBookId(bookId: String): List<PrayerDataModel> {
         return mRoomHelper.getPrayerByBookId(bookId)
     }
+
 
     override suspend fun getPrayerTime(): PrayerTime {
         return PrayerTimeHelper.getPrayerTime(mContext)

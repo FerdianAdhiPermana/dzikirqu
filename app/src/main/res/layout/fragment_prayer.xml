@@ -21,24 +21,64 @@
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorGreyBackground"
         android:orientation="vertical">
 
 
-        <View
-            android:layout_width="60dp"
-            android:layout_height="6dp"
-            android:alpha="0.5"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/circle_grey_dark" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPrayer"
-            android:layout_marginTop="16dp"
-            prayerAdapter="@{viewModel.prayer}"
-            recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="6dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:alpha="0.5"
+                android:background="@drawable/circle_grey_dark" />
+
+            <com.mayburger.dzikirqu.util.textfont.TextFont
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{viewModel.bookTitle}"
+                android:textColor="@color/colorBlack"
+                android:textSize="24sp"
+                app:typeface="bold"
+                tools:text="Book of Dzikir" />
+
+            <com.mayburger.dzikirqu.util.textfont.TextFont
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{viewModel.bookDesc}"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextGrey"
+                tools:text="Book of Dzikir" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="match_parent"
+                android:alpha="0.4"
+                android:background="@drawable/shadow"
+                android:layout_height="4dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPrayer"
+                prayerAdapter="@{viewModel.prayer}"
+                recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
 
 
     </LinearLayout>

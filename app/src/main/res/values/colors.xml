@@ -7,6 +7,7 @@
     <color name="colorWhite">#fff</color>
     <color name="colorTextGrey">#ADADAE</color>
     <color name="colorGreyDecor">#E3ECF1</color>
+    <color name="colorGreyBackground">#FCFBFD</color>
     <color name="colorGreyDecorDark">#B7BFC5</color>
     <color name="colorBlack">#000</color>
 </resources>

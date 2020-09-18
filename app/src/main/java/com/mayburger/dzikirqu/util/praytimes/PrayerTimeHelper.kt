@@ -6,13 +6,13 @@ import android.location.Geocoder
 import android.net.ConnectivityManager
 import androidx.databinding.ObservableField
 import com.google.type.LatLng
+import com.mayburger.dzikirqu.constants.LocaleConstants.ASR
 import com.mayburger.dzikirqu.constants.LocaleConstants.DHUHR
 import com.mayburger.dzikirqu.constants.LocaleConstants.FAJR
-import com.mayburger.dzikirqu.constants.LocaleConstants.ASR
 import com.mayburger.dzikirqu.constants.LocaleConstants.HOUR
-import com.mayburger.dzikirqu.constants.LocaleConstants.MAGHRIB
 import com.mayburger.dzikirqu.constants.LocaleConstants.ISYA
 import com.mayburger.dzikirqu.constants.LocaleConstants.LEFT_UNTIL
+import com.mayburger.dzikirqu.constants.LocaleConstants.MAGHRIB
 import com.mayburger.dzikirqu.constants.LocaleConstants.MINUTE
 import com.mayburger.dzikirqu.constants.LocaleConstants.TIME_LEFT_UNTIL
 import com.mayburger.dzikirqu.data.hawk.AppHawkHelper.Companion.HAWK_KEY_PRAYERTIME
@@ -39,13 +39,13 @@ interface PrayerTimeHelper {
         @SuppressLint("CheckResult")
         suspend fun getPrayerTime(ctx: Context): PrayerTime {
             val location = SingleLocationProvider.requestSingleUpdate(ctx)
+            println("THE PRAYER TIME IS GET AND THE LOCATION IS ${location.latitude}")
             return buildPrayerTime(
                 ctx,
                 LatLng.newBuilder().setLatitude(location.latitude.toDouble())
                     .setLongitude(location.longitude.toDouble()).build()
             )
         }
-
 
         fun getPrayerTimeFromHawk(): PrayerTime {
             val defaultValue = PrayerTime(

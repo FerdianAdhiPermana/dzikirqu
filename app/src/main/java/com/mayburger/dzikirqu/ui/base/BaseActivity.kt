@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.facebook.stetho.Stetho
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseApp
 import com.google.firebase.ktx.Firebase
@@ -54,6 +55,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
         performDataBinding()
         FirebaseApp.initializeApp(this)
         Firebase.initialize(this)
+        Stetho.initializeWithDefaults(this)
     }
 
     fun initShakeToOpenRestaurant(runnable: Runnable) {

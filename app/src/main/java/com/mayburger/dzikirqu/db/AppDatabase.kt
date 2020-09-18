@@ -5,20 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.mayburger.dzikirqu.model.BookDataModel
-import com.mayburger.dzikirqu.model.DataTypeConverter
-import com.mayburger.dzikirqu.model.PrayerDataModel
-import com.mayburger.dzikirqu.model.PrayerTypeConverter
+import com.mayburger.dzikirqu.model.*
 
 @Database(
-    entities = [BookDataModel::class, PrayerDataModel::class],
-    version = 1
+    entities = [BookDataModel::class, PrayerDataModel::class,TaskDataModel::class],
+    version = 2
 )
-@TypeConverters(PrayerTypeConverter::class, DataTypeConverter::class)
+@TypeConverters(PrayerTypeConverter::class, DataTypeConverter::class,DateConverter::class)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun getBookDao(): BookDao
     abstract fun getPrayerDao(): PrayerDao
+    abstract fun getTaskDao(): TaskDao
 
     companion object {
         @Volatile
@@ -35,6 +33,8 @@ abstract class AppDatabase: RoomDatabase() {
 
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
-                AppDatabase::class.java, "aasagDasaB.db").build()
+                AppDatabase::class.java, "hellopewds.db")
+                .fallbackToDestructiveMigration()
+                .build()
     }
 }

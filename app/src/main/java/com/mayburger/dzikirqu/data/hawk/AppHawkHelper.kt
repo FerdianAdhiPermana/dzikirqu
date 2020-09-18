@@ -2,8 +2,11 @@ package com.mayburger.dzikirqu.data.hawk
 
 import com.google.type.LatLng
 import com.mayburger.dzikirqu.model.PrayerTime
+import com.mayburger.dzikirqu.model.TaskDataModel
 import com.orhanobut.hawk.Hawk
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 class AppHawkHelper @Inject constructor() : HawkHelper {
 
@@ -15,6 +18,7 @@ class AppHawkHelper @Inject constructor() : HawkHelper {
         const val HAWK_KEY_PRAYERTIME = "hawk_praytime"
         const val HAWK_KEY_USER_COORDINATES = "hawk_user_coordinates"
         const val HAWK_KEY_USER_CITY = "hawk_user_city"
+        const val HAWK_KEY_TASKS = "hawk_tasks"
     }
 
     override var language: String
@@ -37,6 +41,4 @@ class AppHawkHelper @Inject constructor() : HawkHelper {
         set(value) {
             Hawk.put(HAWK_KEY_USER_CITY,value)
         }
-
-
 }

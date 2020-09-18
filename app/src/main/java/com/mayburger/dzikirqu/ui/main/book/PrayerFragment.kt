@@ -1,12 +1,9 @@
 package com.mayburger.dzikirqu.ui.main.book
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.View
-import android.widget.FrameLayout
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentPrayerBinding
@@ -32,8 +29,14 @@ class PrayerFragment : BaseBSDFragment<FragmentPrayerBinding, PrayerViewModel>()
 
     companion object {
         const val ARG_BOOK_ID = "book_id"
-        fun getBundle(type: String): Bundle {
-            return bundleOf(ARG_BOOK_ID to type)
+        const val ARG_BOOK_TITLE = "book_title"
+        const val ARG_BOOK_DESC = "book_desc"
+        fun getBundle(id: String,name:String,desc:String): Bundle {
+            return bundleOf(
+                ARG_BOOK_ID to id,
+                ARG_BOOK_TITLE to name,
+                ARG_BOOK_DESC to desc
+            )
         }
     }
 
@@ -42,6 +45,8 @@ class PrayerFragment : BaseBSDFragment<FragmentPrayerBinding, PrayerViewModel>()
         viewDataBinding?.lifecycleOwner = viewLifecycleOwner
         viewModel.navigator = this
         viewModel._bookId.value = arguments?.getString(ARG_BOOK_ID)
+        viewModel.bookTitle.value = arguments?.getString(ARG_BOOK_TITLE)
+        viewModel.bookDesc.value = arguments?.getString(ARG_BOOK_DESC)
         setUpAdapter()
     }
 

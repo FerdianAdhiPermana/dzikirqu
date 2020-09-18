@@ -97,6 +97,7 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         override fun onBind(position: Int) {
             if (data.isNotEmpty()) {
                 val viewModel = data[position]
+                viewModel.title.set("${(position.plus(1))}. ${data[position].data.title}")
 //                mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
                 mBinding.viewModel = viewModel
             }

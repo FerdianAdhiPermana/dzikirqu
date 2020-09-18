@@ -21,6 +21,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -46,6 +47,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
@@ -77,6 +79,8 @@ dependencies {
     implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.multidex:multidex:2.0.1")
 
+    implementation("com.facebook.stetho:stetho:1.5.1")
+    
     implementation("com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0")
     implementation("com.squareup.retrofit2:retrofit-mock:2.7.2")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.5.0")

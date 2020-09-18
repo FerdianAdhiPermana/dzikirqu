@@ -226,6 +226,7 @@
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:src="@drawable/ic_quran_primary"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@id/title_quran"
                         app:layout_constraintLeft_toLeftOf="@id/salam"
                         app:layout_constraintTop_toTopOf="@id/title_quran" />
@@ -239,6 +240,7 @@
                         android:text="Al-Qur'an Al Kareem"
                         android:textColor="@color/colorBlack"
                         android:textSize="14sp"
+                        android:visibility="gone"
                         app:layout_constraintLeft_toRightOf="@id/ic_quran"
                         app:layout_constraintTop_toBottomOf="@id/praytime"
                         app:typeface="bold" />
@@ -251,6 +253,7 @@
                         android:text="The Quran was revealed to seek knowledge, reflect and ponder upon it."
                         android:textColor="@color/colorTextGrey"
                         android:textSize="12sp"
+                        android:visibility="gone"
                         app:layout_constraintLeft_toLeftOf="@id/ic_quran"
                         app:layout_constraintRight_toRightOf="@id/salam"
                         app:layout_constraintTop_toBottomOf="@id/ic_quran" />
@@ -279,7 +282,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="50dp"
+                            android:layout_marginTop="24dp"
                             android:orientation="vertical"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
@@ -290,7 +293,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Al-Mu'minun"
                                 android:textColor="@color/colorWhite"
-                                android:textSize="24sp"
+                                android:textSize="18sp"
                                 app:typeface="bold" />
 
                             <com.mayburger.dzikirqu.util.textfont.TextFont
@@ -299,13 +302,14 @@
                                 android:layout_height="wrap_content"
                                 android:text="Verse No:18"
                                 android:textColor="@color/colorWhite"
+                                android:textSize="12sp"
                                 app:typeface="bold" />
 
                         </LinearLayout>
 
                         <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
                             android:alpha="0.3"
                             android:src="@drawable/ic_quran_calligraphy"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -314,39 +318,15 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <ImageView
-                        android:id="@+id/ic_books"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:src="@drawable/ic_book_primary"
-                        app:layout_constraintBottom_toBottomOf="@id/title_books"
-                        app:layout_constraintLeft_toLeftOf="@id/salam"
-                        app:layout_constraintTop_toTopOf="@id/title_books" />
-
-                    <com.mayburger.dzikirqu.util.textfont.TextFont
-                        android:id="@+id/title_books"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="32dp"
-                        android:text="Book of Du’a and Dzikir"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="14sp"
-                        app:layout_constraintLeft_toRightOf="@id/ic_books"
+                    <LinearLayout
+                        android:id="@+id/task"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        app:tasks="@{viewModel.tasks}"
+                        android:animateLayoutChanges="true"
                         app:layout_constraintTop_toBottomOf="@id/quran"
-                        app:typeface="bold" />
-
-                    <com.mayburger.dzikirqu.util.textfont.TextFont
-                        android:id="@+id/desc_books"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="And your Lord says, Call upon Me; I will respond to you. (Ghafir: 40)"
-                        android:textColor="@color/colorTextGrey"
-                        android:textSize="12sp"
-                        app:layout_constraintLeft_toLeftOf="@id/ic_books"
-                        app:layout_constraintRight_toRightOf="@id/salam"
-                        app:layout_constraintTop_toBottomOf="@id/ic_books" />
+                        android:layout_marginTop="16dp"
+                        android:layout_height="wrap_content"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvBooks"
@@ -356,7 +336,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/desc_books" />
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/quran" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>

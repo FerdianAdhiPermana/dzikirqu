@@ -21,14 +21,14 @@ class PrayerViewModel @ViewModelInject constructor(
     }
 
     val _bookId = MutableLiveData("")
+    val bookTitle = MutableLiveData("")
+    val bookDesc = MutableLiveData("")
 
     val prayer = _bookId.switchMap { bookId ->
         liveData(IO) {
             try {
                 if (bookId != "") {
-                    emit(dataManager.getPrayerByBookId(bookId).map{
-                        ItemPrayerViewModel(it)
-                    }.toList())
+                    emit(dataManager.getPrayerByBookId(bookId).map{ ItemPrayerViewModel(it) }.toList())
                 }
             } catch (e: Exception) {
                 navigator?.onError(e.message)

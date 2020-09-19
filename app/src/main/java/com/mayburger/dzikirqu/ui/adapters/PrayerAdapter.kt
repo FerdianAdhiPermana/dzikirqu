@@ -82,7 +82,7 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     interface Callback {
-        fun onSelectedItem(restaurant: PrayerDataModel.Data)
+        fun onSelectedItem(prayer: PrayerDataModel)
     }
 
     inner class BookEmptyViewHolder(private val mBinding: ItemPrayerEmptyBinding) :
@@ -98,7 +98,7 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
             if (data.isNotEmpty()) {
                 val viewModel = data[position]
                 viewModel.title.set("${(position.plus(1))}. ${data[position].data.title}")
-//                mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
+                mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
                 mBinding.viewModel = viewModel
             }
         }

@@ -13,9 +13,9 @@
 
     <RelativeLayout
         android:id="@+id/root"
-        android:layout_width="120dp"
+        android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:layout_margin="8dp"
+        android:layout_margin="4dp"
         android:background="@drawable/shp_grey_8dp"
         android:clickable="true"
         android:clipToPadding="false"

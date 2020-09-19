@@ -15,5 +15,5 @@ interface PrayerDao {
     fun deleteAllPrayers()
 
     @Query("SELECT * FROM prayer WHERE language LIKE :language AND book_id LIKE :bookId")
-    suspend fun getPrayers(language:String,bookId:String):List<PrayerDataModel>
+    suspend fun getPrayers(language:String,bookId:Int):List<PrayerDataModel>
 }

@@ -1,4 +1,4 @@
-package com.mayburger.dzikirqu.ui.main.book
+package com.mayburger.dzikirqu.ui.main.book.prayer
 
 import android.os.Bundle
 import android.view.View
@@ -10,6 +10,7 @@ import com.mayburger.dzikirqu.databinding.FragmentPrayerBinding
 import com.mayburger.dzikirqu.model.PrayerDataModel
 import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
 import com.mayburger.dzikirqu.ui.base.BaseBSDFragment
+import com.mayburger.dzikirqu.ui.main.book.prayer.read.ReadPrayerFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_prayer.*
 import javax.inject.Inject
@@ -31,7 +32,7 @@ class PrayerFragment : BaseBSDFragment<FragmentPrayerBinding, PrayerViewModel>()
         const val ARG_BOOK_ID = "book_id"
         const val ARG_BOOK_TITLE = "book_title"
         const val ARG_BOOK_DESC = "book_desc"
-        fun getBundle(id: String,name:String,desc:String): Bundle {
+        fun getBundle(id: Int,name:String,desc:String): Bundle {
             return bundleOf(
                 ARG_BOOK_ID to id,
                 ARG_BOOK_TITLE to name,
@@ -44,7 +45,7 @@ class PrayerFragment : BaseBSDFragment<FragmentPrayerBinding, PrayerViewModel>()
         super.onViewCreated(view, savedInstanceState)
         viewDataBinding?.lifecycleOwner = viewLifecycleOwner
         viewModel.navigator = this
-        viewModel._bookId.value = arguments?.getString(ARG_BOOK_ID)
+        viewModel._bookId.value = arguments?.getInt(ARG_BOOK_ID)
         viewModel.bookTitle.value = arguments?.getString(ARG_BOOK_TITLE)
         viewModel.bookDesc.value = arguments?.getString(ARG_BOOK_DESC)
         setUpAdapter()
@@ -55,7 +56,7 @@ class PrayerFragment : BaseBSDFragment<FragmentPrayerBinding, PrayerViewModel>()
         prayerAdapter.setListener(this)
     }
 
-    override fun onSelectedItem(restaurant: PrayerDataModel.Data) {
-
+    override fun onSelectedItem(prayer: PrayerDataModel) {
+        ReadPrayerFragment.getBundle(arguments?.getInt(ARG_BOOK_ID)?:0,prayer.id,prayer.title?:"")
     }
 }

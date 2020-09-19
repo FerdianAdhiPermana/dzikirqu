@@ -14,21 +14,211 @@
         <import type="com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper" />
 
         <import type="com.mayburger.dzikirqu.constants.LocaleConstants" />
+
+        <import type="android.view.View" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <fragment
-            android:id="@+id/nav_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.mayburger.dzikirqu.util.textfont.TextFont
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:text="@{viewModel.selectedBottomNavTitle}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="20sp"
+                            app:typeface="bold"
+                            tools:text="Home" />
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:visibility="@{viewModel.selectedBottomNav == 0 ? View.VISIBLE : View.GONE}"
+                            android:layout_height="32dp"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_settings_black" />
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:visibility="@{viewModel.selectedBottomNav == 0 ? View.VISIBLE : View.GONE}"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_bookmark_black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:background="@drawable/shp_grey_8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:visibility="@{viewModel.selectedBottomNav == 0 ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:padding="4dp"
+                            android:src="@drawable/search" />
+
+                        <com.mayburger.dzikirqu.util.textfont.TextFont
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="Search for Dzikir, Ayah, Surah or Du’as" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/nav"
+            android:layout_below="@id/toolbar"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+        <LinearLayout
+            android:id="@+id/nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.onClickBottomNav(0)}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:padding="2dp"
+                    android:src="@{viewModel.selectedBottomNav == 0 ? @drawable/ic_home_primary : @drawable/ic_home_grey}"
+                    tools:src="@drawable/ic_home_primary" />
+
+                <com.mayburger.dzikirqu.util.textfont.TextFont
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:textAlignment="center"
+                    android:textColor="@{viewModel.selectedBottomNav == 0 ? @color/colorPrimary : @color/colorGreyDecorDark}"
+                    android:textSize="12sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:text="@{LocaleConstants.HOME}"
+                    tools:text="Explore"
+                    tools:textColor="@color/colorGreyDecorDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.onClickBottomNav(1)}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:padding="4dp"
+                    android:src="@{viewModel.selectedBottomNav == 1 ? @drawable/ic_book_primary : @drawable/ic_book_grey}"
+                    tools:src="@drawable/ic_book_grey" />
+
+                <com.mayburger.dzikirqu.util.textfont.TextFont
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:textAlignment="center"
+                    android:textColor="@{viewModel.selectedBottomNav == 1 ? @color/colorPrimary : @color/colorGreyDecorDark}"
+                    android:textSize="12sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:text="@{LocaleConstants.BOOK}"
+                    tools:textColor="@color/colorGreyDecorDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.onClickBottomNav(2)}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:padding="4dp"
+                    android:src="@{viewModel.selectedBottomNav == 2 ? @drawable/ic_quran_primary : @drawable/ic_quran_grey}"
+                    tools:src="@drawable/ic_quran_grey" />
+
+                <com.mayburger.dzikirqu.util.textfont.TextFont
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:textAlignment="center"
+                    android:textColor="@{viewModel.selectedBottomNav == 2 ? @color/colorPrimary : @color/colorGreyDecorDark}"
+                    android:textSize="12sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:text="@{LocaleConstants.QURAN}"
+                    tools:text="Quran"
+                    tools:textColor="@color/colorGreyDecorDark" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
 </layout>

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.mayburger.dzikirqu.ui.main.book.PrayerViewModel" />
+            type="com.mayburger.dzikirqu.ui.main.book.prayer.PrayerViewModel" />
 
         <import type="com.mayburger.dzikirqu.constants.RecyclerConstants" />
 

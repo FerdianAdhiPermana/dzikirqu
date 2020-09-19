@@ -3,12 +3,10 @@ package com.mayburger.dzikirqu.data.room
 import com.mayburger.dzikirqu.data.hawk.HawkHelper
 import com.mayburger.dzikirqu.db.AppDatabase
 import com.mayburger.dzikirqu.model.BookDataModel
+import com.mayburger.dzikirqu.model.HighlightDataModel
 import com.mayburger.dzikirqu.model.PrayerDataModel
-import com.mayburger.dzikirqu.model.TaskDataModel
-import com.mayburger.dzikirqu.util.TasksUtil
-import java.util.*
+import com.mayburger.dzikirqu.util.HighlightsUtil
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelper) : RoomHelper {
 
@@ -34,22 +32,16 @@ class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelpe
         }
     }
 
-    override suspend fun setTasks(items: List<TaskDataModel>) {
+    override suspend fun setHighlights(items: List<HighlightDataModel>) {
         items.map {
-            db.getTaskDao().insertTask(it)
+            db.getHighlightDao().insertHighlight(it)
         }
     }
 
-    override suspend fun getTasks(): List<TaskDataModel> {
-        if (db.getTaskDao().getTaskByDate(Calendar.getInstance().time).isEmpty()) {
-            setTasks(TasksUtil.getTasks())
-        }
-        return db.getTaskDao().getTaskByDate(Calendar.getInstance().time)
-    }
-
-    override suspend fun updateTask(task: TaskDataModel) {
-        println("This is the updated task ${task.taskCount}")
-        db.getTaskDao().updateTask(task)
+    override suspend fun getHighlights(): List<HighlightDataModel> {
+        db.getHighlightDao().deleteHighlights()
+        setHighlights(HighlightsUtil.getHighlights())
+        return db.getHighlightDao().getHighlights()
     }
 
     override suspend fun setPrayers(items: List<PrayerDataModel>) {
@@ -59,11 +51,11 @@ class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelpe
         }
     }
 
-    override suspend fun getBookById(id: String): List<BookDataModel> {
+    override suspend fun getBookById(id: Int): List<BookDataModel> {
         return db.getBookDao().getBookById(hawk.language, id)
     }
 
-    override suspend fun getPrayerByBookId(bookId: String): List<PrayerDataModel> {
+    override suspend fun getPrayerByBookId(bookId: Int): List<PrayerDataModel> {
         return db.getPrayerDao().getPrayers(hawk.language, bookId)
     }
 }

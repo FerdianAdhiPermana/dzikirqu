@@ -1,4 +1,4 @@
-package com.mayburger.dzikirqu.ui.main.book
+package com.mayburger.dzikirqu.ui.main.book.prayer
 
 import com.mayburger.dzikirqu.ui.base.BaseNavigator
 

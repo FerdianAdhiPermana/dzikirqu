@@ -18,5 +18,5 @@ interface BookDao {
     suspend fun getBooks():List<BookDataModel>
 
     @Query("SELECT * FROM book WHERE language LIKE :language AND id LIKE :id")
-    suspend fun getBookById(language:String,id:String):List<BookDataModel>
+    suspend fun getBookById(language:String,id:Int):List<BookDataModel>
 }

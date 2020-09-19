@@ -5,7 +5,7 @@
   "Hour": "hour(s)",
   "Minute": "minute(s)",
   "SearchDzikir": "Search DzikirQu!",
-  "ReadBook": "Read Book",
+  "Book": "Book",
   "IslamicLectures": "Islamic Lectures",
   "Fajr": "Fajr",
   "Dhuhr": "Dhuhr",
@@ -14,5 +14,6 @@
   "ViewAll": "View All",
   "Isya": "Isya",
   "Sunrise": "Sunrise",
-  "Sunset": "Sunset"
+  "Sunset": "Sunset",
+  "Home": "Home"
 }

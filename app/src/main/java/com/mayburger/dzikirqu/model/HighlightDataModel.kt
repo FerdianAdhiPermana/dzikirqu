@@ -6,7 +6,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.firebase.firestore.IgnoreExtraProperties
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 
 /**
@@ -14,18 +13,18 @@ import java.util.*
  */
 @IgnoreExtraProperties
 @Parcelize
-@Entity(tableName = "task")
-class TaskDataModel(
+@Entity(tableName = "highlight")
+class HighlightDataModel(
     @ColumnInfo(name="title")
     var title:String,
-    @ColumnInfo(name="totalTask")
-    var totalTask:Int,
-    @ColumnInfo(name="taskCount")
-    var taskCount:Int,
-    @ColumnInfo(name="disabled")
-    var disabled:Boolean,
-    @ColumnInfo(name="date")
-    var date:Date
+    @ColumnInfo(name="bookTitle")
+    var bookTitle:String,
+    @ColumnInfo(name="bookId")
+    var bookId:Int,
+    @ColumnInfo(name="prayerId")
+    var prayerId:Int,
+    @ColumnInfo(name="type")
+    var type:Int
 ) : Parcelable{
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)

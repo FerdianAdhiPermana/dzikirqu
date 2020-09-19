@@ -1,4 +1,4 @@
-package com.mayburger.dzikirqu.ui.main.book
+package com.mayburger.dzikirqu.ui.main.book.prayer
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
@@ -20,14 +20,14 @@ class PrayerViewModel @ViewModelInject constructor(
 
     }
 
-    val _bookId = MutableLiveData("")
+    val _bookId = MutableLiveData(-1)
     val bookTitle = MutableLiveData("")
     val bookDesc = MutableLiveData("")
 
     val prayer = _bookId.switchMap { bookId ->
         liveData(IO) {
             try {
-                if (bookId != "") {
+                if (bookId != -1) {
                     emit(dataManager.getPrayerByBookId(bookId).map{ ItemPrayerViewModel(it) }.toList())
                 }
             } catch (e: Exception) {

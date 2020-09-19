@@ -8,13 +8,19 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.NavHostFragment
+import androidx.fragment.app.Fragment
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
+import com.mayburger.dzikirqu.constants.LocaleConstants
 import com.mayburger.dzikirqu.databinding.ActivityMainBinding
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
 import com.mayburger.dzikirqu.ui.base.BaseActivity
+import com.mayburger.dzikirqu.ui.main.book.BookFragment
+import com.mayburger.dzikirqu.ui.main.home.HomeFragment
+import com.mayburger.dzikirqu.ui.main.quran.QuranFragment
+import com.mayburger.dzikirqu.util.ActivityUtil
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -33,16 +39,58 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         super.onCreate(savedInstanceState)
         viewDataBinding.lifecycleOwner = this
         buildLocationPermission()
+//        val books:ArrayList<BookDataModel> = Gson().fromJson(getJsonStringFromRaw(R.raw.dzikir)
+//        ,object:TypeToken<ArrayList<BookDataModel>>(){}.type)
+//        books.map{
+//            Firebase.firestore.collection("books").add(it)
+//        }
+    }
+    fun getJsonStringFromRaw(rawInt: Int): String {
+        val `is`: InputStream = resources.openRawResource(rawInt)
+        val writer: Writer = StringWriter()
+        val buffer = CharArray(1024)
+        `is`.use { `is` ->
+            val reader: Reader = BufferedReader(InputStreamReader(`is`, "UTF-8"))
+            var n: Int
+            while (reader.read(buffer).also { n = it } != -1) {
+                writer.write(buffer, 0, n)
+            }
+        }
+        return writer.toString()
+    }
+    
+    fun setUpNavigation(){
+        viewModel.selectedBottomNav.observe(this, {
+            when (it) {
+                0 -> {
+                    loadFragment(HomeFragment())
+                    viewModel.selectedBottomNavTitle.set(LocaleConstants.HOME)
+                }
+                1 -> {
+                    loadFragment(BookFragment())
+                    viewModel.selectedBottomNavTitle.set(LocaleConstants.BOOK)
+                }
+                2 -> {
+                    loadFragment(QuranFragment())
+                    viewModel.selectedBottomNavTitle.set(LocaleConstants.QURAN)
+                }
+            }
+        })
     }
 
-    fun buildFragments(){
-        val host = NavHostFragment.create(R.navigation.nav_main)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.nav_host_fragment, host)
-            .setPrimaryNavigationFragment(host)
-            .commit()
+
+
+    fun loadFragment(fragment: Fragment) {
+        ActivityUtil.loadFragment(
+            R.id.container,
+            supportFragmentManager,
+            fragment
+        )
     }
 
+    override fun onBackPressed() {
+        finish()
+    }
 
     private val LOCATION_PERMISSION_CODE = 93
 
@@ -51,7 +99,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         if (!isLocationPermissionGranted()) {
             requestLocationPermission()
         } else {
-            buildFragments()
+            setUpNavigation()
         }
     }
 
@@ -64,7 +112,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             this,
             arrayOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
             ),
             LOCATION_PERMISSION_CODE
         )
@@ -73,10 +122,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     fun isLocationPermissionGranted(): Boolean {
         return ContextCompat.checkSelfPermission(
             this,
-            Manifest.permission.READ_SMS
+            Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
             this,
-            Manifest.permission.SEND_SMS
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
         ) == PackageManager.PERMISSION_GRANTED
     }
 
@@ -104,7 +153,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 showRequestPermissionsInfoAlertDialog(true)
             } else {
-                buildFragments()
+                setUpNavigation()
             }
         }
     }

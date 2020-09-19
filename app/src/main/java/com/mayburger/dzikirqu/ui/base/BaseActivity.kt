@@ -76,6 +76,19 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onResume() {
+        super.onResume()
+//        if (!TimeUtils.isTimeValid(this)){
+//            val dialog = AlertDialog.Builder(this)
+//            dialog.setTitle("Incorrect Date")
+//            dialog.setMessage("Your date settings is incorrect, please set it to Automatic date & time")
+//            dialog.setPositiveButton("Okay") { _: DialogInterface, i: Int ->
+//                finishActivity()
+//            }
+//            dialog.show()
+//        }
+    }
+
     override fun hideLoading() {
         if (pDialog?.isShowing == true) pDialog?.dismiss()
     }

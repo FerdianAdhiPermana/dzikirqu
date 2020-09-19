@@ -15,9 +15,9 @@ class PrayerDataModel(
     @PrimaryKey(autoGenerate = true)
     var ids: Int? = null,
     @ColumnInfo(name = "id")
-    var id: String = "",
+    var id: Int = 0,
     @ColumnInfo(name = "book_id")
-    var bookId:String = "",
+    var bookId: Int = 0,
     @ColumnInfo(name = "language")
     var language: String? = null,
     @ColumnInfo(name = "title")

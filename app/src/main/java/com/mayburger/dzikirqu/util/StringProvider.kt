@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.JsonElement
-import com.google.gson.reflect.TypeToken
 import com.mayburger.dzikirqu.data.hawk.AppHawkHelper.Companion.HAWK_KEY_LANGUAGE
 import com.orhanobut.hawk.Hawk
 import java.util.*
@@ -34,7 +33,7 @@ class StringProvider(private var context: Context?) {
     }
 
     fun getString(key: String): String {
-        val language = Hawk.get(HAWK_KEY_LANGUAGE,"en")
+        val language = Hawk.get(HAWK_KEY_LANGUAGE,"id")
         val jsonString = context?.resources?.getIdentifier("white_label_$language", "raw", context?.packageName)?.let {
             context?.resources?.openRawResource(it)?.bufferedReader().use { it?.readText() }
         }
@@ -45,7 +44,7 @@ class StringProvider(private var context: Context?) {
                 return entry.value.asString
             }
         }
-        return ""
+        return key
     }
 
     fun initRawString(): String {

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mayburger.dzikirqu.ui.main.quran.QuranViewModel" />
+
+        <import type="com.mayburger.dzikirqu.constants.RecyclerConstants" />
+
+        <import type="com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper" />
+
+        <import type="com.mayburger.dzikirqu.constants.LocaleConstants" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
+
+
+</layout>

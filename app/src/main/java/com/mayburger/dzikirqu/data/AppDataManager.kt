@@ -6,9 +6,9 @@ import com.mayburger.dzikirqu.data.firebase.FirebaseHelper
 import com.mayburger.dzikirqu.data.hawk.HawkHelper
 import com.mayburger.dzikirqu.data.room.RoomHelper
 import com.mayburger.dzikirqu.model.BookDataModel
+import com.mayburger.dzikirqu.model.HighlightDataModel
 import com.mayburger.dzikirqu.model.PrayerDataModel
 import com.mayburger.dzikirqu.model.PrayerTime
-import com.mayburger.dzikirqu.model.TaskDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper
 import java.io.*
@@ -47,20 +47,16 @@ class AppDataManager @Inject constructor(
         return mRoomHelper.getAllBooks()
     }
 
-    override suspend fun getBookById(id: String): List<BookDataModel> {
+    override suspend fun getBookById(id: Int): List<BookDataModel> {
         return mRoomHelper.getBookById(id)
     }
 
-    override suspend fun setTasks(items: List<TaskDataModel>) {
-        mRoomHelper.setTasks(items)
+    override suspend fun setHighlights(items: List<HighlightDataModel>) {
+        mRoomHelper.setHighlights(items)
     }
 
-    override suspend fun getTasks(): List<TaskDataModel> {
-        return mRoomHelper.getTasks()
-    }
-
-    override suspend fun updateTask(task: TaskDataModel) {
-        mRoomHelper.updateTask(task)
+    override suspend fun getHighlights(): List<HighlightDataModel> {
+        return mRoomHelper.getHighlights()
     }
 
     override suspend fun setBooks(items: List<BookDataModel>) {
@@ -71,7 +67,7 @@ class AppDataManager @Inject constructor(
         mRoomHelper.setPrayers(items)
     }
 
-    override suspend fun getPrayerByBookId(bookId: String): List<PrayerDataModel> {
+    override suspend fun getPrayerByBookId(bookId: Int): List<PrayerDataModel> {
         return mRoomHelper.getPrayerByBookId(bookId)
     }
 

@@ -5,7 +5,7 @@
   "Hour": "jam",
   "Minute": "menit",
   "SearchDzikir": "Cari Dzikir!",
-  "ReadBook": "Baca Buku",
+  "Book": "Buku",
   "IslamicLectures": "Jadwal Kajian",
   "Fajr": "Shubuh",
   "Dhuhr": "Dzuhur",
@@ -14,5 +14,6 @@
   "ViewAll": "Lihat Semua",
   "Isya": "Isya'",
   "Sunrise": "Syuruq",
-  "Sunset": "Sunset"
+  "Sunset": "Sunset",
+  "Home": "Beranda"
 }

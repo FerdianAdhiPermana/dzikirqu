@@ -19,7 +19,7 @@ class BookDataModel(
     @PrimaryKey(autoGenerate = true)
     var ids: Int? = null,
     @ColumnInfo(name = "id")
-    var id: String = "",
+    var id: Int = 0,
     @ColumnInfo(name = "title")
     var title: String = "",
     @ColumnInfo(name = "desc")
@@ -27,7 +27,7 @@ class BookDataModel(
     @ColumnInfo(name = "updated")
     var updated: String = "",
     @ColumnInfo(name = "type")
-    var type: String = "",
+    var type: Int = 0,
     @ColumnInfo(name = "language")
     var language: String = "",
     @ColumnInfo(name = "status")

@@ -3,21 +3,23 @@ package com.mayburger.dzikirqu.util.binding
 import android.animation.AnimatorSet
 import android.animation.LayoutTransition
 import android.animation.ObjectAnimator
-import android.graphics.Color
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.RelativeLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.tabs.TabLayout
 import com.mayburger.dzikirqu.constants.RecyclerConstants
+import com.mayburger.dzikirqu.util.ext.ViewUtils
 import com.mayburger.dzikirqu.util.ext.setOnSingleClickListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
 
 object ViewBinding {
 
@@ -28,7 +30,53 @@ object ViewBinding {
             runnable.run()
         }
     }
-    
+
+    @BindingAdapter("android:layout_margin")
+    @JvmStatic
+    fun setLayoutMargin(view: ViewGroup, margin: Int) {
+        val params = view.layoutParams as ViewGroup.MarginLayoutParams
+        val marg = ViewUtils.dpToPx(margin)
+        params.setMargins(marg, marg, marg, marg)
+        view.requestLayout()
+    }
+
+    @BindingAdapter("android:background")
+    @JvmStatic
+    fun setBackgroundColor(view: ViewGroup, colorRes: Int) {
+        view.setBackgroundColor(view.context.resources.getColor(colorRes))
+    }
+
+    @BindingAdapter("app:tabIndicatorColor")
+    @JvmStatic
+    fun setIndicatorColor(view: TabLayout, colorRes: Int) {
+        view.setSelectedTabIndicatorColor(view.context.resources.getColor(colorRes))
+    }
+
+    @BindingAdapter("android:layout_alignParentBottom")
+    @JvmStatic
+    fun setAlignParentBottom(view: ViewGroup, alignParentBottom: Boolean) {
+        val layoutParams = view.layoutParams as RelativeLayout.LayoutParams
+        if (alignParentBottom) {
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
+        } else {
+            layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
+        }
+        view.layoutParams = layoutParams
+    }
+
+
+    @BindingAdapter("onTouch")
+    @JvmStatic
+    fun setOnTouch(view: ViewGroup, runnable: Runnable) {
+        view.setOnTouchListener { view, motionEvent ->
+            when (motionEvent?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    runnable.run()
+                }
+            }
+            true
+        }
+    }
 
 
     @BindingAdapter("animateLayoutChanges")

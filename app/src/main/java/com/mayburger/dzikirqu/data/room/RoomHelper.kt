@@ -1,8 +1,6 @@
 package com.mayburger.dzikirqu.data.room
 
-import com.mayburger.dzikirqu.model.BookDataModel
-import com.mayburger.dzikirqu.model.HighlightDataModel
-import com.mayburger.dzikirqu.model.PrayerDataModel
+import com.mayburger.dzikirqu.model.*
 
 
 interface RoomHelper {
@@ -15,4 +13,15 @@ interface RoomHelper {
 
     suspend fun setPrayers(items:List<PrayerDataModel>)
     suspend fun getPrayerByBookId(bookId:Int):List<PrayerDataModel>
+
+    suspend fun setSurah(items:List<SurahJsonModel>,language:String)
+    suspend fun getSurah():List<SurahDataModel>
+    suspend fun getSurahById(id:Int):List<SurahDataModel>
+
+    suspend fun insertAyah(items:List<AyahJsonModel>)
+    suspend fun getAyahBySurahId(surahId:Int):List<AyahDataModel>
+    suspend fun getAyahByJuz(juz:Int):List<AyahDataModel>
+    suspend fun getAllAyahs():List<AyahDataModel>
+    suspend fun deleteAllAyahs()
+
 }

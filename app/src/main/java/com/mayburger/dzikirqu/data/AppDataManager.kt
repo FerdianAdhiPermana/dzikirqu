@@ -5,10 +5,7 @@ import com.google.type.LatLng
 import com.mayburger.dzikirqu.data.firebase.FirebaseHelper
 import com.mayburger.dzikirqu.data.hawk.HawkHelper
 import com.mayburger.dzikirqu.data.room.RoomHelper
-import com.mayburger.dzikirqu.model.BookDataModel
-import com.mayburger.dzikirqu.model.HighlightDataModel
-import com.mayburger.dzikirqu.model.PrayerDataModel
-import com.mayburger.dzikirqu.model.PrayerTime
+import com.mayburger.dzikirqu.model.*
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper
 import java.io.*
@@ -71,6 +68,37 @@ class AppDataManager @Inject constructor(
         return mRoomHelper.getPrayerByBookId(bookId)
     }
 
+    override suspend fun setSurah(items: List<SurahJsonModel>, language: String) {
+        mRoomHelper.setSurah(items,language)
+    }
+
+    override suspend fun getSurah(): List<SurahDataModel> {
+        return mRoomHelper.getSurah()
+    }
+
+    override suspend fun getSurahById(id: Int): List<SurahDataModel> {
+        return mRoomHelper.getSurahById(id)
+    }
+
+    override suspend fun insertAyah(items: List<AyahJsonModel>) {
+        mRoomHelper.insertAyah(items)
+    }
+
+    override suspend fun getAllAyahs(): List<AyahDataModel> {
+        return mRoomHelper.getAllAyahs()
+    }
+
+    override suspend fun getAyahBySurahId(surahId: Int): List<AyahDataModel> {
+        return mRoomHelper.getAyahBySurahId(surahId)
+    }
+
+    override suspend fun getAyahByJuz(juz: Int): List<AyahDataModel> {
+        return mRoomHelper.getAyahByJuz(juz)
+    }
+
+    override suspend fun deleteAllAyahs() {
+        mRoomHelper.deleteAllAyahs()
+    }
 
     override suspend fun getPrayerTime(): PrayerTime {
         return PrayerTimeHelper.getPrayerTime(mContext)

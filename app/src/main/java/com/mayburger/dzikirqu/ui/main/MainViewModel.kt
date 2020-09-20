@@ -1,24 +1,92 @@
 package com.mayburger.dzikirqu.ui.main
 
+import android.content.Context
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.mayburger.dzikirqu.R
+import com.mayburger.dzikirqu.constants.Constants
 import com.mayburger.dzikirqu.data.DataManager
+import com.mayburger.dzikirqu.model.AyahJsonModel
+import com.mayburger.dzikirqu.model.SurahJsonModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
+import com.mayburger.dzikirqu.util.FileUtils
 import com.mayburger.dzikirqu.util.rx.SchedulerProvider
 
 
-class MainViewModel @ViewModelInject constructor(dataManager: DataManager,schedulerProvider: SchedulerProvider) :
-    BaseViewModel<MainNavigator>(dataManager,schedulerProvider) {
+class MainViewModel @ViewModelInject constructor(
+    dataManager: DataManager,
+    schedulerProvider: SchedulerProvider
+) :
+    BaseViewModel<MainNavigator>(dataManager, schedulerProvider) {
     override fun onEvent(obj: Any) {
 
     }
 
-    val selectedBottomNav = MutableLiveData(0)
-    val selectedBottomNavTitle = ObservableField("Home")
+    val selectedTab = MutableLiveData(1)
+    val appbarColor = ObservableField(R.color.colorPrimary)
+    val showSearch = ObservableBoolean(false)
 
-    fun onClickBottomNav(position: Int) {
-        selectedBottomNav.value = position
+    fun changeAppbarColor(position: Int): Int {
+        return when (position) {
+            0 -> {
+                appbarColor.set(R.color.colorPrimary)
+                R.color.colorPrimary
+            }
+            1 -> {
+                appbarColor.set(R.color.colorPrimary)
+                R.color.colorPrimary
+            }
+            else -> {
+                appbarColor.set(R.color.colorPrimary)
+                R.color.colorPrimary
+            }
+        }
     }
 
+    fun onClickSearch() {
+        if (showSearch.get().not()) {
+            showSearch.set(showSearch.get().not())
+            navigator?.onClickSearch()
+        }
+    }
+
+    suspend fun setUpQuran(context: Context) {
+        if (dataManager.getSurah().isEmpty()) {
+            dataManager.setSurah(
+                Gson().fromJson(
+                    FileUtils.getJsonStringFromAssets(
+                        context,
+                        "json/lang/id.json"
+                    ),
+                    object : TypeToken<ArrayList<SurahJsonModel>>() {}.type
+                ), "en"
+            )
+            dataManager.setSurah(
+                Gson().fromJson(
+                    FileUtils.getJsonStringFromAssets(
+                        context,
+                        "json/lang/id.json"
+                    ),
+                    object : TypeToken<ArrayList<SurahJsonModel>>() {}.type
+                ), "id"
+            )
+        }
+
+        if (dataManager.getAllAyahs().size != Constants.QURAN_AYAH_SIZE) {
+            dataManager.deleteAllAyahs()
+            for (i in dataManager.getSurah()) {
+                val ayah = Gson().fromJson<ArrayList<AyahJsonModel>>(
+                    FileUtils.getJsonStringFromAssets(
+                        context,
+                        "json/quran/${i.name}.json"
+                    ), object : TypeToken<ArrayList<AyahJsonModel>>() {}.type
+                )
+                dataManager.insertAyah(ayah)
+            }
+        }
+    }
 }

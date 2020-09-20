@@ -14,7 +14,7 @@ import com.mayburger.dzikirqu.constants.LocaleConstants.ISYA
 import com.mayburger.dzikirqu.constants.LocaleConstants.LEFT_UNTIL
 import com.mayburger.dzikirqu.constants.LocaleConstants.MAGHRIB
 import com.mayburger.dzikirqu.constants.LocaleConstants.MINUTE
-import com.mayburger.dzikirqu.constants.LocaleConstants.TIME_LEFT_UNTIL
+import com.mayburger.dzikirqu.constants.LocaleConstants.NEXT_PRAYER_S
 import com.mayburger.dzikirqu.data.hawk.AppHawkHelper.Companion.HAWK_KEY_PRAYERTIME
 import com.mayburger.dzikirqu.data.hawk.AppHawkHelper.Companion.HAWK_KEY_USER_CITY
 import com.mayburger.dzikirqu.data.hawk.AppHawkHelper.Companion.HAWK_KEY_USER_COORDINATES
@@ -176,7 +176,7 @@ interface PrayerTimeHelper {
                 minutesLeft += 24 * 60 // Time passed, so time until 'end' tomorrow
             val hours = minutesLeft / 60
             val minutes = minutesLeft - hours * 60
-            return "${StringProvider.getInstance().getString(TIME_LEFT_UNTIL)} " +
+            return "${StringProvider.getInstance().getString(NEXT_PRAYER_S)} " +
                     "$hours ${StringProvider.getInstance().getString(HOUR)} " +
                     "$minutes ${StringProvider.getInstance().getString(MINUTE)}"
 //            return hours.toString() + "h " + minutes + "m ${StringProvider.getInstance().getString(LEFT_UNTIL)} " + prayer

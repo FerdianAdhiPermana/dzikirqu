@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -32,6 +32,7 @@
         <enum name="bold" value="2" />
         <enum name="italic" value="3" />
         <enum name="black" value="4" />
+        <enum name="uthman" value="5" />
     </attr>
 
 </resources>

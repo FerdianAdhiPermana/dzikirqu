@@ -13,12 +13,14 @@ class TypeFactory internal constructor(context: Context) {
     private val MEDIUM = "fonts/Lato-Medium.ttf"
     private val REGULAR = "fonts/Lato-Regular.ttf"
     private val BLACK = "fonts/Lato-Black.ttf"
+    private val UTHMAN_TAHA = "fonts/Uthman-Taha.ttf"
 
     val bold: Typeface
     val italic: Typeface
     val medium: Typeface
     val black:Typeface
     val regular: Typeface
+    val uthmanTaha:Typeface
 
     init {
         bold = Typeface.createFromAsset(context.assets, BOLD)
@@ -26,5 +28,6 @@ class TypeFactory internal constructor(context: Context) {
         italic = Typeface.createFromAsset(context.assets, ITALIC)
         medium = Typeface.createFromAsset(context.assets, MEDIUM)
         regular = Typeface.createFromAsset(context.assets, REGULAR)
+        uthmanTaha = Typeface.createFromAsset(context.assets,UTHMAN_TAHA)
     }
 }

@@ -8,14 +8,16 @@ import androidx.room.TypeConverters
 import com.mayburger.dzikirqu.model.*
 
 @Database(
-    entities = [BookDataModel::class, PrayerDataModel::class,HighlightDataModel::class],
-    version = 9
+    entities = [BookDataModel::class, PrayerDataModel::class,HighlightDataModel::class,SurahDataModel::class,AyahDataModel::class],
+    version = 12
 )
 @TypeConverters(PrayerTypeConverter::class, DataTypeConverter::class,DateConverter::class)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun getBookDao(): BookDao
     abstract fun getPrayerDao(): PrayerDao
+    abstract fun getSurahDao(): SurahDao
+    abstract fun getAyahDao(): AyahDao
     abstract fun getHighlightDao(): HighlightDao
 
     companion object {

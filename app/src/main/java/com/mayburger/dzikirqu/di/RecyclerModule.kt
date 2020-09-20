@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
 import com.mayburger.dzikirqu.ui.adapters.HighlightAdapter
 import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
+import com.mayburger.dzikirqu.ui.adapters.SurahAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,6 +32,10 @@ object RecyclerModule {
     @Provides
     internal fun provideHighlightAdapter():HighlightAdapter{
         return HighlightAdapter()
+    }
+    @Provides
+    internal fun provideSurahAdapter():SurahAdapter{
+        return SurahAdapter()
     }
 
 //    @Provides

@@ -8,9 +8,11 @@ import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
 import com.mayburger.dzikirqu.ui.adapters.HighlightAdapter
 import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
+import com.mayburger.dzikirqu.ui.adapters.SurahAdapter
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemHighlightViewModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemSurahViewModel
 
 
 object AdapterBinding {
@@ -48,6 +50,29 @@ object AdapterBinding {
                     recyclerView.scheduleLayoutAnimation()
                     adapter.isLoaded = true
                 }
+            }
+        }
+    }
+
+    @BindingAdapter("surahAdapter")
+    @JvmStatic
+    fun addSurahItems(
+        recyclerView: RecyclerView,
+        items: LiveData<List<ItemSurahViewModel>>
+    ) {
+        val adapter = recyclerView.adapter as SurahAdapter?
+        if (adapter != null) {
+            items.value?.let {
+                adapter.clearItems()
+                adapter.addItems(ArrayList(it))
+            }
+            if (!adapter.isLoaded) {
+                val context = recyclerView.context;
+                val controller =
+                    AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fade);
+                recyclerView.layoutAnimation = controller;
+                recyclerView.scheduleLayoutAnimation()
+                adapter.isLoaded = true
             }
         }
     }

@@ -48,7 +48,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="@{viewModel.bookTitle}"
                 android:textColor="@color/colorBlack"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:typeface="bold"
                 tools:text="Book of Dzikir" />
 
@@ -58,7 +58,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="@{viewModel.bookDesc}"
-                android:textSize="16sp"
                 android:textColor="@color/colorTextGrey"
                 tools:text="Book of Dzikir" />
         </LinearLayout>

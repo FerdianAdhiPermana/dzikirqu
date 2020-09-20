@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
-import com.mayburger.dzikirqu.constants.BookConstants
+import com.mayburger.dzikirqu.constants.Constants
 import com.mayburger.dzikirqu.databinding.FragmentBookBinding
 import com.mayburger.dzikirqu.model.BookDataModel
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
@@ -39,7 +39,7 @@ class BookFragment : BaseFragment<FragmentBookBinding, BookViewModel>(), BookNav
     }
 
     override fun onSelectedItem(book: BookDataModel) {
-        if (book.type == BookConstants.BOOK_TYPE_PRAYER) {
+        if (book.type == Constants.BOOK_TYPE_PRAYER) {
             val fragment = PrayerFragment()
             fragment.arguments = PrayerFragment.getBundle(book.id, book.title, book.desc)
             fragment.show(requireActivity().supportFragmentManager, "")

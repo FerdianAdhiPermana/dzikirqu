@@ -5,26 +5,36 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.constants.LocaleConstants
 import com.mayburger.dzikirqu.databinding.ActivityMainBinding
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
+import com.mayburger.dzikirqu.ui.adapters.MainPagerAdapter
 import com.mayburger.dzikirqu.ui.base.BaseActivity
 import com.mayburger.dzikirqu.ui.main.book.BookFragment
 import com.mayburger.dzikirqu.ui.main.home.HomeFragment
-import com.mayburger.dzikirqu.ui.main.quran.QuranFragment
-import com.mayburger.dzikirqu.util.ActivityUtil
+import com.mayburger.dzikirqu.ui.main.surah.SurahFragment
+import com.mayburger.dzikirqu.ui.search.SearchFragment
+import com.mayburger.dzikirqu.util.StringProvider
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_tab_layout.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNavigator {
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -38,58 +48,66 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding.lifecycleOwner = this
+        viewModel.navigator = this
         buildLocationPermission()
-//        val books:ArrayList<BookDataModel> = Gson().fromJson(getJsonStringFromRaw(R.raw.dzikir)
-//        ,object:TypeToken<ArrayList<BookDataModel>>(){}.type)
-//        books.map{
-//            Firebase.firestore.collection("books").add(it)
-//        }
-    }
-    fun getJsonStringFromRaw(rawInt: Int): String {
-        val `is`: InputStream = resources.openRawResource(rawInt)
-        val writer: Writer = StringWriter()
-        val buffer = CharArray(1024)
-        `is`.use { `is` ->
-            val reader: Reader = BufferedReader(InputStreamReader(`is`, "UTF-8"))
-            var n: Int
-            while (reader.read(buffer).also { n = it } != -1) {
-                writer.write(buffer, 0, n)
-            }
+        viewModel.dataManager.language = "id"
+        CoroutineScope(IO).launch {
+            viewModel.setUpQuran(this@MainActivity)
         }
-        return writer.toString()
-    }
-    
-    fun setUpNavigation(){
-        viewModel.selectedBottomNav.observe(this, {
-            when (it) {
-                0 -> {
-                    loadFragment(HomeFragment())
-                    viewModel.selectedBottomNavTitle.set(LocaleConstants.HOME)
-                }
-                1 -> {
-                    loadFragment(BookFragment())
-                    viewModel.selectedBottomNavTitle.set(LocaleConstants.BOOK)
-                }
-                2 -> {
-                    loadFragment(QuranFragment())
-                    viewModel.selectedBottomNavTitle.set(LocaleConstants.QURAN)
-                }
-            }
-        })
     }
 
-
-
-    fun loadFragment(fragment: Fragment) {
-        ActivityUtil.loadFragment(
-            R.id.container,
-            supportFragmentManager,
-            fragment
-        )
+    override fun onClickSearch() {
+        val search = SearchFragment()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.main_container,search,search.javaClass.name).commit()
     }
 
     override fun onBackPressed() {
-        finish()
+        if (viewModel.showSearch.get()) {
+            supportFragmentManager.beginTransaction()
+                .remove(SearchFragment()).commit()
+            viewModel.showSearch.set(false)
+        } else {
+            finish()
+        }
+    }
+
+    val pagerChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            window.statusBarColor = resources.getColor(viewModel.changeAppbarColor(position))
+            viewModel.selectedTab.value = position
+        }
+    }
+
+    fun setUpNavigation() {
+        val tabTitles = arrayOf(
+            StringProvider.getInstance().getString(LocaleConstants.BOOK),
+            StringProvider.getInstance().getString(LocaleConstants.HOME),
+            StringProvider.getInstance().getString(LocaleConstants.QURAN),
+        )
+        val tabImages =
+            arrayOf(R.drawable.ic_book_white, R.drawable.ic_home_white, R.drawable.ic_quran_white)
+        pager.adapter =
+            MainPagerAdapter(this, arrayListOf(BookFragment(), HomeFragment(), SurahFragment()))
+        TabLayoutMediator(tabLayout, pager) { tab, position ->
+            tab.text = tabTitles[position]
+            tab.customView = getTabView(tabTitles[position], tabImages[position])
+            pager.setCurrentItem(tab.position, true)
+        }.attach()
+        pager.setCurrentItem(1, true)
+        pager.registerOnPageChangeCallback(pagerChangeCallback)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        pager.unregisterOnPageChangeCallback(pagerChangeCallback)
+    }
+
+    fun getTabView(title: String, image: Int): View? {
+        val view: View = LayoutInflater.from(this).inflate(R.layout.main_tab_layout, null)
+        view.title.text = title
+        view.image.setImageResource(image)
+        return view
     }
 
     private val LOCATION_PERMISSION_CODE = 93
@@ -157,4 +175,5 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             }
         }
     }
+
 }

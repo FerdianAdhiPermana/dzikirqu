@@ -46,11 +46,12 @@
                 android:id="@+id/haveyouread"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Have you read the Qur'an today?"
                 android:textColor="@color/colorTextGrey"
                 android:textSize="16sp"
                 app:layout_constraintLeft_toLeftOf="@id/salam"
-                app:layout_constraintTop_toBottomOf="@id/salam" />
+                app:layout_constraintTop_toBottomOf="@id/salam"
+                app:text="@{LocaleConstants.HAVE_YOU_READ_THE_QURAN_TODAY_Q}"
+                tools:text="Have you read the Qur'an today?" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/praytime"
@@ -157,7 +158,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/shp_primary_gradient_8dp"
+                android:background="@drawable/shp_primary_8dp"
                 android:padding="16dp"
                 app:layout_constraintLeft_toLeftOf="@id/salam"
                 app:layout_constraintRight_toRightOf="@id/salam"

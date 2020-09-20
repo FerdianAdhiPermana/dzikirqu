@@ -34,10 +34,10 @@ class StringProvider(private var context: Context?) {
 
     fun getString(key: String): String {
         val language = Hawk.get(HAWK_KEY_LANGUAGE,"id")
-        val jsonString = context?.resources?.getIdentifier("white_label_$language", "raw", context?.packageName)?.let {
+        val jsonString = context?.resources?.getIdentifier("locale_$language", "raw", context?.packageName)?.let {
             context?.resources?.openRawResource(it)?.bufferedReader().use { it?.readText() }
         }
-        val jsonElement = Gson().fromJson<JsonElement>(jsonString, JsonElement::class.java)
+        val jsonElement = Gson().fromJson(jsonString, JsonElement::class.java)
         val json = jsonElement.asJsonObject
         for (entry in json.entrySet()) {
             if (entry.key == key) {
@@ -49,7 +49,7 @@ class StringProvider(private var context: Context?) {
 
     fun initRawString(): String {
         return try {
-            val jsonString = context?.resources?.openRawResource(com.mayburger.dzikirqu.R.raw.white_label_id)
+            val jsonString = context?.resources?.openRawResource(com.mayburger.dzikirqu.R.raw.locale_id)
                     ?.bufferedReader().use { it?.readText() }
             val jsonElement = Gson().fromJson<JsonElement>(jsonString, JsonElement::class.java)
             val json = jsonElement.asJsonObject

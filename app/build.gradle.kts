@@ -165,6 +165,9 @@ dependencies {
     implementation("androidx.room:room-ktx:2.2.5")
     kapt("androidx.room:room-compiler:2.2.5")
 
+//    implementation("com.ogaclejapan.smarttablayout:library:2.0.0@aar")
+//    implementation("com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar")
+
 
     val lifecycle_version = "2.2.0"
     // ViewModel
@@ -173,7 +176,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version")
 
-    implementation("com.google.android.gms:play-services-location:17.0.0")
+    implementation("com.ogaclejapan.smarttablayout:library:2.0.0@aar")
 
     implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02")
     kapt("androidx.hilt:hilt-compiler:1.0.0-alpha02")

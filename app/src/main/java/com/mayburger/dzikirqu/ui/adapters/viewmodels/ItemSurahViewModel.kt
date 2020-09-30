@@ -17,7 +17,7 @@ class ItemSurahViewModel (val data: SurahDataModel){
         }
     }
 
-    val verses = ObservableField("${data.verses} ${StringProvider.getInstance().getString(LocaleConstants.AYAT)}")
+    val verses = ObservableField("${data.verses} ${StringProvider.getInstance().getString(LocaleConstants.AYAH)}")
     val index = ObservableField("${data.id}")
 
     companion object{

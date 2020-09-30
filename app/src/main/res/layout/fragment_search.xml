@@ -19,14 +19,17 @@
     </data>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,18 +50,37 @@
 
                 <com.mayburger.dzikirqu.util.textfont.EditTextFont
                     android:id="@+id/search"
+                    hintLocale="@{LocaleConstants.SEARCH_DZIKIRQU}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:background="@null"
-                    android:hint="Search for surah"
-                    android:textSize="16sp">
-                    <requestFocus/>
+                    android:textSize="12sp">
+
+                    <requestFocus />
                 </com.mayburger.dzikirqu.util.textfont.EditTextFont>
             </LinearLayout>
 
-        </RelativeLayout>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
 
-    </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGreyDecor" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGreyBackground" />
+
+
+    </LinearLayout>
 
 </layout>

@@ -33,4 +33,6 @@ class SurahDataModel(
     @ColumnInfo(name = "ids")
     @PrimaryKey(autoGenerate = true)
     var ids: Int? = null
+    @ColumnInfo(name="verse")
+    var verse:Int = 0
 }

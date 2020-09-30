@@ -20,7 +20,7 @@ class StringProvider(private var context: Context?) {
 
     companion object {
         @SuppressLint("StaticFieldLeak")
-        var ins: StringProvider? = null
+        private var ins: StringProvider? = null
 
         @Synchronized
         fun getInstance(): StringProvider {

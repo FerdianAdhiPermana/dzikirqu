@@ -9,10 +9,13 @@ interface RoomHelper {
     suspend fun setBooks(items:List<BookDataModel>)
 
     suspend fun setHighlights(items:List<HighlightDataModel>)
+    suspend fun insertHighlight(item:HighlightDataModel)
     suspend fun getHighlights():List<HighlightDataModel>
+    suspend fun deleteHighlight(item:HighlightDataModel)
 
     suspend fun setPrayers(items:List<PrayerDataModel>)
     suspend fun getPrayerByBookId(bookId:Int):List<PrayerDataModel>
+    suspend fun getPrayerByTitle(title:String):List<PrayerDataModel>
 
     suspend fun setSurah(items:List<SurahJsonModel>,language:String)
     suspend fun getSurah():List<SurahDataModel>

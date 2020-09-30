@@ -82,7 +82,7 @@ class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     interface Callback {
-        fun onSelectedItem(restaurant: BookDataModel)
+        fun onSelectedItem(book: BookDataModel)
     }
 
     inner class BookEmptyViewHolder(private val mBinding: ItemBookEmptyBinding) :

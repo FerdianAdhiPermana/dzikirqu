@@ -67,6 +67,8 @@ public class BaseApplication extends Application {
                 return mFontFactory.getItalic();
             case Constants.BLACK:
                 return mFontFactory.getBlack();
+            case Constants.UTHMAN_TAHA:
+                return mFontFactory.getUthmanTaha();
             default:
                 return mFontFactory.getRegular();
         }
@@ -79,6 +81,7 @@ public class BaseApplication extends Application {
         int BOLD = 2;
         int ITALIC = 3;
         int BLACK = 4;
+        int UTHMAN_TAHA = 5;
     }
 
     public static BaseApplication getInstance() {

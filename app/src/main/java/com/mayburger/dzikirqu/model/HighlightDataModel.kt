@@ -17,16 +17,20 @@ import kotlinx.android.parcel.Parcelize
 class HighlightDataModel(
     @ColumnInfo(name="title")
     var title:String,
-    @ColumnInfo(name="bookTitle")
-    var bookTitle:String,
-    @ColumnInfo(name="bookId")
-    var bookId:Int,
-    @ColumnInfo(name="prayerId")
-    var prayerId:Int,
+    @ColumnInfo(name="subtitle")
+    var subtitle:String,
+    @ColumnInfo(name="id")
+    var id:Int,
+    @ColumnInfo(name="content_id")
+    var contentId:Int,
+    @ColumnInfo(name="sub_content_id")
+    var subContentId:Int?=null,
+    @ColumnInfo(name="language")
+    var language:String,
     @ColumnInfo(name="type")
     var type:Int
 ) : Parcelable{
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "ids")
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = null
+    var ids: Int? = null
 }

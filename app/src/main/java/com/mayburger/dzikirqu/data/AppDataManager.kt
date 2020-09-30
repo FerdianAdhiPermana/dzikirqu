@@ -56,6 +56,14 @@ class AppDataManager @Inject constructor(
         return mRoomHelper.getHighlights()
     }
 
+    override suspend fun insertHighlight(item: HighlightDataModel) {
+        mRoomHelper.insertHighlight(item)
+    }
+
+    override suspend fun deleteHighlight(item: HighlightDataModel) {
+        mRoomHelper.deleteHighlight(item)
+    }
+
     override suspend fun setBooks(items: List<BookDataModel>) {
         mRoomHelper.setBooks(items)
     }
@@ -66,6 +74,10 @@ class AppDataManager @Inject constructor(
 
     override suspend fun getPrayerByBookId(bookId: Int): List<PrayerDataModel> {
         return mRoomHelper.getPrayerByBookId(bookId)
+    }
+
+    override suspend fun getPrayerByTitle(title: String): List<PrayerDataModel> {
+        return mRoomHelper.getPrayerByTitle(title)
     }
 
     override suspend fun setSurah(items: List<SurahJsonModel>, language: String) {

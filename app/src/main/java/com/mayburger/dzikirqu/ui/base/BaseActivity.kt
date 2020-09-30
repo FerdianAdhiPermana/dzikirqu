@@ -58,14 +58,6 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
         Stetho.initializeWithDefaults(this)
     }
 
-    fun initShakeToOpenRestaurant(runnable: Runnable) {
-        val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        val shakeDetector = ShakeDetector {
-            runnable.run()
-        }
-        shakeDetector.start(sensorManager)
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {

@@ -8,11 +8,17 @@ import androidx.room.TypeConverters
 import com.mayburger.dzikirqu.model.*
 
 @Database(
-    entities = [BookDataModel::class, PrayerDataModel::class,HighlightDataModel::class,SurahDataModel::class,AyahDataModel::class],
-    version = 12
+    entities = [BookDataModel::class, PrayerDataModel::class, HighlightDataModel::class, SurahDataModel::class, AyahDataModel::class],
+    version = 2
 )
-@TypeConverters(PrayerTypeConverter::class, DataTypeConverter::class,DateConverter::class)
-abstract class AppDatabase: RoomDatabase() {
+@TypeConverters(
+    ListPrayerTypeConverter::class,
+    PrayerDataTypeConverter::class,
+    PrayerTypeConverter::class,
+    SurahTypeConverter::class,
+    DateConverter::class
+)
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun getBookDao(): BookDao
     abstract fun getPrayerDao(): PrayerDao
@@ -27,15 +33,17 @@ abstract class AppDatabase: RoomDatabase() {
 
         operator fun invoke(context: Context) = instance
             ?: synchronized(LOCK) {
-            instance
-                ?: createDatabase(
-                    context
-                ).also { instance = it }
-        }
+                instance
+                    ?: createDatabase(
+                        context
+                    ).also { instance = it }
+            }
 
         private fun createDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext,
-                AppDatabase::class.java, "hellopewds.db")
+            Room.databaseBuilder(
+                context.applicationContext,
+                AppDatabase::class.java, "hellopewds.db"
+            )
                 .fallbackToDestructiveMigration()
                 .build()
     }

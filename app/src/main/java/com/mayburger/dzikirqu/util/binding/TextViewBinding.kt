@@ -1,13 +1,10 @@
 package com.mayburger.dzikirqu.util.binding
 
+import android.widget.EditText
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.mayburger.dzikirqu.model.PrayerTime
 import com.mayburger.dzikirqu.util.StringProvider
-import com.mayburger.dzikirqu.util.rx.RxBus
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 
 object TextViewBinding {
 
@@ -33,32 +30,22 @@ object TextViewBinding {
     }
 
 
-    @BindingAdapter("text")
+    @BindingAdapter("textLocale")
     @JvmStatic
     fun bindTextView(view: TextView, str: String) {
-        setText(view, str)
-//        CompositeDisposable().add(
-//            RxBus.getDefault().toObservables()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe({ obj ->
-//                    when (obj) {
-//                        is PreferenceEvent -> {
-//                            setText(view, str)
-//                        }
-//                    }
-//                }, { it.printStackTrace() })
-//        )
+        view.text = StringProvider.getInstance().getString(str)
+    }
+
+    @BindingAdapter("hintLocale")
+    @JvmStatic
+    fun bindHint(view:EditText, str:String){
+        view.hint = StringProvider.getInstance().getString(str)
     }
 
     @BindingAdapter("textPrayerTime")
     @JvmStatic
     fun bindTextPrayerTime(view:TextView, prayer: PrayerTime){
 
-    }
-
-    fun setText(view: TextView, str: String) {
-        view.text = StringProvider.getInstance().getString(str)
     }
 
 }

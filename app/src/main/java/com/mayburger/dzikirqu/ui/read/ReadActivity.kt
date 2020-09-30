@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.ActivityReadBinding
@@ -19,13 +20,13 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadViewModel>() {
         get() = R.layout.activity_read
     override val viewModel: ReadViewModel by viewModels()
 
-    companion object{
-        const val EXTRA_TYPE = "extra_type"
+    companion object {
         const val EXTRA_BOOK_ID = "extra_book_id"
-        fun start(context: Context, type:String?=null, id:String?=null){
+        const val EXTRA_SURAH_ID = "extra_surah_id"
+        fun start(context: Context, bookId: Int? = null, surahId: Int? = null) {
             val intent = Intent(context, ReadActivity::class.java)
-            intent.putExtra(EXTRA_TYPE, type)
-            intent.putExtra(EXTRA_TYPE, id)
+            intent.putExtra(EXTRA_BOOK_ID, bookId)
+            intent.putExtra(EXTRA_SURAH_ID, surahId)
             context.startActivity(intent)
         }
     }
@@ -34,5 +35,18 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding.lifecycleOwner = this
+        var navigator = 0
+
+        val surahId = intent?.getIntExtra(EXTRA_SURAH_ID, 0)
+        surahId?.let {
+            navigator = R.navigation.nav_read_quran
+        } ?: kotlin.run {
+            navigator = R.navigation.nav_read_quran
+        }
+        val host = NavHostFragment.create(navigator)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment, host)
+            .setPrimaryNavigationFragment(host)
+            .commit()
     }
 }

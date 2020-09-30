@@ -40,9 +40,9 @@ object ViewBinding {
         view.requestLayout()
     }
 
-    @BindingAdapter("android:background")
+    @BindingAdapter("backgroundResource")
     @JvmStatic
-    fun setBackgroundColor(view: ViewGroup, colorRes: Int) {
+    fun setBackgroundResource(view: ViewGroup, colorRes: Int) {
         view.setBackgroundColor(view.context.resources.getColor(colorRes))
     }
 

@@ -9,6 +9,7 @@ import com.mayburger.dzikirqu.databinding.FragmentSurahBinding
 import com.mayburger.dzikirqu.model.SurahDataModel
 import com.mayburger.dzikirqu.ui.adapters.SurahAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
+import com.mayburger.dzikirqu.ui.read.ReadActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_surah.*
 import javax.inject.Inject
@@ -36,7 +37,7 @@ class SurahFragment : BaseFragment<FragmentSurahBinding, SurahViewModel>(), Sura
         surahAdapter.setListener(this)
     }
 
-    override fun onSelectedItem(restaurant: SurahDataModel) {
-
+    override fun onSelectedItem(surah: SurahDataModel) {
+        ReadActivity.start(requireActivity(),surahId = surah.id)
     }
 }

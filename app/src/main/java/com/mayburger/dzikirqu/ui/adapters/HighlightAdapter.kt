@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.databinding.ItemHighlightBinding
 import com.mayburger.dzikirqu.databinding.ItemHighlightEmptyBinding
-import com.mayburger.dzikirqu.db.AppDatabase
-import com.mayburger.dzikirqu.model.BookDataModel
+import com.mayburger.dzikirqu.model.HighlightDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemHighlightViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
 
@@ -83,7 +82,8 @@ class HighlightAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     interface Callback {
-        fun onSelectedItem(restaurant: BookDataModel)
+        fun onSelectedItem(highlight: HighlightDataModel)
+        fun onDeleteItem(highlight:HighlightDataModel)
     }
 
     inner class HighlightEmptyViewHolder(private val mBinding: ItemHighlightEmptyBinding) :
@@ -98,6 +98,20 @@ class HighlightAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         override fun onBind(position: Int) {
             if (data.isNotEmpty()) {
                 val viewModel = data[position]
+                mBinding.root.setOnClickListener{
+                    if(mBinding.viewModel?.showClose?.get() == true){
+                        mBinding.viewModel?.showClose?.set(false)
+                    } else{
+                        mListener?.onSelectedItem(viewModel.data)
+                    }
+                }
+                mBinding.delete.setOnClickListener{
+                    mListener?.onDeleteItem(viewModel.data)
+                }
+                mBinding.root.setOnLongClickListener {
+                    mBinding.viewModel?.showClose?.set(true)
+                    true
+                }
                 mBinding.viewModel = viewModel
             }
         }

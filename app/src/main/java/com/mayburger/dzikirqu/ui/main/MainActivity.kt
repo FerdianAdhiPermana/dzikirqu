@@ -59,13 +59,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
     override fun onClickSearch() {
         val search = SearchFragment()
         supportFragmentManager.beginTransaction()
-            .add(R.id.main_container,search,search.javaClass.name).commit()
+            .add(R.id.main_container, search, search.javaClass.name).commit()
     }
 
     override fun onBackPressed() {
         if (viewModel.showSearch.get()) {
-            supportFragmentManager.beginTransaction()
-                .remove(SearchFragment()).commit()
+            SearchFragment.remove(this)
             viewModel.showSearch.set(false)
         } else {
             finish()
@@ -74,7 +73,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
     val pagerChangeCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
-            window.statusBarColor = resources.getColor(viewModel.changeAppbarColor(position))
             viewModel.selectedTab.value = position
         }
     }

@@ -34,8 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:animateLayoutChanges="true"
-                android:background="@{viewModel.appbarColor}"
                 android:orientation="vertical"
+                android:background="@color/colorPrimary"
                 android:paddingBottom="8dp"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:background="@color/colorPrimary">
@@ -45,8 +45,7 @@
                     android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    app:tabIndicatorColor="@{viewModel.appbarColor}" />
+                    android:layout_centerInParent="true" />
 
             </RelativeLayout>
 

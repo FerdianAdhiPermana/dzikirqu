@@ -4,7 +4,7 @@ package com.mayburger.dzikirqu.constants
 object LocaleConstants {
     //A
 
-    const val AYAT = "Ayat"
+    const val AYAH = "Ayah"
     const val ASR = "Asr"
 
     //B
@@ -47,6 +47,8 @@ object LocaleConstants {
 
     //S
     const val SUNRISE = "Sunrise"
+    const val SEARCH_DZIKIRQU = "Search DzikirQu"
+    const val SURAH = "Surah"
 
     const val PRAY_FAJR = "Pray Fajr"
     const val PRAY_DHUHR = "Pray Dhuhr"

@@ -9,7 +9,6 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.mayburger.dzikirqu.data.DataManager
 import com.mayburger.dzikirqu.model.PrayerTime
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemHighlightViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
 import com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper

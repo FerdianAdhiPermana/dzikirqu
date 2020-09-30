@@ -2,10 +2,7 @@ package com.mayburger.dzikirqu.di
 
 import android.app.Activity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mayburger.dzikirqu.ui.adapters.BookAdapter
-import com.mayburger.dzikirqu.ui.adapters.HighlightAdapter
-import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
-import com.mayburger.dzikirqu.ui.adapters.SurahAdapter
+import com.mayburger.dzikirqu.ui.adapters.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,6 +33,10 @@ object RecyclerModule {
     @Provides
     internal fun provideSurahAdapter():SurahAdapter{
         return SurahAdapter()
+    }
+    @Provides
+    internal fun provideQuranAdapter():QuranAdapter{
+        return QuranAdapter()
     }
 
 //    @Provides

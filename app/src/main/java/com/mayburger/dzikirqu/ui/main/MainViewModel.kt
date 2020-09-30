@@ -30,23 +30,6 @@ class MainViewModel @ViewModelInject constructor(
     val appbarColor = ObservableField(R.color.colorPrimary)
     val showSearch = ObservableBoolean(false)
 
-    fun changeAppbarColor(position: Int): Int {
-        return when (position) {
-            0 -> {
-                appbarColor.set(R.color.colorPrimary)
-                R.color.colorPrimary
-            }
-            1 -> {
-                appbarColor.set(R.color.colorPrimary)
-                R.color.colorPrimary
-            }
-            else -> {
-                appbarColor.set(R.color.colorPrimary)
-                R.color.colorPrimary
-            }
-        }
-    }
-
     fun onClickSearch() {
         if (showSearch.get().not()) {
             showSearch.set(showSearch.get().not())

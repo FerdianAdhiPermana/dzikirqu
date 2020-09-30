@@ -7,7 +7,7 @@ import com.mayburger.dzikirqu.model.PrayerTime
 import com.orhanobut.hawk.Hawk
 
 object HighlightsUtil {
-    fun getHighlights(): ArrayList<HighlightDataModel> {
+    fun getDefaultHighlights(language:String): ArrayList<HighlightDataModel> {
         val prayTime = Hawk.get(AppHawkHelper.HAWK_KEY_PRAYERTIME, PrayerTime())
         val highlights = ArrayList<HighlightDataModel>()
         if (prayTime.address != "") {
@@ -17,7 +17,8 @@ object HighlightsUtil {
                     LocaleConstants.BOOK_OF_DZIKIR,
                     1,
                     1,
-                    0
+                    language=language,
+                    type=0
                 )
             )
             highlights.add(
@@ -26,7 +27,8 @@ object HighlightsUtil {
                     LocaleConstants.BOOK_OF_DZIKIR,
                     1,
                     2,
-                    0
+                    language=language,
+                    type=0
                 )
             )
             highlights.add(
@@ -35,7 +37,8 @@ object HighlightsUtil {
                     LocaleConstants.BOOK_OF_DZIKIR,
                     1,
                     3,
-                    0
+                    language=language,
+                    type=0
                 )
             )
             highlights.add(
@@ -44,7 +47,8 @@ object HighlightsUtil {
                     LocaleConstants.BOOK_OF_DZIKIR,
                     1,
                     4,
-                    0
+                    language=language,
+                    type=0
                 )
             )
         }

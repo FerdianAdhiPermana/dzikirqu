@@ -5,14 +5,8 @@ import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.R
-import com.mayburger.dzikirqu.ui.adapters.BookAdapter
-import com.mayburger.dzikirqu.ui.adapters.HighlightAdapter
-import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
-import com.mayburger.dzikirqu.ui.adapters.SurahAdapter
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemHighlightViewModel
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemSurahViewModel
+import com.mayburger.dzikirqu.ui.adapters.*
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.*
 
 
 object AdapterBinding {
@@ -73,6 +67,21 @@ object AdapterBinding {
                 recyclerView.layoutAnimation = controller;
                 recyclerView.scheduleLayoutAnimation()
                 adapter.isLoaded = true
+            }
+        }
+    }
+
+    @BindingAdapter("quranAdapter")
+    @JvmStatic
+    fun addAyahs(
+        recyclerView: RecyclerView,
+        items: LiveData<List<ItemQuranViewModel>>
+    ) {
+        val adapter = recyclerView.adapter as QuranAdapter?
+        if (adapter != null) {
+            items.value?.let {
+                adapter.clearItems()
+                adapter.addItems(ArrayList(it))
             }
         }
     }

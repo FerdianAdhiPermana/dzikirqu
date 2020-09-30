@@ -12,6 +12,7 @@ import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.constants.LocaleConstants
 import com.mayburger.dzikirqu.databinding.FragmentSearchBinding
+import com.mayburger.dzikirqu.model.events.KeywordDelayEvent
 import com.mayburger.dzikirqu.model.events.KeywordEvent
 import com.mayburger.dzikirqu.ui.adapters.MainPagerAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
@@ -38,6 +39,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), S
 
     private var mTimer: Timer? = null
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewDataBinding?.lifecycleOwner = viewLifecycleOwner
@@ -56,11 +58,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), S
                 if (mTimer != null) {
                     mTimer?.cancel()
                 }
+                RxBus.getDefault().send(KeywordEvent())
                 mTimer = Timer()
                 mTimer?.schedule(
                     object : TimerTask() {
                         override fun run() {
-                            RxBus.getDefault().send(KeywordEvent(p0.toString()))
+                            RxBus.getDefault().send(KeywordDelayEvent(p0.toString()))
                         }
                     }, 500
                 )
@@ -99,6 +102,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), S
 
     override fun onClickSearch() {
         search.requestFocus()
+        search.showKeyboard()
     }
 
     companion object {

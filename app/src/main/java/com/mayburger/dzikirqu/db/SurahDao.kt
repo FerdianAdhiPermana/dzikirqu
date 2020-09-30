@@ -16,6 +16,8 @@ interface SurahDao {
 
     @Query("SELECT * FROM surah WHERE id LIKE :id AND language LIKE :language")
     suspend fun getSurahById(id:Int, language:String):List<SurahDataModel>
+    @Query("SELECT * FROM surah WHERE language LIKE :language AND name LIKE :name")
+    suspend fun getSurahByName(language:String,name:String):List<SurahDataModel>
 
     @Query("DELETE FROM surah")
     suspend fun deleteSurahs()

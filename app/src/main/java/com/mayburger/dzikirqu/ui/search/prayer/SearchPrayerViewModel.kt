@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.mayburger.dzikirqu.data.DataManager
+import com.mayburger.dzikirqu.model.events.KeywordDelayEvent
 import com.mayburger.dzikirqu.model.events.KeywordEvent
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
@@ -20,8 +21,11 @@ class SearchPrayerViewModel @ViewModelInject constructor(
     BaseViewModel<SearchPrayerNavigator>(dataManager, schedulerProvider) {
     override fun onEvent(obj: Any) {
         when (obj) {
-            is KeywordEvent -> {
+            is KeywordDelayEvent -> {
                 searchQuery.postValue(obj.query)
+            }
+            is KeywordEvent ->{
+                isLoaded.set(false)
             }
         }
     }
@@ -31,7 +35,6 @@ class SearchPrayerViewModel @ViewModelInject constructor(
     val prayer = searchQuery.switchMap {
         liveData(Dispatchers.IO) {
             try {
-                isLoaded.set(false)
                 if (it != "") {
                     emit(dataManager.getPrayerByTitle(it).map { ItemPrayerViewModel(it) }.toList())
                     isLoaded.set(true)

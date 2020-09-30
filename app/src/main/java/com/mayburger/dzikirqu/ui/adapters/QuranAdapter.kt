@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.databinding.ItemBismillahBinding
-import com.mayburger.dzikirqu.databinding.ItemBookEmptyBinding
+import com.mayburger.dzikirqu.databinding.ItemEmptyBinding
 import com.mayburger.dzikirqu.databinding.ItemQuranBinding
 import com.mayburger.dzikirqu.model.AyahDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemQuranViewModel
@@ -68,7 +68,7 @@ class QuranAdapter : RecyclerView.Adapter<BaseViewHolder>() {
                 SurahBismillahViewHolder(viewBinding)
             }
             else -> {
-                val viewBinding = ItemBookEmptyBinding
+                val viewBinding = ItemEmptyBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
                 BaseViewHolder.EmptyViewHolder(viewBinding)
             }

@@ -20,6 +20,7 @@ interface RoomHelper {
     suspend fun setSurah(items:List<SurahJsonModel>,language:String)
     suspend fun getSurah():List<SurahDataModel>
     suspend fun getSurahById(id:Int):List<SurahDataModel>
+    suspend fun getSurahByName(name:String):List<SurahDataModel>
 
     suspend fun insertAyah(items:List<AyahJsonModel>)
     suspend fun getAyahBySurahId(surahId:Int):List<AyahDataModel>

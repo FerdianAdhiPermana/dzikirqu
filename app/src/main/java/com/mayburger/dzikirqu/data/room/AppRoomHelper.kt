@@ -93,6 +93,10 @@ class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelpe
         return db.getSurahDao().getSurahById(id, hawk.language)
     }
 
+    override suspend fun getSurahByName(name: String): List<SurahDataModel> {
+        return db.getSurahDao().getSurahByName(hawk.language,"%${name}%")
+    }
+
     override suspend fun insertAyah(items: List<AyahJsonModel>) {
         items.map {
             db.getAyahDao().insertAyah(

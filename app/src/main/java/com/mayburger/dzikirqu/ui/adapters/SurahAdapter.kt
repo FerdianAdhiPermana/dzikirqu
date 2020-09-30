@@ -3,6 +3,7 @@ package com.mayburger.dzikirqu.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mayburger.dzikirqu.databinding.ItemEmptyBinding
 import com.mayburger.dzikirqu.databinding.ItemPrayerEmptyBinding
 import com.mayburger.dzikirqu.databinding.ItemSurahBinding
 import com.mayburger.dzikirqu.model.SurahDataModel
@@ -51,15 +52,10 @@ class SurahAdapter : RecyclerView.Adapter<BaseViewHolder>() {
                     .inflate(LayoutInflater.from(parent.context), parent, false)
                 SurahViewHolder(viewBinding)
             }
-            VIEW_TYPE_LOADING -> {
-                val viewBinding = ItemPrayerEmptyBinding
-                    .inflate(LayoutInflater.from(parent.context), parent, false)
-                SurahEmptyViewHolder(viewBinding)
-            }
             else -> {
-                val viewBinding = ItemPrayerEmptyBinding
+                val viewBinding = ItemEmptyBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
-                SurahEmptyViewHolder(viewBinding)
+                BaseViewHolder.EmptyViewHolder(viewBinding)
             }
         }
     }
@@ -82,13 +78,7 @@ class SurahAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     interface Callback {
-        fun onSelectedItem(restaurant: SurahDataModel)
-    }
-
-    class SurahEmptyViewHolder(private val mBinding: ItemPrayerEmptyBinding) :
-        BaseViewHolder(mBinding.root) {
-        override fun onBind(position: Int) {
-        }
+        fun onSelectedItem(surah: SurahDataModel)
     }
 
     inner class SurahViewHolder(private val mBinding: ItemSurahBinding) :

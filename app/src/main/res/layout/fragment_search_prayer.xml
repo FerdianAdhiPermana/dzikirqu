@@ -25,13 +25,20 @@
         android:animateLayoutChanges="true">
 
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:visibility="@{viewModel.isLoaded() ? View.GONE : View.VISIBLE}" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPrayer"
             prayerAdapter="@{viewModel.prayer}"
             recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewModel.isLoaded() &amp;&amp; viewModel.prayer.size() == 0 ? View.GONE : View.VISIBLE}" />
+            android:visibility="@{viewModel.isLoaded() ? View.VISIBLE : View.GONE}" />
 
     </RelativeLayout>
 

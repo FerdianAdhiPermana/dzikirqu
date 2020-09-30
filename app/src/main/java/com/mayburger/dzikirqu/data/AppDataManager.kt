@@ -88,6 +88,10 @@ class AppDataManager @Inject constructor(
         return mRoomHelper.getSurah()
     }
 
+    override suspend fun getSurahByName(name: String): List<SurahDataModel> {
+        return mRoomHelper.getSurahByName(name)
+    }
+
     override suspend fun getSurahById(id: Int): List<SurahDataModel> {
         return mRoomHelper.getSurahById(id)
     }

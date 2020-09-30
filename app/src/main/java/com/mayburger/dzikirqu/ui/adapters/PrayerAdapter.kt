@@ -3,8 +3,8 @@ package com.mayburger.dzikirqu.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mayburger.dzikirqu.databinding.ItemEmptyBinding
 import com.mayburger.dzikirqu.databinding.ItemPrayerBinding
-import com.mayburger.dzikirqu.databinding.ItemPrayerEmptyBinding
 import com.mayburger.dzikirqu.model.PrayerDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
@@ -51,15 +51,10 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
                     .inflate(LayoutInflater.from(parent.context), parent, false)
                 BookListViewHolder(viewBinding)
             }
-            VIEW_TYPE_LOADING -> {
-                val viewBinding = ItemPrayerEmptyBinding
-                    .inflate(LayoutInflater.from(parent.context), parent, false)
-                BookEmptyViewHolder(viewBinding)
-            }
             else -> {
-                val viewBinding = ItemPrayerEmptyBinding
+                val viewBinding = ItemEmptyBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
-                BookEmptyViewHolder(viewBinding)
+                BaseViewHolder.EmptyViewHolder(viewBinding)
             }
         }
     }
@@ -83,12 +78,6 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     interface Callback {
         fun onSelectedItem(prayer: PrayerDataModel)
-    }
-
-    inner class BookEmptyViewHolder(private val mBinding: ItemPrayerEmptyBinding) :
-        BaseViewHolder(mBinding.root) {
-        override fun onBind(position: Int) {
-        }
     }
 
     inner class BookListViewHolder(private val mBinding: ItemPrayerBinding) :

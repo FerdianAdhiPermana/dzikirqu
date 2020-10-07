@@ -1,13 +1,9 @@
 package com.mayburger.dzikirqu.ui.main
 
 import android.content.Context
-import androidx.databinding.ObservableBoolean
-import androidx.databinding.ObservableField
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.constants.Constants
 import com.mayburger.dzikirqu.data.DataManager
 import com.mayburger.dzikirqu.model.AyahJsonModel
@@ -15,6 +11,7 @@ import com.mayburger.dzikirqu.model.SurahJsonModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
 import com.mayburger.dzikirqu.util.FileUtils
 import com.mayburger.dzikirqu.util.rx.SchedulerProvider
+import java.util.*
 
 
 class MainViewModel @ViewModelInject constructor(
@@ -23,18 +20,10 @@ class MainViewModel @ViewModelInject constructor(
 ) :
     BaseViewModel<MainNavigator>(dataManager, schedulerProvider) {
     override fun onEvent(obj: Any) {
-
     }
 
-    val selectedTab = MutableLiveData(1)
-    val appbarColor = ObservableField(R.color.colorPrimary)
-    val showSearch = ObservableBoolean(false)
-
     fun onClickSearch() {
-        if (showSearch.get().not()) {
-            showSearch.set(showSearch.get().not())
-            navigator?.onClickSearch()
-        }
+        navigator?.onClickSearch()
     }
 
     suspend fun setUpQuran(context: Context) {

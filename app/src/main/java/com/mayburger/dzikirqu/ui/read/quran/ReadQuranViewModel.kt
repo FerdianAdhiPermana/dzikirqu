@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.mayburger.dzikirqu.data.DataManager
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemQuranViewModel
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemAyahViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
 import com.mayburger.dzikirqu.util.rx.SchedulerProvider
 import kotlinx.coroutines.Dispatchers.IO
@@ -25,7 +25,7 @@ class ReadQuranViewModel @ViewModelInject constructor(
     val ayahs = _surahId.switchMap {
         liveData(IO) {
             try {
-                emit(dataManager.getAyahBySurahId(it).map{ ItemQuranViewModel(it) }.toList())
+                emit(dataManager.getAyahBySurahId(it).map{ ItemAyahViewModel(it) }.toList())
                 isLoaded.set(true)
             } catch (e: Exception) {
                 println("ES ${e.message}")

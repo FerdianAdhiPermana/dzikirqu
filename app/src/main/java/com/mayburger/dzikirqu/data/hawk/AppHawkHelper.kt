@@ -19,7 +19,7 @@ class AppHawkHelper @Inject constructor() : HawkHelper {
     }
 
     override var language: String
-        get() = Hawk.get(HAWK_KEY_LANGUAGE, "id")
+        get() = Hawk.get(HAWK_KEY_LANGUAGE, "en")
         set(value) {
             Hawk.put(HAWK_KEY_LANGUAGE, value)
         }

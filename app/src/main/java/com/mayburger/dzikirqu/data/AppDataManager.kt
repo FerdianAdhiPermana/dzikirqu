@@ -112,6 +112,10 @@ class AppDataManager @Inject constructor(
         return mRoomHelper.getAyahByJuz(juz)
     }
 
+    override suspend fun getAyahByTranslation(query: String): List<AyahDataModel> {
+        return mRoomHelper.getAyahByTranslation(query)
+    }
+
     override suspend fun deleteAllAyahs() {
         mRoomHelper.deleteAllAyahs()
     }

@@ -4,7 +4,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import com.mayburger.dzikirqu.model.AyahDataModel
 
-class ItemQuranViewModel (val data: AyahDataModel){
+class ItemAyahViewModel (val data: AyahDataModel){
 
     val isIndexOdd = ObservableBoolean(false)
     val index = ObservableField(data.id.toString())

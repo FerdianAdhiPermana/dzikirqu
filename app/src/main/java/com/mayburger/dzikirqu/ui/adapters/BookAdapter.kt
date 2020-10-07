@@ -3,11 +3,13 @@ package com.mayburger.dzikirqu.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mayburger.dzikirqu.databinding.ItemBookBinding
 import com.mayburger.dzikirqu.databinding.ItemBookEmptyBinding
+import com.mayburger.dzikirqu.databinding.ItemBookGridBinding
+import com.mayburger.dzikirqu.databinding.ItemBookHorizontalBinding
 import com.mayburger.dzikirqu.model.BookDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
+import com.mayburger.dzikirqu.util.ext.ViewUtils.dpToPx
 
 
 class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
@@ -22,6 +24,7 @@ class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     companion object {
         const val VIEW_TYPE_NORMAL = 1
         const val VIEW_TYPE_LOADING = 2
+        const val VIEW_TYPE_GRID = 3
     }
 
     override fun getItemCount(): Int {
@@ -32,13 +35,23 @@ class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         }
     }
 
+    var asGrid = false
+
+    fun asGrid() {
+        asGrid = true
+    }
+
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.onBind(position)
     }
 
     override fun getItemViewType(position: Int): Int {
         return if (data.isNotEmpty()) {
-            VIEW_TYPE_NORMAL
+            if (asGrid) {
+                VIEW_TYPE_GRID
+            } else {
+                VIEW_TYPE_NORMAL
+            }
         } else {
             VIEW_TYPE_LOADING
         }
@@ -47,9 +60,14 @@ class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return when (viewType) {
             VIEW_TYPE_NORMAL -> {
-                val viewBinding = ItemBookBinding
+                val viewBinding = ItemBookHorizontalBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
-                BookViewHolder(viewBinding)
+                BookHorizontalViewHolder(viewBinding)
+            }
+            VIEW_TYPE_GRID -> {
+                val viewBinding = ItemBookGridBinding
+                    .inflate(LayoutInflater.from(parent.context), parent, false)
+                BookGridViewHolder(viewBinding)
             }
             VIEW_TYPE_LOADING -> {
                 val viewBinding = ItemBookEmptyBinding
@@ -91,11 +109,33 @@ class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         }
     }
 
-    inner class BookViewHolder(private val mBinding: ItemBookBinding) :
+    inner class BookHorizontalViewHolder(private val mBinding: ItemBookHorizontalBinding) :
         BaseViewHolder(mBinding.root) {
 
         override fun onBind(position: Int) {
             if (data.isNotEmpty()) {
+                if(position == 0){
+                    val params = mBinding.root.layoutParams as RecyclerView.LayoutParams
+                    params.setMargins(dpToPx(16),dpToPx(4),dpToPx(4),dpToPx(4))
+                    mBinding.root.layoutParams = params
+                }
+                val viewModel = data[position]
+                mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
+                mBinding.viewModel = viewModel
+            }
+        }
+    }
+
+    inner class BookGridViewHolder(private val mBinding: ItemBookGridBinding) :
+        BaseViewHolder(mBinding.root) {
+
+        override fun onBind(position: Int) {
+            if (data.isNotEmpty()) {
+                if(position == 0){
+                    val params = mBinding.root.layoutParams as RecyclerView.LayoutParams
+                    params.setMargins(dpToPx(16),dpToPx(4),dpToPx(4),dpToPx(4))
+                    mBinding.root.layoutParams = params
+                }
                 val viewModel = data[position]
                 mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
                 mBinding.viewModel = viewModel

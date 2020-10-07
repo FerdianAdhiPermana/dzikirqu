@@ -1,21 +1,22 @@
 package com.mayburger.dzikirqu.ui.search
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
+import androidx.activity.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.constants.LocaleConstants
-import com.mayburger.dzikirqu.databinding.FragmentSearchBinding
+import com.mayburger.dzikirqu.databinding.ActivitySearchBinding
 import com.mayburger.dzikirqu.model.events.KeywordDelayEvent
 import com.mayburger.dzikirqu.model.events.KeywordEvent
 import com.mayburger.dzikirqu.ui.adapters.MainPagerAdapter
-import com.mayburger.dzikirqu.ui.base.BaseFragment
+import com.mayburger.dzikirqu.ui.base.BaseActivity
 import com.mayburger.dzikirqu.ui.search.ayah.SearchAyahFragment
 import com.mayburger.dzikirqu.ui.search.prayer.SearchPrayerFragment
 import com.mayburger.dzikirqu.ui.search.surah.SearchSurahFragment
@@ -23,26 +24,26 @@ import com.mayburger.dzikirqu.util.StringProvider
 import com.mayburger.dzikirqu.util.ext.showKeyboard
 import com.mayburger.dzikirqu.util.rx.RxBus
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.main_tab_layout.view.*
 import java.util.*
 
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), SearchNavigator {
+class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>(), SearchNavigator {
 
     override val bindingVariable: Int
         get() = BR.viewModel
     override val layoutId: Int
-        get() = R.layout.fragment_search
+        get() = R.layout.activity_search
     override val viewModel: SearchViewModel by viewModels()
 
     private var mTimer: Timer? = null
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewDataBinding?.lifecycleOwner = viewLifecycleOwner
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewDataBinding.lifecycleOwner = this
         viewModel.navigator = this
         search.showKeyboard()
         setUpNavigation()
@@ -81,7 +82,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), S
         )
         pager.adapter =
             MainPagerAdapter(
-                requireAppActivity(),
+                this,
                 arrayListOf(SearchPrayerFragment(), SearchSurahFragment(), SearchAyahFragment())
             )
         TabLayoutMediator(tabLayout, pager) { tab, position ->
@@ -92,7 +93,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), S
     }
 
     fun getTabView(title: String): View? {
-        val view: View = LayoutInflater.from(requireActivity()).inflate(
+        val view: View = LayoutInflater.from(this).inflate(
             R.layout.search_tab_layout,
             null
         )
@@ -106,10 +107,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), S
     }
 
     companion object {
-        fun remove(activity: AppCompatActivity) {
-            activity.supportFragmentManager.findFragmentByTag(SearchFragment().javaClass.name)?.let {
-                activity.supportFragmentManager.beginTransaction().remove(it).commit()
-            }
+        fun newIntent(context: Context){
+            context.startActivity(Intent(context,SearchActivity::class.java))
         }
     }
 

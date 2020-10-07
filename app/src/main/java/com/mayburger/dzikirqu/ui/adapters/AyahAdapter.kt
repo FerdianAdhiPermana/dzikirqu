@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.databinding.ItemBismillahBinding
 import com.mayburger.dzikirqu.databinding.ItemEmptyBinding
-import com.mayburger.dzikirqu.databinding.ItemQuranBinding
+import com.mayburger.dzikirqu.databinding.ItemAyahBinding
 import com.mayburger.dzikirqu.model.AyahDataModel
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemQuranViewModel
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemAyahViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
 
 
-class QuranAdapter : RecyclerView.Adapter<BaseViewHolder>() {
+class AyahAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
-    private val data: MutableList<ItemQuranViewModel>
+    private val data: MutableList<ItemAyahViewModel>
     private var mListener: Callback? = null
     private var hasBismillah = false
 
@@ -58,7 +58,7 @@ class QuranAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return when (viewType) {
             VIEW_TYPE_NORMAL -> {
-                val viewBinding = ItemQuranBinding
+                val viewBinding = ItemAyahBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
                 SurahViewHolder(viewBinding)
             }
@@ -78,7 +78,7 @@ class QuranAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     var isLoaded = false
 
-    fun addItems(data: ArrayList<ItemQuranViewModel>) {
+    fun addItems(data: ArrayList<ItemAyahViewModel>) {
         this.data.addAll(data)
         notifyDataSetChanged()
     }
@@ -106,7 +106,7 @@ class QuranAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         }
     }
 
-    inner class SurahViewHolder(private val mBinding: ItemQuranBinding) :
+    inner class SurahViewHolder(private val mBinding: ItemAyahBinding) :
         BaseViewHolder(mBinding.root) {
 
         override fun onBind(position: Int) {

@@ -8,9 +8,11 @@ import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentReadQuranBinding
 import com.mayburger.dzikirqu.model.AyahDataModel
 import com.mayburger.dzikirqu.model.HighlightDataModel
-import com.mayburger.dzikirqu.ui.adapters.QuranAdapter
+import com.mayburger.dzikirqu.model.events.HighlightEvent
+import com.mayburger.dzikirqu.ui.adapters.AyahAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.read.ReadActivity
+import com.mayburger.dzikirqu.util.rx.RxBus
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_read_quran.*
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +23,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ReadQuranFragment : BaseFragment<FragmentReadQuranBinding, ReadQuranViewModel>(),
-    ReadQuranNavigator,QuranAdapter.Callback{
+    ReadQuranNavigator,AyahAdapter.Callback{
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -30,16 +32,16 @@ class ReadQuranFragment : BaseFragment<FragmentReadQuranBinding, ReadQuranViewMo
     override val viewModel: ReadQuranViewModel by viewModels()
 
     @Inject
-    lateinit var quranAdapter: QuranAdapter
+    lateinit var ayahAdapter: AyahAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewDataBinding?.lifecycleOwner = viewLifecycleOwner
         viewModel.navigator = this
         viewModel._surahId.value = requireActivity().intent.getIntExtra(ReadActivity.EXTRA_SURAH_ID, 1)
-        quranAdapter.isHasBismillah(viewModel._surahId.value != 1)
-        rvQuran.adapter = quranAdapter
-        quranAdapter.setListener(this)
+        ayahAdapter.isHasBismillah(viewModel._surahId.value != 1)
+        rvQuran.adapter = ayahAdapter
+        ayahAdapter.setListener(this)
     }
 
     override fun onSelectedItem(surah: AyahDataModel) {
@@ -55,6 +57,7 @@ class ReadQuranFragment : BaseFragment<FragmentReadQuranBinding, ReadQuranViewMo
                     type=1
                 )
             )
+            RxBus.getDefault().send(HighlightEvent())
         }
     }
 }

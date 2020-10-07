@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_read_quran"
+    app:startDestination="@id/home">
+    <fragment
+        android:id="@+id/home"
+        android:name="com.mayburger.dzikirqu.ui.main.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_prayTimeFragment"
+            app:destination="@id/prayTime" />
+    </fragment>
+    <fragment
+        android:id="@+id/prayTime"
+        android:name="com.mayburger.dzikirqu.ui.praytime.PrayTimeFragment"
+        android:label="PrayTimeFragment" />
+</navigation>

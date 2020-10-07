@@ -71,13 +71,27 @@ object AdapterBinding {
         }
     }
 
-    @BindingAdapter("quranAdapter")
+    @BindingAdapter("ayahAdapter")
     @JvmStatic
     fun addAyahs(
         recyclerView: RecyclerView,
-        items: LiveData<List<ItemQuranViewModel>>
+        items: LiveData<List<ItemAyahViewModel>>
     ) {
-        val adapter = recyclerView.adapter as QuranAdapter?
+        val adapter = recyclerView.adapter as AyahAdapter?
+        if (adapter != null) {
+            items.value?.let {
+                adapter.clearItems()
+                adapter.addItems(ArrayList(it))
+            }
+        }
+    }
+    @BindingAdapter("searchAyahAdapter")
+    @JvmStatic
+    fun addSearchAyahs(
+        recyclerView: RecyclerView,
+        items: LiveData<List<ItemSearchAyahViewModel>>
+    ) {
+        val adapter = recyclerView.adapter as SearchAyahAdapter?
         if (adapter != null) {
             items.value?.let {
                 adapter.clearItems()

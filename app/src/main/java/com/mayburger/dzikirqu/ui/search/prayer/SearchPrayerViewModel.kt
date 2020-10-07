@@ -1,6 +1,7 @@
 package com.mayburger.dzikirqu.ui.search.prayer
 
 import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
@@ -25,25 +26,37 @@ class SearchPrayerViewModel @ViewModelInject constructor(
                 searchQuery.postValue(obj.query)
             }
             is KeywordEvent ->{
-                isLoaded.set(false)
+                showLoading.set(true)
+                showDescription.set(false)
             }
         }
     }
 
-    val isLoaded = ObservableBoolean(false)
+    val description = ObservableField("Search for something!")
+
+    val showLoading = ObservableBoolean(false)
+    val showDescription = ObservableBoolean(true)
     val searchQuery = MutableLiveData("")
     val prayer = searchQuery.switchMap {
         liveData(Dispatchers.IO) {
+            showDescription.set(false)
             try {
                 if (it != "") {
-                    emit(dataManager.getPrayerByTitle(it).map { ItemPrayerViewModel(it) }.toList())
-                    isLoaded.set(true)
+                    val prayer = dataManager.getPrayerByTitle(it).map { ItemPrayerViewModel(it) }.toList()
+                    if(prayer.isEmpty()){
+                        showDescription.set(true)
+                        description.set("Cannot find what you're looking for")
+                    }
+                    emit(prayer)
+                    showLoading.set(false)
                 } else {
                     emit(ArrayList<ItemPrayerViewModel>())
-                    isLoaded.set(true)
+                    showLoading.set(false)
+                    showDescription.set(true)
+                    description.set("Search for something!")
                 }
             } catch (e: Exception) {
-                isLoaded.set(true)
+                showLoading.set(false)
                 navigator?.onError(e.message)
             }
         }

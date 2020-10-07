@@ -35,8 +35,12 @@ object RecyclerModule {
         return SurahAdapter()
     }
     @Provides
-    internal fun provideQuranAdapter():QuranAdapter{
-        return QuranAdapter()
+    internal fun provideAyahAdapter():AyahAdapter{
+        return AyahAdapter()
+    }
+    @Provides
+    internal fun provideSearchAyahAdapter():SearchAyahAdapter{
+        return SearchAyahAdapter()
     }
 
 //    @Provides

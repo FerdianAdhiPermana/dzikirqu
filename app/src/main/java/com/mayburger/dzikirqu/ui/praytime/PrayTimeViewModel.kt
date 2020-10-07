@@ -1,60 +1,33 @@
-package com.mayburger.dzikirqu.ui.main.home
+package com.mayburger.dzikirqu.ui.praytime
 
 import android.annotation.SuppressLint
 import android.os.CountDownTimer
 import androidx.databinding.ObservableField
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
-import androidx.lifecycle.switchMap
 import com.mayburger.dzikirqu.data.DataManager
 import com.mayburger.dzikirqu.model.PrayerTime
-import com.mayburger.dzikirqu.model.events.HighlightEvent
-import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
 import com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper
 import com.mayburger.dzikirqu.util.rx.SchedulerProvider
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.Dispatchers
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class HomeViewModel @ViewModelInject constructor(
+class PrayTimeViewModel @ViewModelInject constructor(
     dataManager: DataManager,
     schedulerProvider: SchedulerProvider
 ) :
-    BaseViewModel<HomeNavigator>(dataManager, schedulerProvider) {
+    BaseViewModel<PrayTimeNavigator>(dataManager, schedulerProvider) {
     override fun onEvent(obj: Any) {
-        when(obj){
-            is HighlightEvent->{
-            }
-        }
-    }
-
-    val _refreshBooks = MutableLiveData(false)
-    val books = _refreshBooks.switchMap {
-        liveData(IO) {
-            try {
-                if (dataManager.getAllBooks().isNotEmpty()) {
-                    emit(dataManager.getAllBooks().filter { it.language == dataManager.language }
-                        .map { ItemBookViewModel(it) }.toList())
-                }
-                emit(dataManager.getBooks().filter { it.data.language == dataManager.language })
-            } catch (e: Exception) {
-                println("ES ${e.message}")
-                navigator?.onError(e.message)
-            }
-        }
     }
 
 
-    val prayerTime = liveData(Main) {
+    val prayerTime = liveData(Dispatchers.Main) {
         try {
             val hawk = PrayerTimeHelper.getPrayerTimeFromHawk()
             emit(hawk)
-            val new = dataManager.getPrayerTime()
-            emit(new)
         } catch (e: java.lang.Exception) {
             println("EXACT ${e.message}")
         }
@@ -86,10 +59,6 @@ class HomeViewModel @ViewModelInject constructor(
         newtimer?.start()
     }
 
-    fun onClickPrayTime(){
-        navigator?.onClickPrayTime()
-    }
-
     override fun onCleared() {
         super.onCleared()
         if (newtimer != null) {
@@ -97,10 +66,4 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-//    private var _prayerTime:MutableLiveData<PrayerTime> = MutableLiveData()
-//    val prayerTime : LiveData<PrayerTime> = _prayerTime
-//
-//    fun getPrayers(context: Context){
-//        _prayerTime.postValue(PrayerTimeHelper.getPrayerTime(context).value)
-//    }
 }

@@ -79,7 +79,7 @@
                 android:layout_height="match_parent"
                 android:visibility="@{viewModel.isLoaded() ? View.VISIBLE : View.GONE}"
                 app:layout_constraintTop_toTopOf="parent"
-                app:quranAdapter="@{viewModel.ayahs}" />
+                app:ayahAdapter="@{viewModel.ayahs}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -130,6 +130,10 @@ class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelpe
         return db.getAyahDao().getAyahByJuz(juz, hawk.language)
     }
 
+    override suspend fun getAyahByTranslation(query: String): List<AyahDataModel> {
+        return db.getAyahDao().getAyahByTranslation(hawk.language, "%${query}%")
+    }
+
     override suspend fun getAllAyahs(): List<AyahDataModel> {
         return db.getAyahDao().getAllAyah()
     }

@@ -19,4 +19,7 @@ interface AyahDao {
     suspend fun getAllAyah():List<AyahDataModel>
     @Query("DELETE FROM ayah")
     suspend fun deleteAllAyahs()
+
+    @Query("SELECT * FROM ayah WHERE language LIKE :language AND translation LIKE :query")
+    suspend fun getAyahByTranslation(language:String, query:String):List<AyahDataModel>
 }

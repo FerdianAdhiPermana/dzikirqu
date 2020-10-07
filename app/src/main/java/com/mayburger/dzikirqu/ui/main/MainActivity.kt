@@ -5,28 +5,17 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayoutMediator
+import androidx.navigation.fragment.NavHostFragment
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
-import com.mayburger.dzikirqu.constants.LocaleConstants
 import com.mayburger.dzikirqu.databinding.ActivityMainBinding
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
-import com.mayburger.dzikirqu.ui.adapters.MainPagerAdapter
 import com.mayburger.dzikirqu.ui.base.BaseActivity
-import com.mayburger.dzikirqu.ui.main.book.BookFragment
-import com.mayburger.dzikirqu.ui.main.home.HomeFragment
-import com.mayburger.dzikirqu.ui.main.surah.SurahFragment
-import com.mayburger.dzikirqu.ui.search.SearchFragment
-import com.mayburger.dzikirqu.util.StringProvider
+import com.mayburger.dzikirqu.ui.search.SearchActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.main_tab_layout.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -42,70 +31,26 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         get() = R.layout.activity_main
     override val viewModel: MainViewModel by viewModels()
 
-    @Inject
-    lateinit var bookAdapter: BookAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding.lifecycleOwner = this
         viewModel.navigator = this
         buildLocationPermission()
-        viewModel.dataManager.language = "id"
         CoroutineScope(IO).launch {
             viewModel.setUpQuran(this@MainActivity)
         }
     }
 
     override fun onClickSearch() {
-        val search = SearchFragment()
-        supportFragmentManager.beginTransaction()
-            .add(R.id.main_container, search, search.javaClass.name).commit()
-    }
-
-    override fun onBackPressed() {
-        if (viewModel.showSearch.get()) {
-            SearchFragment.remove(this)
-            viewModel.showSearch.set(false)
-        } else {
-            finish()
-        }
-    }
-
-    val pagerChangeCallback = object : ViewPager2.OnPageChangeCallback() {
-        override fun onPageSelected(position: Int) {
-            viewModel.selectedTab.value = position
-        }
+        SearchActivity.newIntent(this)
     }
 
     fun setUpNavigation() {
-        val tabTitles = arrayOf(
-            StringProvider.getInstance().getString(LocaleConstants.BOOK),
-            StringProvider.getInstance().getString(LocaleConstants.HOME),
-            StringProvider.getInstance().getString(LocaleConstants.QURAN),
-        )
-        val tabImages =
-            arrayOf(R.drawable.ic_book_white, R.drawable.ic_home_white, R.drawable.ic_quran_white)
-        pager.adapter =
-            MainPagerAdapter(this, arrayListOf(BookFragment(), HomeFragment(), SurahFragment()))
-        TabLayoutMediator(tabLayout, pager) { tab, position ->
-            tab.text = tabTitles[position]
-            tab.customView = getTabView(tabTitles[position], tabImages[position])
-            pager.setCurrentItem(tab.position, true)
-        }.attach()
-        pager.setCurrentItem(1, true)
-        pager.registerOnPageChangeCallback(pagerChangeCallback)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        pager.unregisterOnPageChangeCallback(pagerChangeCallback)
-    }
-
-    fun getTabView(title: String, image: Int): View? {
-        val view: View = LayoutInflater.from(this).inflate(R.layout.main_tab_layout, null)
-        view.title.text = title
-        view.image.setImageResource(image)
-        return view
+        val host = NavHostFragment.create(R.navigation.nav_main)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment, host)
+            .setPrimaryNavigationFragment(host)
+            .commit()
     }
 
     private val LOCATION_PERMISSION_CODE = 93

@@ -28,6 +28,39 @@
             android:background="@color/colorWhite"
             tools:context=".ui.main.MainActivity">
 
+
+            <LinearLayout
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/shp_grey_14dp"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/ic_search" />
+
+                <com.mayburger.dzikirqu.util.textfont.TextFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:singleLine="true"
+                    android:text="Search for Dzikir, Ayah, Surah or Du’as"
+                    android:textColor="@color/colorTextGrey" />
+
+            </LinearLayout>
+
             <com.mayburger.dzikirqu.util.textfont.TextFont
                 android:id="@+id/salam"
                 android:layout_width="match_parent"
@@ -39,7 +72,7 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="24sp"
                 app:layout_constraintLeft_toLeftOf="@id/salam"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search"
                 app:typeface="bold" />
 
             <com.mayburger.dzikirqu.util.textfont.TextFont
@@ -62,6 +95,7 @@
                 android:background="@drawable/shp_white_8dp"
                 android:elevation="2dp"
                 app:layout_constraintLeft_toLeftOf="@id/salam"
+                android:onClick="@{()->viewModel.onClickPrayTime()}"
                 app:layout_constraintRight_toRightOf="@id/salam"
                 app:layout_constraintTop_toBottomOf="@id/haveyouread">
 
@@ -79,6 +113,7 @@
                         android:id="@+id/next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:transitionName="next"
                         android:textColor="@color/colorBlack"
                         app:text="@{LocaleConstants.NEXT_PRAYER}"
                         app:typeface="bold"
@@ -88,6 +123,7 @@
                         android:id="@+id/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:transitionName="prayTime"
                         android:text="@{viewModel.prayerTimeText}"
                         android:textColor="@color/colorBlack"
                         android:textSize="32sp"
@@ -98,6 +134,7 @@
                         android:id="@+id/until"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:transitionName="until"
                         android:text="@{viewModel.prayerUntilTime}"
                         android:textColor="@color/colorTextGrey"
                         tools:text="3 hours left until Ashar" />
@@ -109,6 +146,7 @@
                     android:id="@+id/masjid"
                     android:layout_width="100dp"
                     android:layout_height="80dp"
+                    android:transitionName="masjid"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/masjid"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -214,21 +252,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHighlight"
-                recyclerLayoutManager="@{RecyclerConstants.GRID_2_LAYOUT_MANAGER}"
+                android:id="@+id/rvBooks"
+                recyclerLayoutManager="@{RecyclerConstants.HORIZONTAL_LAYOUT_MANAGER}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                app:highlightAdapter="@{viewModel.highlights}"
+                app:booksAdapter="@{viewModel.books}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/quran" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="128dp"
-                app:layout_constraintTop_toBottomOf="@id/rvHighlight" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

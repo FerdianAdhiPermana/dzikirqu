@@ -24,13 +24,23 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true">
 
+        <com.mayburger.dzikirqu.util.textfont.TextFont
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.description}"
+            android:textSize="18sp"
+            android:visibility="@{viewModel.showDescription ? View.VISIBLE : View.GONE}"
+            tools:text="Search for something" />
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
-            android:visibility="@{viewModel.isLoaded() ? View.GONE : View.VISIBLE}" />
+            android:visibility="@{viewModel.showLoading ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPrayer"
@@ -38,7 +48,8 @@
             recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewModel.isLoaded() ? View.VISIBLE : View.GONE}" />
+            android:visibility="@{viewModel.showLoading ? View.GONE : View.VISIBLE}"
+            tools:visibility="gone" />
 
     </RelativeLayout>
 

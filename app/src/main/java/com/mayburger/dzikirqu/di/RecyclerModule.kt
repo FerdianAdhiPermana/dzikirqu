@@ -23,8 +23,12 @@ object RecyclerModule {
         return BookAdapter()
     }
     @Provides
-    internal fun provideBookListAdapter():PrayerAdapter{
-        return PrayerAdapter()
+    internal fun providePrayerListAdapter():PrayerListAdapter{
+        return PrayerListAdapter()
+    }
+    @Provides
+    internal fun providePrayerPagerAdapter():PrayerPagerAdapter{
+        return PrayerPagerAdapter()
     }
     @Provides
     internal fun provideHighlightAdapter():HighlightAdapter{

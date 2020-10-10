@@ -1,8 +1,10 @@
 package com.mayburger.dzikirqu.util.ext
 
 import android.content.Context
+import android.widget.LinearLayout
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.*
@@ -33,6 +35,19 @@ fun <T> LiveData<T>.getObserverValue(owner: LifecycleOwner):T?{
         returnValue = it
     })
     return returnValue
+}
+
+fun BottomSheetBehavior<LinearLayout>.hide(){
+    this.state = BottomSheetBehavior.STATE_HIDDEN
+}
+fun BottomSheetBehavior<LinearLayout>.collapse(){
+    this.state = BottomSheetBehavior.STATE_COLLAPSED
+}
+fun BottomSheetBehavior<LinearLayout>.isShowing():Boolean{
+    return (this.state == BottomSheetBehavior.STATE_COLLAPSED || this.state == BottomSheetBehavior.STATE_EXPANDED)
+}
+fun BottomSheetBehavior<LinearLayout>.show(){
+    this.state = BottomSheetBehavior.STATE_EXPANDED
 }
 
 

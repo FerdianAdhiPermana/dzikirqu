@@ -25,6 +25,7 @@ object AdapterBinding {
 //        }
 //    }
 
+
     @BindingAdapter("booksAdapter")
     @JvmStatic
     fun addBooksItems(
@@ -106,7 +107,7 @@ object AdapterBinding {
         recyclerView: RecyclerView,
         items: LiveData<List<ItemPrayerViewModel>>
     ) {
-        val adapter = recyclerView.adapter as PrayerAdapter?
+        val adapter = recyclerView.adapter as PrayerListAdapter?
         if (adapter != null) {
             items.value?.let {
                 adapter.clearItems()
@@ -119,6 +120,20 @@ object AdapterBinding {
                     recyclerView.scheduleLayoutAnimation()
                     adapter.isLoaded = true
                 }
+            }
+        }
+    }
+    @BindingAdapter("prayerPageAdapter")
+    @JvmStatic
+    fun addPrayerPageItems(
+        recyclerView: RecyclerView,
+        items: LiveData<List<PagePrayerViewModel>>
+    ) {
+        val adapter = recyclerView.adapter as PrayerPagerAdapter?
+        if (adapter != null) {
+            items.value?.let {
+                adapter.clearItems()
+                adapter.addItems(ArrayList(it))
             }
         }
     }

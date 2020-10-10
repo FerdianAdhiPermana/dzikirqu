@@ -72,8 +72,8 @@ class AppDataManager @Inject constructor(
         mRoomHelper.setPrayers(items)
     }
 
-    override suspend fun getPrayerByBookId(bookId: Int): List<PrayerDataModel> {
-        return mRoomHelper.getPrayerByBookId(bookId)
+    override suspend fun getPrayerByBook(bookId: Int): List<PrayerDataModel> {
+        return mRoomHelper.getPrayerByBook(bookId)
     }
 
     override suspend fun getPrayerByTitle(title: String): List<PrayerDataModel> {

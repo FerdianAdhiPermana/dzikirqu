@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_read_quran"
+    app:startDestination="@id/readPrayerFragment">
+    <fragment
+        android:id="@+id/readPrayerFragment"
+        android:name="com.mayburger.dzikirqu.ui.main.book.prayer.read.ReadPrayerFragment"
+        android:label="ReadPrayerFragment" />
+</navigation>

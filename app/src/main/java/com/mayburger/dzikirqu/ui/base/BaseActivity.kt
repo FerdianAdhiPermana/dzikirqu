@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import com.facebook.stetho.Stetho
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseApp
@@ -46,6 +47,10 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
     }
 
     override fun onFragmentDetached(tag: String) {
+
+    }
+
+    override fun showBottomSheet(fragment: Fragment) {
 
     }
 

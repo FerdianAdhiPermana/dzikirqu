@@ -14,7 +14,7 @@ interface RoomHelper {
     suspend fun deleteHighlight(item:HighlightDataModel)
 
     suspend fun setPrayers(items:List<PrayerDataModel>)
-    suspend fun getPrayerByBookId(bookId:Int):List<PrayerDataModel>
+    suspend fun getPrayerByBook(bookId:Int):List<PrayerDataModel>
     suspend fun getPrayerByTitle(title:String):List<PrayerDataModel>
 
     suspend fun setSurah(items:List<SurahJsonModel>,language:String)

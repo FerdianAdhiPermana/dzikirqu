@@ -8,16 +8,16 @@ import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentPrayerBinding
 import com.mayburger.dzikirqu.model.PrayerDataModel
-import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
-import com.mayburger.dzikirqu.ui.base.BaseBSDFragment
-import com.mayburger.dzikirqu.ui.main.book.prayer.read.ReadPrayerFragment
+import com.mayburger.dzikirqu.ui.adapters.PrayerListAdapter
+import com.mayburger.dzikirqu.ui.base.BaseFragment
+import com.mayburger.dzikirqu.ui.read.ReadActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_prayer.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class PrayerFragment : BaseBSDFragment<FragmentPrayerBinding, PrayerViewModel>(),
-    PrayerAdapter.Callback,PrayerNavigator{
+class PrayerFragment : BaseFragment<FragmentPrayerBinding, PrayerViewModel>(),
+    PrayerListAdapter.Callback,PrayerNavigator{
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -26,12 +26,13 @@ class PrayerFragment : BaseBSDFragment<FragmentPrayerBinding, PrayerViewModel>()
     override val viewModel: PrayerViewModel by viewModels()
 
     @Inject
-    lateinit var prayerAdapter: PrayerAdapter
+    lateinit var prayerListAdapter: PrayerListAdapter
 
     companion object {
         const val ARG_BOOK_ID = "book_id"
         const val ARG_BOOK_TITLE = "book_title"
         const val ARG_BOOK_DESC = "book_desc"
+        const val TAG = "PrayerFragment"
         fun getBundle(id: Int,name:String,desc:String): Bundle {
             return bundleOf(
                 ARG_BOOK_ID to id,
@@ -52,11 +53,12 @@ class PrayerFragment : BaseBSDFragment<FragmentPrayerBinding, PrayerViewModel>()
     }
 
     fun setUpAdapter(){
-        rvPrayer.adapter = prayerAdapter
-        prayerAdapter.setListener(this)
+        rvPrayer.adapter = prayerListAdapter
+        prayerListAdapter.setListener(this)
     }
 
     override fun onSelectedItem(prayer: PrayerDataModel) {
-        ReadPrayerFragment.getBundle(arguments?.getInt(ARG_BOOK_ID)?:0,prayer.id,prayer.title?:"")
+        ReadActivity.start(requireActivity(),prayer=prayer)
+//        ReadPrayerFragment.getBundle(arguments?.getInt(ARG_BOOK_ID)?:0,prayer.id,prayer.title?:"")
     }
 }

@@ -26,8 +26,8 @@ class HomeViewModel @ViewModelInject constructor(
 ) :
     BaseViewModel<HomeNavigator>(dataManager, schedulerProvider) {
     override fun onEvent(obj: Any) {
-        when(obj){
-            is HighlightEvent->{
+        when (obj) {
+            is HighlightEvent -> {
             }
         }
     }
@@ -86,7 +86,7 @@ class HomeViewModel @ViewModelInject constructor(
         newtimer?.start()
     }
 
-    fun onClickPrayTime(){
+    fun onClickPrayTime() {
         navigator?.onClickPrayTime()
     }
 

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.mayburger.dzikirqu.ui.main.book.prayer.PrayerViewModel" />
+            type="com.mayburger.dzikirqu.ui.main.book.prayer.read.ReadPrayerViewModel" />
 
         <import type="com.mayburger.dzikirqu.constants.RecyclerConstants" />
 
@@ -24,6 +24,11 @@
         android:background="@color/colorGreyBackground"
         android:orientation="vertical">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPrayer"
+            android:layout_width="match_parent"
+            recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 

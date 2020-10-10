@@ -5,21 +5,28 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.ActivityMainBinding
-import com.mayburger.dzikirqu.ui.adapters.BookAdapter
 import com.mayburger.dzikirqu.ui.base.BaseActivity
+import com.mayburger.dzikirqu.ui.main.book.prayer.PrayerFragment
 import com.mayburger.dzikirqu.ui.search.SearchActivity
+import com.mayburger.dzikirqu.util.ext.collapse
+import com.mayburger.dzikirqu.util.ext.hide
+import com.mayburger.dzikirqu.util.ext.isShowing
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -31,6 +38,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         get() = R.layout.activity_main
     override val viewModel: MainViewModel by viewModels()
 
+    lateinit var sheetBehavior: BottomSheetBehavior<LinearLayout>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding.lifecycleOwner = this
@@ -39,10 +48,37 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         CoroutineScope(IO).launch {
             viewModel.setUpQuran(this@MainActivity)
         }
+        buildBottomSheet()
     }
 
     override fun onClickSearch() {
         SearchActivity.newIntent(this)
+    }
+
+    override fun showBottomSheet(fragment: Fragment) {
+        super.showBottomSheet(fragment)
+        sheetBehavior.collapse()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.sheet_container, fragment, PrayerFragment.TAG)
+        transaction.commit()
+    }
+
+    fun buildBottomSheet() {
+        sheetBehavior = BottomSheetBehavior.from(sheet)
+        sheetBehavior.isHideable = true
+        sheetBehavior.hide()
+        alpha.setOnClickListener {
+            sheetBehavior.hide()
+        }
+        sheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                alpha.visibility = if (slideOffset + 1 > 0) View.VISIBLE else View.GONE
+                alpha.alpha = slideOffset + 1
+            }
+        })
     }
 
     fun setUpNavigation() {
@@ -51,6 +87,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
             .replace(R.id.nav_host_fragment, host)
             .setPrimaryNavigationFragment(host)
             .commit()
+    }
+
+    override fun onBackPressed() {
+        if (sheetBehavior.isShowing()) {
+            sheetBehavior.hide()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     private val LOCATION_PERMISSION_CODE = 93

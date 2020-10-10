@@ -10,7 +10,7 @@ import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
 
 
-class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
+class PrayerListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     private val data: MutableList<ItemPrayerViewModel>
     private var mListener: Callback? = null
@@ -22,6 +22,7 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     companion object {
         const val VIEW_TYPE_NORMAL = 1
         const val VIEW_TYPE_LOADING = 2
+        const val VIEW_TYPE_PAGER = 3
     }
 
     override fun getItemCount(): Int {
@@ -38,7 +39,7 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return if (data.isNotEmpty()) {
-            VIEW_TYPE_NORMAL
+                VIEW_TYPE_NORMAL
         } else {
             VIEW_TYPE_LOADING
         }
@@ -49,7 +50,7 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
             VIEW_TYPE_NORMAL -> {
                 val viewBinding = ItemPrayerBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
-                BookListViewHolder(viewBinding)
+                PrayerListViewHolder(viewBinding)
             }
             else -> {
                 val viewBinding = ItemEmptyBinding
@@ -80,7 +81,7 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         fun onSelectedItem(prayer: PrayerDataModel)
     }
 
-    inner class BookListViewHolder(private val mBinding: ItemPrayerBinding) :
+    inner class PrayerListViewHolder(private val mBinding: ItemPrayerBinding) :
         BaseViewHolder(mBinding.root) {
 
         override fun onBind(position: Int) {

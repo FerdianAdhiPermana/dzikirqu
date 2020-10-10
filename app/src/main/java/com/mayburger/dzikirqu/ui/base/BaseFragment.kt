@@ -41,6 +41,10 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
         }
     }
 
+    override fun showBottomSheet(fragment: Fragment) {
+        (requireActivity() as BaseActivity<*,*>).showBottomSheet(fragment)
+    }
+
     fun requireAppActivity():AppCompatActivity{
         return requireActivity() as AppCompatActivity
     }

@@ -7,17 +7,11 @@ import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentReadQuranBinding
 import com.mayburger.dzikirqu.model.AyahDataModel
-import com.mayburger.dzikirqu.model.HighlightDataModel
-import com.mayburger.dzikirqu.model.events.HighlightEvent
 import com.mayburger.dzikirqu.ui.adapters.AyahAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.read.ReadActivity
-import com.mayburger.dzikirqu.util.rx.RxBus
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_read_quran.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -45,19 +39,18 @@ class ReadQuranFragment : BaseFragment<FragmentReadQuranBinding, ReadQuranViewMo
     }
 
     override fun onSelectedItem(surah: AyahDataModel) {
-        onError("SAVED TO HIGHLIGHTS")
-        CoroutineScope(IO).launch{
-            viewModel.dataManager.insertHighlight(
-                HighlightDataModel(
-                    viewModel.surah.value?.name?:"",
-                    "Verse number ${surah.id}",
-                    viewModel._surahId.value?:0,
-                    surah.id,
-                    language=viewModel.dataManager.language,
-                    type=1
-                )
-            )
-            RxBus.getDefault().send(HighlightEvent())
-        }
+//        CoroutineScope(IO).launch{
+//            viewModel.dataManager.insertHighlight(
+//                HighlightDataModel(
+//                    viewModel.surah.value?.name?:"",
+//                    "Verse number ${surah.id}",
+//                    viewModel._surahId.value?:0,
+//                    surah.id,
+//                    language=viewModel.dataManager.language,
+//                    type=1
+//                )
+//            )
+//            RxBus.getDefault().send(HighlightEvent())
+//        }
     }
 }

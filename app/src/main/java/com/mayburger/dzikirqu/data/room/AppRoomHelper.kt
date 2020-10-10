@@ -62,8 +62,8 @@ class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelpe
         return db.getBookDao().getBookById(hawk.language, id)
     }
 
-    override suspend fun getPrayerByBookId(bookId: Int): List<PrayerDataModel> {
-        return db.getPrayerDao().getPrayers(hawk.language, bookId)
+    override suspend fun getPrayerByBook(bookId: Int): List<PrayerDataModel> {
+        return db.getPrayerDao().getPrayersByBook(hawk.language, bookId)
     }
 
     override suspend fun getPrayerByTitle(title: String): List<PrayerDataModel> {

@@ -28,7 +28,7 @@ class PrayerViewModel @ViewModelInject constructor(
         liveData(IO) {
             try {
                 if (bookId != -1) {
-                    emit(dataManager.getPrayerByBookId(bookId).map{ ItemPrayerViewModel(it) }.toList())
+                    emit(dataManager.getPrayerByBook(bookId).map{ ItemPrayerViewModel(it) }.toList())
                 }
             } catch (e: Exception) {
                 navigator?.onError(e.message)

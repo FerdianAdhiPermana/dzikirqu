@@ -10,6 +10,7 @@ import android.widget.RelativeLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.mayburger.dzikirqu.constants.RecyclerConstants
@@ -97,6 +98,10 @@ object ViewBinding {
                 val horizontalLinearLayoutManager = LinearLayoutManager(view.context)
                 horizontalLinearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
                 horizontalLinearLayoutManager
+            }
+            RecyclerConstants.PAGER_MANAGER ->{
+                PagerSnapHelper().attachToRecyclerView(view)
+                LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
             }
             RecyclerConstants.GRID_2_LAYOUT_MANAGER -> {
                 GridLayoutManager(view.context, 2)

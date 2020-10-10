@@ -33,14 +33,6 @@ object ActivityUtil {
         }
     }
 
-    fun popFragment(manager:FragmentManager,fragment: Fragment){
-        val transaction = manager.beginTransaction()
-        val existingFrag = manager.findFragmentByTag(fragment.javaClass.name)
-        if(existingFrag != null){
-            transaction.remove(existingFrag)
-        }
-    }
-
     private fun showViewInBackStack(transaction: FragmentTransaction, manager: FragmentManager, fragment: Fragment) {
         val fragList = manager.fragments
         for (frag in fragList) {
@@ -51,6 +43,16 @@ object ActivityUtil {
             }
         }
     }
+
+    fun popFragment(manager:FragmentManager,fragment: Fragment){
+        val transaction = manager.beginTransaction()
+        val existingFrag = manager.findFragmentByTag(fragment.javaClass.name)
+        if(existingFrag != null){
+            transaction.remove(existingFrag)
+        }
+    }
+
+
 
     fun addFragment(fragment: Fragment, fragmentManager: FragmentManager) {
         val fragmentTransaction = fragmentManager.beginTransaction()

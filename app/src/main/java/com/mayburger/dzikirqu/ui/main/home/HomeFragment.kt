@@ -52,6 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), HomeNav
         findNavController(this).navigate(R.id.prayTime, null, null, extras)
     }
 
+
     fun buildAdapter() {
         rvBooks.adapter = booksAdapter
         booksAdapter.setListener(this)
@@ -61,7 +62,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), HomeNav
         if (book.type == Constants.BOOK_TYPE_PRAYER) {
             val fragment = PrayerFragment()
             fragment.arguments = PrayerFragment.getBundle(book.id, book.title, book.desc)
-            fragment.show(requireActivity().supportFragmentManager, "")
+            showBottomSheet(fragment)
         }
     }
 }

@@ -17,6 +17,7 @@ object LocaleConstants {
     const val DHUHR = "Dhuhr"
     const val DZIKIR_BEFORE_SLEEP = "Dzikir Before Sleep"
     const val DZIKIR_AFTER_SHALAT = "Dzikir After Shalat"
+    const val OF = "%s of %s"
 
     //E
     const val EVENING_DZIKIR = "Evening Dzikir"

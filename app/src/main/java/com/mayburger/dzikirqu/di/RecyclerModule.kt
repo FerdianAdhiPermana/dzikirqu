@@ -3,6 +3,7 @@ package com.mayburger.dzikirqu.di
 import android.app.Activity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mayburger.dzikirqu.ui.adapters.*
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPageNumberViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,9 +23,15 @@ object RecyclerModule {
     internal fun provideBookAdapter():BookAdapter{
         return BookAdapter()
     }
+
     @Provides
-    internal fun providePrayerListAdapter():PrayerListAdapter{
-        return PrayerListAdapter()
+    internal fun providePageAdapter():HorizontalSelectionAdapter<ItemPageNumberViewModel>{
+        return HorizontalSelectionAdapter()
+    }
+
+    @Provides
+    internal fun providePrayerListAdapter():PrayerAdapter{
+        return PrayerAdapter()
     }
     @Provides
     internal fun providePrayerPagerAdapter():PrayerPagerAdapter{

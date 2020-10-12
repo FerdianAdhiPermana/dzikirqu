@@ -42,8 +42,7 @@ class HomeViewModel @ViewModelInject constructor(
                 }
                 emit(dataManager.getBooks().filter { it.data.language == dataManager.language })
             } catch (e: Exception) {
-                println("ES ${e.message}")
-                navigator?.onError(e.message)
+                e.printStackTrace()
             }
         }
     }

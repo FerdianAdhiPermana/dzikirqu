@@ -29,8 +29,7 @@ class SurahViewModel @ViewModelInject constructor(
                 emit(dataManager.getSurah().map{ ItemSurahViewModel(it) }.toList())
                 isLoaded.set(true)
             } catch (e: Exception) {
-                println("ES ${e.message}")
-                navigator?.onError(e.message)
+                e.printStackTrace()
             }
         }
     }

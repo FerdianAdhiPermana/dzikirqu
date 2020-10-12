@@ -28,7 +28,7 @@ class ReadQuranViewModel @ViewModelInject constructor(
                 emit(dataManager.getAyahBySurahId(it).map{ ItemAyahViewModel(it) }.toList())
                 isLoaded.set(true)
             } catch (e: Exception) {
-                println("ES ${e.message}")
+                e.printStackTrace()
             }
         }
     }

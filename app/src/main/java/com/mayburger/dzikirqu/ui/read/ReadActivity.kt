@@ -23,10 +23,12 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadViewModel>() {
 
     companion object {
         const val EXTRA_PRAYER = "extra_prayer"
+        const val EXTRA_BOOK_TITLE = "extra_book_title"
         const val EXTRA_SURAH_ID = "extra_surah_id"
-        fun start(context: Context, prayer: PrayerDataModel? = null, surahId: Int? = null) {
+        fun start(context: Context, prayer: PrayerDataModel? = null,bookTitle:String?=null,surahId: Int? = null) {
             val intent = Intent(context, ReadActivity::class.java)
             intent.putExtra(EXTRA_PRAYER, prayer)
+            intent.putExtra(EXTRA_BOOK_TITLE, bookTitle)
             intent.putExtra(EXTRA_SURAH_ID, surahId)
             context.startActivity(intent)
         }

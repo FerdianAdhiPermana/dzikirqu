@@ -3,9 +3,15 @@ package com.mayburger.dzikirqu.util.binding
 import android.animation.AnimatorSet
 import android.animation.LayoutTransition
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
+import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,8 +19,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
+import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.constants.RecyclerConstants
 import com.mayburger.dzikirqu.util.ext.ViewUtils
+import com.mayburger.dzikirqu.util.ext.ViewUtils.dpToPx
 import com.mayburger.dzikirqu.util.ext.setOnSingleClickListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,12 +42,127 @@ object ViewBinding {
 
     @BindingAdapter("android:layout_margin")
     @JvmStatic
-    fun setLayoutMargin(view: ViewGroup, margin: Int) {
+    fun setLayoutMargin(view: View, margin: Int) {
         val params = view.layoutParams as ViewGroup.MarginLayoutParams
         val marg = ViewUtils.dpToPx(margin)
         params.setMargins(marg, marg, marg, marg)
         view.requestLayout()
     }
+
+    @BindingAdapter("layout_marginBottomAnimate")
+    @JvmStatic
+    fun setLayoutMarginBottom(view: ViewGroup, margin: Int) {
+        val params = view.layoutParams as ViewGroup.MarginLayoutParams
+        val marg = ViewUtils.dpToPx(margin)
+        val anim = ValueAnimator.ofInt(params.bottomMargin, marg)
+        anim.addUpdateListener { valueAnimator ->
+            val `val` = valueAnimator.animatedValue as Int
+            params.setMargins(params.leftMargin, params.topMargin, params.rightMargin, `val`)
+            view.requestLayout()
+        }
+        anim.duration = 1000
+        anim.start()
+    }
+
+    @BindingAdapter("paddingTopAnimate")
+    @JvmStatic
+    fun setPaddingTop(view: ViewGroup, padding: Int) {
+        val anim = ValueAnimator.ofInt(view.paddingTop, dpToPx(padding))
+        anim.addUpdateListener { valueAnimator ->
+            val `val` = valueAnimator.animatedValue as Int
+            view.setPadding(view.paddingLeft, `val`, view.paddingRight, view.paddingBottom)
+            view.requestLayout()
+        }
+        anim.duration = 1000
+        anim.start()
+    }
+
+
+    @BindingAdapter("paddingBottomAnimate")
+    @JvmStatic
+    fun setPaddingBottom(view: ViewGroup, padding: Int) {
+        val anim = ValueAnimator.ofInt(view.paddingBottom, dpToPx(padding))
+        anim.addUpdateListener { valueAnimator ->
+            val `val` = valueAnimator.animatedValue as Int
+            view.setPadding(view.paddingLeft, view.paddingTop, view.paddingRight, `val`)
+            view.requestLayout()
+        }
+        anim.duration = 1000
+        anim.start()
+    }
+
+
+    @BindingAdapter("radiusAnimate")
+    @JvmStatic
+    fun setRadiusAnimation(view: ViewGroup, radius: Int){
+        val gd = view.background as GradientDrawable
+        val anim = ValueAnimator.ofInt(gd.getCornerRadiusN(), radius)
+        anim.addUpdateListener { valueAnimator ->
+            val `val` = valueAnimator.animatedValue as Int
+            gd.cornerRadius = `val`.toFloat()
+        }
+        anim.start()
+    }
+    fun GradientDrawable.getCornerRadiusN():Int{
+        return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            this.cornerRadius.toInt()
+        } else{
+            0
+        }
+    }
+
+    @BindingAdapter("layout_marginLeftAnimate")
+    @JvmStatic
+    fun setLayoutMarginLeft(view: ViewGroup, margin: Int) {
+        val params = view.layoutParams as ViewGroup.MarginLayoutParams
+        val marg = ViewUtils.dpToPx(margin)
+        val anim = ValueAnimator.ofInt(params.leftMargin, marg)
+        anim.addUpdateListener { valueAnimator ->
+            val `val` = valueAnimator.animatedValue as Int
+            params.setMargins(`val`, params.topMargin, params.rightMargin, params.bottomMargin)
+            view.requestLayout()
+        }
+        anim.duration = 1000
+        anim.start()
+    }
+
+    @BindingAdapter("layout_marginRightAnimate")
+    @JvmStatic
+    fun setLayoutMarginRight(view: ViewGroup, margin: Int) {
+        val params = view.layoutParams as ViewGroup.MarginLayoutParams
+        val marg = ViewUtils.dpToPx(margin)
+        val anim = ValueAnimator.ofInt(params.rightMargin, marg)
+        anim.addUpdateListener { valueAnimator ->
+            val `val` = valueAnimator.animatedValue as Int
+            params.setMargins(params.leftMargin, params.topMargin, `val`, params.bottomMargin)
+            view.requestLayout()
+        }
+        anim.duration = 1000
+        anim.start()
+    }
+
+//    @BindingAdapter("layout_widthAnimate")
+//    @JvmStatic
+//    fun setWidth(view: ViewGroup, isMatchParent: Boolean) {
+//        if (isMatchParent) {
+//            val initialWidth = view.measuredWidth
+//            val anim = ValueAnimator.ofInt(initialWidth, (view.parent as ViewGroup).width)
+//            anim.addUpdateListener { valueAnimator ->
+//                val `val` = valueAnimator.animatedValue as Int
+//                val layoutParams: ViewGroup.LayoutParams = view.layoutParams
+//                layoutParams.width = `val`
+//                view.layoutParams = layoutParams
+//            }
+//            anim.duration = 1000
+//            anim.start()
+//        } else {
+//            val params = view.layoutParams
+//            val initialWidth = view.measuredWidth
+//            params.width = WRAP_CONTENT
+//            view.layoutParams = params
+//            val targetWidth = view.measuredWidth
+//        }
+//    }
 
     @BindingAdapter("backgroundResource")
     @JvmStatic
@@ -99,7 +222,7 @@ object ViewBinding {
                 horizontalLinearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
                 horizontalLinearLayoutManager
             }
-            RecyclerConstants.PAGER_MANAGER ->{
+            RecyclerConstants.PAGER_MANAGER -> {
                 PagerSnapHelper().attachToRecyclerView(view)
                 LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
             }
@@ -139,6 +262,30 @@ object ViewBinding {
                     view.visibility = View.VISIBLE
                 }
             }
+        }
+    }
+
+    @BindingAdapter("slideUpAnimate")
+    @JvmStatic
+    fun slideUpAnimate(view: View, animate: Boolean) {
+        if (animate) {
+            view.startAnimation(AnimationUtils.loadAnimation(view.context, R.anim.slide_up))
+        }
+    }
+
+    @BindingAdapter("android:layout_height")
+    @JvmStatic
+    fun setHeight(view: View, isMatchParent: Boolean) {
+        val params = view.layoutParams
+        params.height = if (isMatchParent) MATCH_PARENT else WRAP_CONTENT
+        view.layoutParams = params
+    }
+
+    @BindingAdapter("slideDownAnimate")
+    @JvmStatic
+    fun slideDownAnimate(view: View, animate: Boolean) {
+        if (animate) {
+            view.startAnimation(AnimationUtils.loadAnimation(view.context, R.anim.slide_down))
         }
     }
 

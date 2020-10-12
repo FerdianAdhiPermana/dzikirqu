@@ -8,7 +8,7 @@ import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentPrayerBinding
 import com.mayburger.dzikirqu.model.PrayerDataModel
-import com.mayburger.dzikirqu.ui.adapters.PrayerListAdapter
+import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.read.ReadActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class PrayerFragment : BaseFragment<FragmentPrayerBinding, PrayerViewModel>(),
-    PrayerListAdapter.Callback,PrayerNavigator{
+    PrayerAdapter.Callback,PrayerNavigator{
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -26,7 +26,7 @@ class PrayerFragment : BaseFragment<FragmentPrayerBinding, PrayerViewModel>(),
     override val viewModel: PrayerViewModel by viewModels()
 
     @Inject
-    lateinit var prayerListAdapter: PrayerListAdapter
+    lateinit var prayerAdapter: PrayerAdapter
 
     companion object {
         const val ARG_BOOK_ID = "book_id"
@@ -53,12 +53,12 @@ class PrayerFragment : BaseFragment<FragmentPrayerBinding, PrayerViewModel>(),
     }
 
     fun setUpAdapter(){
-        rvPrayer.adapter = prayerListAdapter
-        prayerListAdapter.setListener(this)
+        rvPrayer.adapter = prayerAdapter
+        prayerAdapter.setListener(this)
     }
 
     override fun onSelectedItem(prayer: PrayerDataModel) {
-        ReadActivity.start(requireActivity(),prayer=prayer)
+        ReadActivity.start(requireActivity(),prayer=prayer,bookTitle = viewModel.bookTitle.value)
 //        ReadPrayerFragment.getBundle(arguments?.getInt(ARG_BOOK_ID)?:0,prayer.id,prayer.title?:"")
     }
 }

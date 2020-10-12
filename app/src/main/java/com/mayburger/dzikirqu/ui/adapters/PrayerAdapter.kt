@@ -5,18 +5,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.databinding.ItemEmptyBinding
 import com.mayburger.dzikirqu.databinding.ItemPrayerBinding
+import com.mayburger.dzikirqu.databinding.PagePrayerBinding
 import com.mayburger.dzikirqu.model.PrayerDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.PagePrayerViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
 
 
-class PrayerListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
+class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     private val data: MutableList<ItemPrayerViewModel>
+    private val readData: MutableList<PagePrayerViewModel>
     private var mListener: Callback? = null
+    private var isReadMode = false
 
     init {
         this.data = ArrayList()
+        this.readData = ArrayList()
     }
 
     companion object {
@@ -26,10 +31,18 @@ class PrayerListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return if (data.isNotEmpty()) {
-            data.size
+        return if (isReadMode) {
+            if (readData.isNotEmpty()) {
+                readData.size
+            } else {
+                2
+            }
         } else {
-            2
+            if (data.isNotEmpty()) {
+                data.size
+            } else {
+                2
+            }
         }
     }
 
@@ -38,10 +51,18 @@ class PrayerListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (data.isNotEmpty()) {
+        return if(isReadMode){
+            if(readData.isNotEmpty()){
+                VIEW_TYPE_PAGER
+            } else{
+                VIEW_TYPE_LOADING
+            }
+        } else{
+            if(data.isNotEmpty()){
                 VIEW_TYPE_NORMAL
-        } else {
-            VIEW_TYPE_LOADING
+            } else{
+                VIEW_TYPE_LOADING
+            }
         }
     }
 
@@ -51,6 +72,11 @@ class PrayerListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
                 val viewBinding = ItemPrayerBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
                 PrayerListViewHolder(viewBinding)
+            }
+            VIEW_TYPE_PAGER -> {
+                val viewBinding = PagePrayerBinding
+                    .inflate(LayoutInflater.from(parent.context), parent, false)
+                PrayerPagerViewHolder(viewBinding)
             }
             else -> {
                 val viewBinding = ItemEmptyBinding
@@ -66,11 +92,21 @@ class PrayerListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun addReadItems(data:ArrayList<PagePrayerViewModel>){
+        this.readData.addAll(data)
+        notifyDataSetChanged()
+    }
+
     var isLoaded = false
 
     fun clearItems() {
         data.clear()
+        readData.clear()
         notifyDataSetChanged()
+    }
+
+    fun isReadMode(isReadMode:Boolean){
+        this.isReadMode = isReadMode
     }
 
     fun setListener(listener: Callback) {
@@ -93,4 +129,17 @@ class PrayerListAdapter : RecyclerView.Adapter<BaseViewHolder>() {
             }
         }
     }
+
+    inner class PrayerPagerViewHolder(private val mBinding: PagePrayerBinding) :
+        BaseViewHolder(mBinding.root) {
+
+        override fun onBind(position: Int) {
+            if (readData.isNotEmpty()) {
+                val viewModel = readData[position]
+                mBinding.viewModel = viewModel
+            }
+        }
+    }
+
+
 }

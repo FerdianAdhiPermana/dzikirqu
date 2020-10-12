@@ -23,6 +23,7 @@
         android:clickable="true"
         android:clipToPadding="false"
         android:focusable="true"
+        android:foreground="@drawable/selector_8dp"
         android:padding="2dp"
         tools:visibility="visible">
 

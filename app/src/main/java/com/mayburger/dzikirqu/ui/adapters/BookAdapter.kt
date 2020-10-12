@@ -10,6 +10,7 @@ import com.mayburger.dzikirqu.model.BookDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
 import com.mayburger.dzikirqu.util.ext.ViewUtils.dpToPx
+import com.mayburger.dzikirqu.util.ext.setOnClickAnimate
 
 
 class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
@@ -114,13 +115,15 @@ class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
         override fun onBind(position: Int) {
             if (data.isNotEmpty()) {
-                if(position == 0){
+                if (position == 0) {
                     val params = mBinding.root.layoutParams as RecyclerView.LayoutParams
-                    params.setMargins(dpToPx(16),dpToPx(4),dpToPx(4),dpToPx(4))
+                    params.setMargins(dpToPx(16), dpToPx(4), dpToPx(4), dpToPx(4))
                     mBinding.root.layoutParams = params
                 }
                 val viewModel = data[position]
-                mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
+                mBinding.root.setOnClickAnimate {
+                    mListener?.onSelectedItem(data[position].data)
+                }
                 mBinding.viewModel = viewModel
             }
         }
@@ -131,13 +134,15 @@ class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
         override fun onBind(position: Int) {
             if (data.isNotEmpty()) {
-                if(position == 0){
+                if (position == 0) {
                     val params = mBinding.root.layoutParams as RecyclerView.LayoutParams
-                    params.setMargins(dpToPx(16),dpToPx(4),dpToPx(4),dpToPx(4))
+                    params.setMargins(dpToPx(16), dpToPx(4), dpToPx(4), dpToPx(4))
                     mBinding.root.layoutParams = params
                 }
                 val viewModel = data[position]
-                mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
+                mBinding.root.setOnClickAnimate {
+                    mListener?.onSelectedItem(data[position].data)
+                }
                 mBinding.viewModel = viewModel
             }
         }

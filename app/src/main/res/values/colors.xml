@@ -28,6 +28,7 @@
 
     <color name="colorWhite">#fff</color>
     <color name="colorTextGrey">#727F94</color>
+    <color name="colorTextLightGrey">#98A4B8</color>
     <color name="colorGreyDecor">#E3ECF1</color>
     <color name="colorGreyBackground">#F9FAFC</color>
     <color name="colorGreyDecorDark">#B7BFC5</color>

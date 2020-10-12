@@ -14,22 +14,152 @@
         <import type="com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper" />
 
         <import type="com.mayburger.dzikirqu.constants.LocaleConstants" />
+
+        <import type="com.mayburger.dzikirqu.util.ext.ViewUtils" />
+
+        <import type="android.view.View" />
     </data>
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/root"
+        animateLayoutChanges="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorGreyBackground"
+        android:animateLayoutChanges="true"
+        android:background="@color/colorWhite"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPrayer"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:slideDownAnimate="@{true}">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:onClick="@{()->viewModel.back()}"
+                android:src="@drawable/ic_back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.mayburger.dzikirqu.util.textfont.TextFont
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{viewModel.bookTitle}"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:typeface="bold"
+                tools:text="Book of Dua" />
+
+            <com.mayburger.dzikirqu.util.textfont.TextFont
+                android:id="@+id/subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{viewModel.prayer.title}"
+                android:textColor="@color/colorTextGrey"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                tools:text="Upon completing the ablution" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/circle_primary"
+                android:padding="4dp"
+                android:src="@drawable/ic_play_white"
+                android:visibility="@{viewModel.showAudio ? View.VISIBLE : View.GONE}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/subtitle" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_share"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/footer"
+            slideUpAnimate="@{true}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:background="@drawable/shp_primary_14dp"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <ImageView
+                android:id="@+id/previous"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="48dp"
+                android:onClick="@{()->viewModel.previous()}"
+                android:src="@drawable/ic_chevron_left_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/index"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.mayburger.dzikirqu.util.textfont.TextFont
+                android:id="@+id/index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.indexString}"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2 of 14" />
+
+            <ImageView
+                android:id="@+id/next"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="48dp"
+                android:onClick="@{()->viewModel.next()}"
+                android:src="@drawable/ic_chevron_right_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/index"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

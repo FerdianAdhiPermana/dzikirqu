@@ -107,7 +107,7 @@ object AdapterBinding {
         recyclerView: RecyclerView,
         items: LiveData<List<ItemPrayerViewModel>>
     ) {
-        val adapter = recyclerView.adapter as PrayerListAdapter?
+        val adapter = recyclerView.adapter as PrayerAdapter?
         if (adapter != null) {
             items.value?.let {
                 adapter.clearItems()

@@ -7,7 +7,7 @@ import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentSearchPrayerBinding
 import com.mayburger.dzikirqu.model.PrayerDataModel
-import com.mayburger.dzikirqu.ui.adapters.PrayerListAdapter
+import com.mayburger.dzikirqu.ui.adapters.PrayerAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search_prayer.*
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchPrayerFragment : BaseFragment<FragmentSearchPrayerBinding, SearchPrayerViewModel>(),
-    SearchPrayerNavigator,PrayerListAdapter.Callback{
+    SearchPrayerNavigator,PrayerAdapter.Callback{
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -25,7 +25,7 @@ class SearchPrayerFragment : BaseFragment<FragmentSearchPrayerBinding, SearchPra
     override val viewModel: SearchPrayerViewModel by viewModels()
 
     @Inject
-    lateinit var prayerListAdapter: PrayerListAdapter
+    lateinit var prayerAdapter: PrayerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,8 +34,8 @@ class SearchPrayerFragment : BaseFragment<FragmentSearchPrayerBinding, SearchPra
         setUpAdapter()
     }
     fun setUpAdapter() {
-        rvPrayer.adapter = prayerListAdapter
-        prayerListAdapter.setListener(this)
+        rvPrayer.adapter = prayerAdapter
+        prayerAdapter.setListener(this)
     }
 
     override fun onSelectedItem(prayer: PrayerDataModel) {

@@ -19,9 +19,10 @@ import com.mayburger.dzikirqu.databinding.ActivityMainBinding
 import com.mayburger.dzikirqu.ui.base.BaseActivity
 import com.mayburger.dzikirqu.ui.main.book.prayer.PrayerFragment
 import com.mayburger.dzikirqu.ui.search.SearchActivity
-import com.mayburger.dzikirqu.util.ext.collapse
+import com.mayburger.dzikirqu.util.QuranUtils
 import com.mayburger.dzikirqu.util.ext.hide
 import com.mayburger.dzikirqu.util.ext.isShowing
+import com.mayburger.dzikirqu.util.ext.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
@@ -47,6 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         buildLocationPermission()
         CoroutineScope(IO).launch {
             viewModel.setUpQuran(this@MainActivity)
+            QuranUtils.overridePrayer(this@MainActivity)
         }
         buildBottomSheet()
     }
@@ -57,7 +59,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
     override fun showBottomSheet(fragment: Fragment) {
         super.showBottomSheet(fragment)
-        sheetBehavior.collapse()
+        sheetBehavior.show()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.sheet_container, fragment, PrayerFragment.TAG)
         transaction.commit()
@@ -67,6 +69,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         sheetBehavior = BottomSheetBehavior.from(sheet)
         sheetBehavior.isHideable = true
         sheetBehavior.hide()
+        sheetBehavior.skipCollapsed = true
         alpha.setOnClickListener {
             sheetBehavior.hide()
         }

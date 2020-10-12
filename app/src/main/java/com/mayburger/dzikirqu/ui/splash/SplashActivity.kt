@@ -25,7 +25,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding,SplashViewModel>(),Spl
 //            viewModel.getBookData()
 //        }
 //
-        viewModel.dataManager.language = "en"
+        viewModel.dataManager.language = "id"
         startActivity(Intent(this,MainActivity::class.java))
         finishActivity()
     }

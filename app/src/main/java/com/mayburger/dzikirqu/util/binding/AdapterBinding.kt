@@ -112,14 +112,14 @@ object AdapterBinding {
             items.value?.let {
                 adapter.clearItems()
                 adapter.addItems(ArrayList(it))
-                if (!adapter.isLoaded) {
-                    val context = recyclerView.context;
-                    val controller =
-                        AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fade);
-                    recyclerView.layoutAnimation = controller;
-                    recyclerView.scheduleLayoutAnimation()
-                    adapter.isLoaded = true
-                }
+//                if (!adapter.isLoaded) {
+//                    val context = recyclerView.context;
+//                    val controller =
+//                        AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fade);
+//                    recyclerView.layoutAnimation = controller;
+//                    recyclerView.scheduleLayoutAnimation()
+//                    adapter.isLoaded = true
+//                }
             }
         }
     }

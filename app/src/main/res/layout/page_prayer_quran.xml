@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.graphics.Color" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.mayburger.dzikirqu.ui.adapters.viewmodels.PagePrayerQuranViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.mayburger.dzikirqu.util.textfont.TextFont
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.data.arabic}"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="24sp"
+                    app:typeface="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/shp_white_8dp"
+                    android:elevation="2dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="8dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/circle_primary">
+
+                        <com.mayburger.dzikirqu.util.textfont.TextFont
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@{viewModel.surahId}"
+                            android:textColor="@color/colorWhite"
+                            app:typeface="bold"
+                            tools:text="32" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <com.mayburger.dzikirqu.util.textfont.TextFont
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.surah.name}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="20sp"
+                            tools:text="Al-Mulk" />
+
+                        <com.mayburger.dzikirqu.util.textfont.TextFont
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.surah.translation}"
+                            android:textSize="14sp"
+                            tools:text="The Sovereignty" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.mayburger.dzikirqu.util.textfont.TextFont
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.data.source}"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorTextLightGrey" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

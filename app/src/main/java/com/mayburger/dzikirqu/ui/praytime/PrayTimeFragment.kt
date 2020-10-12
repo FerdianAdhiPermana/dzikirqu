@@ -32,5 +32,6 @@ class PrayTimeFragment : BaseFragment<FragmentPrayTimeBinding, PrayTimeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+        sharedElementReturnTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
     }
 }

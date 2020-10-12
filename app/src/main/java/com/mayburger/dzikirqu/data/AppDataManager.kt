@@ -81,7 +81,7 @@ class AppDataManager @Inject constructor(
     }
 
     override suspend fun setSurah(items: List<SurahJsonModel>, language: String) {
-        mRoomHelper.setSurah(items,language)
+        mRoomHelper.setSurah(items, language)
     }
 
     override suspend fun getSurah(): List<SurahDataModel> {

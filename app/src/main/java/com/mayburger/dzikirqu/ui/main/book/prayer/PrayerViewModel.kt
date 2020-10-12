@@ -28,7 +28,9 @@ class PrayerViewModel @ViewModelInject constructor(
         liveData(IO) {
             try {
                 if (bookId != -1) {
+                    println("It was called")
                     emit(dataManager.getPrayerByBook(bookId).map{ ItemPrayerViewModel(it) }.toList())
+                    println("It was ended")
                 }
             } catch (e: Exception) {
                 navigator?.onError(e.message)

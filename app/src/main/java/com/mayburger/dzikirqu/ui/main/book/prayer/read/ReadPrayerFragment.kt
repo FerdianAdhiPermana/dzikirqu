@@ -35,6 +35,7 @@ class ReadPrayerFragment : BaseFragment<FragmentReadPrayerBinding, ReadPrayerVie
         viewModel.navigator = this
         viewModel.prayer.set(requireActivity().intent.getParcelableExtra(ReadActivity.EXTRA_PRAYER))
         viewModel.bookTitle.set(requireActivity().intent.getStringExtra(ReadActivity.EXTRA_BOOK_TITLE))
+        viewModel.showNavigation.set(viewModel.prayer.get()?.data?.size!! > 1)
         setPosition(1)
         prayerAdapter.isReadMode(true)
         prayerAdapter.addReadItems(viewModel.prayer.get()?.data?.toCollection(arrayListOf())?.map {
@@ -51,10 +52,6 @@ class ReadPrayerFragment : BaseFragment<FragmentReadPrayerBinding, ReadPrayerVie
 
     override fun mutatePosition(modifier: Int) {
         pager.currentItem = pager.currentItem + modifier
-        View.SCALE_X
-        footer.animate()
-            .z(30f)
-            .start()
     }
 
     fun setPosition(position: Int) {

@@ -7,11 +7,14 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
+import com.mayburger.dzikirqu.constants.LocaleConstants
 import com.mayburger.dzikirqu.data.DataManager
 import com.mayburger.dzikirqu.model.PrayerTime
 import com.mayburger.dzikirqu.model.events.HighlightEvent
+import com.mayburger.dzikirqu.model.events.QuranLastReadEvent
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
+import com.mayburger.dzikirqu.util.StringProvider
 import com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper
 import com.mayburger.dzikirqu.util.rx.SchedulerProvider
 import kotlinx.coroutines.Dispatchers.IO
@@ -29,6 +32,28 @@ class HomeViewModel @ViewModelInject constructor(
         when (obj) {
             is HighlightEvent -> {
             }
+            is QuranLastReadEvent -> {
+                buildLastRead()
+            }
+        }
+    }
+
+    val lastReadSurah = ObservableField("")
+    val lastReadVerse = ObservableField("")
+
+    init {
+        buildLastRead()
+    }
+
+    fun buildLastRead() {
+        dataManager.quranLastRead?.let {
+            lastReadSurah.set(it.surah.name)
+            lastReadVerse.set(
+                String.format(
+                    StringProvider.getInstance().getString(LocaleConstants.VERSE_NO_N),
+                    it.verse.id.toString()
+                )
+            )
         }
     }
 
@@ -46,7 +71,6 @@ class HomeViewModel @ViewModelInject constructor(
             }
         }
     }
-
 
     val prayerTime = liveData(Main) {
         try {
@@ -87,6 +111,14 @@ class HomeViewModel @ViewModelInject constructor(
 
     fun onClickPrayTime() {
         navigator?.onClickPrayTime()
+    }
+
+    fun onClickReadQuran() {
+        navigator?.onClickReadQuran()
+    }
+
+    fun onClickLastRead(){
+        navigator?.onClickLastRead()
     }
 
     override fun onCleared() {

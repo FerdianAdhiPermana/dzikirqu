@@ -14,9 +14,16 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_home_to_surahFragment"
+            app:destination="@id/surahFragment" />
     </fragment>
     <fragment
         android:id="@+id/prayTime"
         android:name="com.mayburger.dzikirqu.ui.praytime.PrayTimeFragment"
         android:label="PrayTimeFragment" />
+    <fragment
+        android:id="@+id/surahFragment"
+        android:name="com.mayburger.dzikirqu.ui.main.surah.SurahFragment"
+        android:label="SurahFragment" />
 </navigation>

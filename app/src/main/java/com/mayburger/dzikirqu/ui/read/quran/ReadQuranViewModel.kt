@@ -27,10 +27,15 @@ class ReadQuranViewModel @ViewModelInject constructor(
             try {
                 emit(dataManager.getAyahBySurahId(it).map{ ItemAyahViewModel(it) }.toList())
                 isLoaded.set(true)
+                navigator?.onLoadQuran()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
+    }
+
+    fun back(){
+        navigator?.finishActivity()
     }
 
     val surah = _surahId.switchMap{

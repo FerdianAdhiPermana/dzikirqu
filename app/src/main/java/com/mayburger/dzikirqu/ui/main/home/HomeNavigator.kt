@@ -4,4 +4,6 @@ import com.mayburger.dzikirqu.ui.base.BaseNavigator
 
 interface HomeNavigator:BaseNavigator{
     fun onClickPrayTime()
+    fun onClickReadQuran()
+    fun onClickLastRead()
 }

@@ -14,256 +14,274 @@
         <import type="com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper" />
 
         <import type="com.mayburger.dzikirqu.constants.LocaleConstants" />
+
+        <import type="android.view.View" />
     </data>
 
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/scroll"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:background="@color/colorWhite"
+            tools:context=".ui.main.MainActivity">
+
+
+            <LinearLayout
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/shp_grey_14dp"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/ic_search" />
+
+                <com.mayburger.dzikirqu.util.textfont.TextFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:singleLine="true"
+                    android:text="Search for Dzikir, Ayah, Surah or Du’as"
+                    android:textColor="@color/colorTextGrey" />
+
+            </LinearLayout>
+
+            <com.mayburger.dzikirqu.util.textfont.TextFont
+                android:id="@+id/salam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Assalamu'alaikum"
+                android:textColor="@color/colorBlack"
+                android:textSize="24sp"
+                app:layout_constraintLeft_toLeftOf="@id/salam"
+                app:layout_constraintTop_toBottomOf="@id/search"
+                app:typeface="bold" />
+
+            <com.mayburger.dzikirqu.util.textfont.TextFont
+                android:id="@+id/haveyouread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextGrey"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="@id/salam"
+                app:layout_constraintTop_toBottomOf="@id/salam"
+                app:textLocale="@{LocaleConstants.HAVE_YOU_READ_THE_QURAN_TODAY_Q}"
+                tools:text="Have you read the Qur'an today?" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorWhite"
-                tools:context=".ui.main.MainActivity">
-
+                android:id="@+id/praytime"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/shp_white_8dp"
+                android:elevation="2dp"
+                android:onClick="@{()->viewModel.onClickPrayTime()}"
+                app:layout_constraintLeft_toLeftOf="@id/salam"
+                app:layout_constraintRight_toRightOf="@id/salam"
+                app:layout_constraintTop_toBottomOf="@id/haveyouread">
 
                 <LinearLayout
-                    android:id="@+id/search"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/shp_grey_14dp"
-                    android:elevation="2dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/masjid"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:src="@drawable/ic_search" />
-
                     <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:id="@+id/next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:singleLine="true"
-                        android:text="Search for Dzikir, Ayah, Surah or Du’as"
-                        android:textColor="@color/colorTextGrey" />
+                        android:textColor="@color/colorBlack"
+                        android:transitionName="next"
+                        app:text="@{LocaleConstants.NEXT_PRAYER}"
+                        app:typeface="bold"
+                        tools:text="Next Prayer" />
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.prayerTimeText}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="32sp"
+                        android:transitionName="prayTime"
+                        app:typeface="bold"
+                        tools:text="24:00" />
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:id="@+id/until"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.prayerUntilTime}"
+                        android:textColor="@color/colorTextGrey"
+                        android:transitionName="until"
+                        tools:text="3 hours left until Ashar" />
 
                 </LinearLayout>
 
-                <com.mayburger.dzikirqu.util.textfont.TextFont
-                    android:id="@+id/salam"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:text="Assalamu'alaikum"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="24sp"
-                    app:layout_constraintLeft_toLeftOf="@id/salam"
-                    app:layout_constraintTop_toBottomOf="@id/search"
-                    app:typeface="bold" />
-
-                <com.mayburger.dzikirqu.util.textfont.TextFont
-                    android:id="@+id/haveyouread"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorTextGrey"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toLeftOf="@id/salam"
-                    app:layout_constraintTop_toBottomOf="@id/salam"
-                    app:textLocale="@{LocaleConstants.HAVE_YOU_READ_THE_QURAN_TODAY_Q}"
-                    tools:text="Have you read the Qur'an today?" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/praytime"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_marginTop="24dp"
-                    android:animateLayoutChanges="true"
-                    android:background="@drawable/shp_white_8dp"
-                    android:elevation="2dp"
-                    android:onClick="@{()->viewModel.onClickPrayTime()}"
-                    app:layout_constraintLeft_toLeftOf="@id/salam"
-                    app:layout_constraintRight_toRightOf="@id/salam"
-                    app:layout_constraintTop_toBottomOf="@id/haveyouread">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@id/masjid"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <com.mayburger.dzikirqu.util.textfont.TextFont
-                            android:id="@+id/next"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:transitionName="next"
-                            app:text="@{LocaleConstants.NEXT_PRAYER}"
-                            app:typeface="bold"
-                            tools:text="Next Prayer" />
-
-                        <com.mayburger.dzikirqu.util.textfont.TextFont
-                            android:id="@+id/time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{viewModel.prayerTimeText}"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="32sp"
-                            android:transitionName="prayTime"
-                            app:typeface="bold"
-                            tools:text="24:00" />
-
-                        <com.mayburger.dzikirqu.util.textfont.TextFont
-                            android:id="@+id/until"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{viewModel.prayerUntilTime}"
-                            android:textColor="@color/colorTextGrey"
-                            android:transitionName="until"
-                            tools:text="3 hours left until Ashar" />
-
-                    </LinearLayout>
-
-
-                    <ImageView
-                        android:id="@+id/masjid"
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/masjid"
-                        android:transitionName="masjid"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
-                    android:id="@+id/ic_quran"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/ic_quran_primary"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="@id/title_quran"
-                    app:layout_constraintLeft_toLeftOf="@id/salam"
-                    app:layout_constraintTop_toTopOf="@id/title_quran" />
-
-                <com.mayburger.dzikirqu.util.textfont.TextFont
-                    android:id="@+id/title_quran"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="32dp"
-                    android:text="Al-Qur'an Al Kareem"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp"
-                    android:visibility="gone"
-                    app:layout_constraintLeft_toRightOf="@id/ic_quran"
-                    app:layout_constraintTop_toBottomOf="@id/praytime"
-                    app:typeface="bold" />
-
-                <com.mayburger.dzikirqu.util.textfont.TextFont
-                    android:id="@+id/desc_quran"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="The Quran was revealed to seek knowledge, reflect and ponder upon it."
-                    android:textColor="@color/colorTextGrey"
-                    android:textSize="12sp"
-                    android:visibility="gone"
-                    app:layout_constraintLeft_toLeftOf="@id/ic_quran"
-                    app:layout_constraintRight_toRightOf="@id/salam"
-                    app:layout_constraintTop_toBottomOf="@id/ic_quran" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/quran"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/shp_primary_8dp"
-                    android:padding="16dp"
-                    app:layout_constraintLeft_toLeftOf="@id/salam"
-                    app:layout_constraintRight_toRightOf="@id/salam"
-                    app:layout_constraintTop_toBottomOf="@id/desc_quran">
-
-                    <com.mayburger.dzikirqu.util.textfont.TextFont
-                        android:id="@+id/text_last_read"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Last Read:"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="12sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:orientation="vertical"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <com.mayburger.dzikirqu.util.textfont.TextFont
-                            android:id="@+id/text_surah"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Al-Mu'minun"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="18sp"
-                            app:typeface="bold" />
-
-                        <com.mayburger.dzikirqu.util.textfont.TextFont
-                            android:id="@+id/text_verse"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Verse No:18"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="12sp"
-                            app:typeface="bold" />
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:alpha="0.3"
-                        android:src="@drawable/ic_quran_calligraphy"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvBooks"
-                    recyclerLayoutManager="@{RecyclerConstants.HORIZONTAL_LAYOUT_MANAGER}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:booksAdapter="@{viewModel.books}"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/quran" />
+                    android:id="@+id/masjid"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/masjid"
+                    android:transitionName="masjid"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+
+            <LinearLayout
+                android:id="@+id/quran"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shp_white_8dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:onClick="@{()->viewModel.onClickReadQuran()}"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                app:layout_constraintLeft_toLeftOf="@id/praytime"
+                app:layout_constraintRight_toRightOf="@id/praytime"
+                app:layout_constraintTop_toBottomOf="@id/praytime">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shp_white_8dp"
+                    android:elevation="2dp"
+                    android:padding="14dp"
+                    android:src="@drawable/ic_quran_primary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        textLocale="@{LocaleConstants.READ_QURAN}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Read Quran"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        app:typeface="bold" />
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        textLocale="@{LocaleConstants.QURAN_VIRTUES}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        tools:text="Whosoever reads one letter of the book of Allah will have one hasanah for it and each hasanah is a tenfold reward. (Tirmidzi)" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/quranLastRead"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="@{()->viewModel.onClickLastRead()}"
+                android:background="@drawable/shp_primary_8dp"
+                android:padding="16dp"
+                android:visibility="@{viewModel.dataManager.quranLastRead == null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintLeft_toLeftOf="@id/quran"
+                app:layout_constraintRight_toRightOf="@id/quran"
+                app:layout_constraintTop_toBottomOf="@id/quran">
+
+                <com.mayburger.dzikirqu.util.textfont.TextFont
+                    android:id="@+id/text_last_read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last Read:"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="vertical"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:id="@+id/text_surah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.lastReadSurah}"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18sp"
+                        app:typeface="bold"
+                        tools:text="Al-Mu'minun" />
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:id="@+id/text_verse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.lastReadVerse}"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        tools:text="Verse No:18" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:alpha="0.3"
+                    android:src="@drawable/ic_quran_calligraphy"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBooks"
+                recyclerLayoutManager="@{RecyclerConstants.HORIZONTAL_LAYOUT_MANAGER}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:booksAdapter="@{viewModel.books}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quranLastRead" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 
 </layout>

@@ -12,6 +12,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.mayburger.dzikirqu.util.ext.hide
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragment(),
@@ -41,8 +44,8 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
         }
     }
 
-    override fun showBottomSheet(fragment: Fragment) {
-        (requireActivity() as BaseActivity<*,*>).showBottomSheet(fragment)
+    override fun showBottomSheet(fragment: BaseFragment<*, *>, tag: String) {
+        (requireActivity() as BaseActivity<*,*>).showBottomSheet(fragment,tag)
     }
 
     fun requireAppActivity():AppCompatActivity{

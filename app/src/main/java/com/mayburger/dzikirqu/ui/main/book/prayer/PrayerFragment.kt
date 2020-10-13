@@ -49,6 +49,7 @@ class PrayerFragment : BaseFragment<FragmentPrayerBinding, PrayerViewModel>(),
         viewModel._bookId.value = arguments?.getInt(ARG_BOOK_ID)
         viewModel.bookTitle.value = arguments?.getString(ARG_BOOK_TITLE)
         viewModel.bookDesc.value = arguments?.getString(ARG_BOOK_DESC)
+        println(viewModel._bookId)
         setUpAdapter()
     }
 

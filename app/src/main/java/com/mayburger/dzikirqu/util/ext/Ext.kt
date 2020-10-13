@@ -95,16 +95,16 @@ fun <T> LiveData<T>.getObserverValue(owner: LifecycleOwner):T?{
     return returnValue
 }
 
-fun BottomSheetBehavior<LinearLayout>.hide(){
+fun BottomSheetBehavior<*>.hide(){
     this.state = BottomSheetBehavior.STATE_HIDDEN
 }
-fun BottomSheetBehavior<LinearLayout>.collapse(){
+fun BottomSheetBehavior<*>.collapse(){
     this.state = BottomSheetBehavior.STATE_COLLAPSED
 }
-fun BottomSheetBehavior<LinearLayout>.isShowing():Boolean{
+fun BottomSheetBehavior<*>.isShowing():Boolean{
     return (this.state == BottomSheetBehavior.STATE_COLLAPSED || this.state == BottomSheetBehavior.STATE_EXPANDED)
 }
-fun BottomSheetBehavior<LinearLayout>.show(){
+fun BottomSheetBehavior<*>.show(){
     this.state = BottomSheetBehavior.STATE_EXPANDED
 }
 

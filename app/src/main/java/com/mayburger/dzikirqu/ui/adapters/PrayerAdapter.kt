@@ -12,10 +12,12 @@ import com.mayburger.dzikirqu.databinding.PagePrayerBinding
 import com.mayburger.dzikirqu.databinding.PagePrayerQuranBinding
 import com.mayburger.dzikirqu.db.AppDatabase
 import com.mayburger.dzikirqu.model.PrayerDataModel
+import com.mayburger.dzikirqu.model.SurahDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemPrayerViewModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.PagePrayerQuranViewModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.PagePrayerViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
+import com.mayburger.dzikirqu.ui.read.ReadActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -180,7 +182,13 @@ class PrayerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
                         AppRoomHelper(
                             AppDatabase.invoke(mBinding.root.context),
                             AppHawkHelper()
-                        ).getSurahById(deepLink.bookId ?: 1)[0]
+                        ).getSurahById(deepLink.bookId ?: 1)[0],
+                        object :
+                            PagePrayerQuranViewModel.Callback {
+                            override fun onClickItem(surah: SurahDataModel) {
+                                ReadActivity.start(mBinding.root.context,surahId = surah.id)
+                            }
+                        }
                     )
                 }
             }

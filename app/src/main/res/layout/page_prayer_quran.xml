@@ -54,6 +54,7 @@
                     android:orientation="horizontal"
                     android:paddingStart="8dp"
                     android:paddingTop="16dp"
+                    android:onClick="@{()->viewModel.openQuran()}"
                     android:paddingEnd="8dp"
                     android:paddingBottom="16dp">
 

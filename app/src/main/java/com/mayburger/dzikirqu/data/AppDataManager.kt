@@ -34,6 +34,12 @@ class AppDataManager @Inject constructor(
         return writer.toString()
     }
 
+    override var quranLastRead: QuranLastRead?
+        get() = mHawkHelper.quranLastRead
+        set(value) {
+            mHawkHelper.quranLastRead = value
+        }
+
     override suspend fun getBooks(): ArrayList<ItemBookViewModel> {
         val book = mFirebaseHelper.getBooks()
         mRoomHelper.setBooks(book.map { it.data }.toList())

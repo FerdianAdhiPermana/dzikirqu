@@ -13,6 +13,7 @@ import com.mayburger.dzikirqu.model.BookDataModel
 import com.mayburger.dzikirqu.ui.adapters.BookAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.main.book.prayer.PrayerFragment
+import com.mayburger.dzikirqu.ui.read.ReadActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
@@ -30,6 +31,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), HomeNav
 
     @Inject
     lateinit var booksAdapter: BookAdapter
+
+    companion object {
+        const val TAG = "HomeFragment"
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,6 +57,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), HomeNav
         findNavController(this).navigate(R.id.prayTime, null, null, extras)
     }
 
+    override fun onClickReadQuran() {
+        findNavController(this).navigate(R.id.surahFragment, null, null, null)
+    }
+
+    override fun onClickLastRead() {
+        val lastRead = viewModel.dataManager.quranLastRead
+        ReadActivity.start(requireActivity(),surahId = lastRead?.surah?.id, verseId = lastRead?.verse?.id)
+    }
+
 
     fun buildAdapter() {
         rvBooks.adapter = booksAdapter
@@ -62,7 +76,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), HomeNav
         if (book.type == Constants.BOOK_TYPE_PRAYER) {
             val fragment = PrayerFragment()
             fragment.arguments = PrayerFragment.getBundle(book.id, book.title, book.desc)
-            showBottomSheet(fragment)
+            showBottomSheet(fragment, PrayerFragment.TAG)
         }
     }
 }

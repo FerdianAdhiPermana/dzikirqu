@@ -3,8 +3,6 @@ package com.mayburger.dzikirqu.ui.base
 import android.annotation.TargetApi
 import android.app.ProgressDialog
 import android.content.ContentResolver
-import android.content.Context
-import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
@@ -15,15 +13,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
 import com.facebook.stetho.Stetho
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseApp
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.mayburger.dzikirqu.R
-import com.mayburger.dzikirqu.util.ShakeDetector
 import com.mayburger.dzikirqu.util.ext.ViewUtils
+import com.mayburger.dzikirqu.util.ext.hide
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppCompatActivity(),
@@ -50,7 +49,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
 
     }
 
-    override fun showBottomSheet(fragment: Fragment) {
+    override fun showBottomSheet(fragment: BaseFragment<*, *>, tag: String) {
 
     }
 

@@ -11,7 +11,6 @@ import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -44,8 +43,8 @@ abstract class BaseBSDFragment<T : ViewDataBinding, V : BaseViewModel<*>> :
         }
     }
 
-    override fun showBottomSheet(fragment: Fragment) {
-        baseActivity?.showBottomSheet(fragment)
+    override fun showBottomSheet(fragment: BaseFragment<*, *>, tag: String) {
+        baseActivity?.showBottomSheet(fragment,tag)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

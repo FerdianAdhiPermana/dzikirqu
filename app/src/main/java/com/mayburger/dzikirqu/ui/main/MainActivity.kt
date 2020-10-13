@@ -10,14 +10,13 @@ import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.ActivityMainBinding
 import com.mayburger.dzikirqu.ui.base.BaseActivity
-import com.mayburger.dzikirqu.ui.main.book.prayer.PrayerFragment
+import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.search.SearchActivity
 import com.mayburger.dzikirqu.util.QuranUtils
 import com.mayburger.dzikirqu.util.ext.hide
@@ -50,38 +49,38 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
             viewModel.setUpQuran(this@MainActivity)
             QuranUtils.overridePrayer(this@MainActivity)
         }
-        buildBottomSheet()
+        sheetBehavior = BottomSheetBehavior.from(sheet)
+        buildBottomSheet(sheetBehavior)
+    }
+
+    fun buildBottomSheet(sheetBehavior: BottomSheetBehavior<*>){
+        sheetBehavior.isHideable = true
+        sheetBehavior.hide()
+        sheetBehavior.skipCollapsed = true
+        val alpha = findViewById<View>(R.id.alpha)
+        findViewById<View>(R.id.alpha).setOnClickListener {
+            sheetBehavior.hide()
+        }
+        sheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+            }
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                alpha.visibility = if (slideOffset + 1 > 0) View.VISIBLE else View.GONE
+                alpha.alpha = slideOffset + 1
+            }
+        })
     }
 
     override fun onClickSearch() {
         SearchActivity.newIntent(this)
     }
 
-    override fun showBottomSheet(fragment: Fragment) {
-        super.showBottomSheet(fragment)
+    override fun showBottomSheet(fragment: BaseFragment<*, *>, tag: String) {
+        super.showBottomSheet(fragment,tag)
         sheetBehavior.show()
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.sheet_container, fragment, PrayerFragment.TAG)
+        transaction.replace(R.id.sheet_container, fragment, tag)
         transaction.commit()
-    }
-
-    fun buildBottomSheet() {
-        sheetBehavior = BottomSheetBehavior.from(sheet)
-        sheetBehavior.isHideable = true
-        sheetBehavior.hide()
-        sheetBehavior.skipCollapsed = true
-        alpha.setOnClickListener {
-            sheetBehavior.hide()
-        }
-        sheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                alpha.visibility = if (slideOffset + 1 > 0) View.VISIBLE else View.GONE
-                alpha.alpha = slideOffset + 1
-            }
-        })
     }
 
     fun setUpNavigation() {

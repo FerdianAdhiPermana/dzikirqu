@@ -13,8 +13,8 @@ interface AyahDao {
 
     @Query("SELECT * FROM ayah WHERE surahId LIKE :surahId AND language LIKE :language ORDER BY id ASC")
     suspend fun getAyahBySurahId(surahId:Int,language:String):List<AyahDataModel>
-    @Query("SELECT * FROM ayah WHERE juz LIKE :juz AND language LIKE :language ORDER BY surahId ASC")
-    suspend fun getAyahByJuz(juz:Int,language:String):List<AyahDataModel>
+    @Query("SELECT * FROM ayah WHERE juz LIKE :juz AND language LIKE :language ORDER BY surahId ASC LIMIT :limit")
+    suspend fun getAyahByJuz(juz:Int,language:String,limit:Int):List<AyahDataModel>
     @Query("SELECT * FROM ayah")
     suspend fun getAllAyah():List<AyahDataModel>
     @Query("DELETE FROM ayah")

@@ -24,7 +24,7 @@ interface RoomHelper {
 
     suspend fun insertAyah(items:List<AyahJsonModel>)
     suspend fun getAyahBySurahId(surahId:Int):List<AyahDataModel>
-    suspend fun getAyahByJuz(juz:Int):List<AyahDataModel>
+    suspend fun getAyahByJuz(juz:Int,limit:Int):List<AyahDataModel>
     suspend fun getAyahByTranslation(query:String):List<AyahDataModel>
     suspend fun getAllAyahs():List<AyahDataModel>
     suspend fun deleteAllAyahs()

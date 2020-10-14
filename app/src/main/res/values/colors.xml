@@ -27,10 +27,10 @@
     <color name="green_80">#0F752E</color>
 
     <color name="colorWhite">#fff</color>
-    <color name="colorTextGrey">#727F94</color>
-    <color name="colorTextLightGrey">#98A4B8</color>
+    <color name="colorTextGrey">#757575</color>
+    <color name="colorTextLightGrey">#B3757575</color>
     <color name="colorGreyDecor">#E3ECF1</color>
-    <color name="colorGreyBackground">#F9FAFC</color>
+    <color name="colorGreyBackground">#EDF2F2</color>
     <color name="colorGreyDecorDark">#B7BFC5</color>
     <color name="colorBlack">#000</color>
 </resources>

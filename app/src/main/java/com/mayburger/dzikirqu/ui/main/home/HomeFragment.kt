@@ -14,6 +14,7 @@ import com.mayburger.dzikirqu.ui.adapters.BookAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.main.book.prayer.PrayerFragment
 import com.mayburger.dzikirqu.ui.read.ReadActivity
+import com.mayburger.dzikirqu.ui.surah.SurahActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
@@ -58,7 +59,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), HomeNav
     }
 
     override fun onClickReadQuran() {
-        findNavController(this).navigate(R.id.surahFragment, null, null, null)
+        SurahActivity.startActivity(requireActivity())
     }
 
     override fun onClickLastRead() {

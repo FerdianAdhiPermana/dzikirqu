@@ -19,23 +19,37 @@
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/shp_white_border_selector_8dp"
         android:clickable="true"
         android:clipToPadding="false"
+        android:elevation="1dp"
         android:focusable="true"
         android:foreground="@drawable/selector"
         android:orientation="vertical"
+        android:padding="12dp"
         tools:visibility="visible">
 
         <com.mayburger.dzikirqu.util.textfont.TextFont
-            android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:id="@+id/index"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:alpha="0.8"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1." />
+
+        <com.mayburger.dzikirqu.util.textfont.TextFont
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text="@{viewModel.title}"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@id/index"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Evening Dzikir" />
 
@@ -46,18 +60,13 @@
             android:ellipsize="end"
             android:maxLines="6"
             android:text="@{viewModel.size}"
-            android:visibility="gone"
             android:textColor="@color/colorTextGrey"
+            android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="@id/title"
             app:layout_constraintRight_toRightOf="@id/title"
             app:layout_constraintTop_toBottomOf="@id/title"
             tools:text="24 items" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGreyDecor"
-            app:layout_constraintTop_toBottomOf="@id/description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

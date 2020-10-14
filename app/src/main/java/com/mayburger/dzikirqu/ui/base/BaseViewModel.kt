@@ -43,7 +43,7 @@ abstract class BaseViewModel<N:BaseNavigator>(
         )
     }
 
-    fun onClickBack(){
+    fun back(){
         navigator?.finishActivity()
     }
 

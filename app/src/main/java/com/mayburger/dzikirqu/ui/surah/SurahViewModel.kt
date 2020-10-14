@@ -1,4 +1,4 @@
-package com.mayburger.dzikirqu.ui.main.surah
+package com.mayburger.dzikirqu.ui.surah
 
 import androidx.databinding.ObservableBoolean
 import androidx.hilt.lifecycle.ViewModelInject

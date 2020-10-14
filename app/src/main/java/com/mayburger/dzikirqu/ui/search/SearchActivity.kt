@@ -15,7 +15,7 @@ import com.mayburger.dzikirqu.constants.LocaleConstants
 import com.mayburger.dzikirqu.databinding.ActivitySearchBinding
 import com.mayburger.dzikirqu.model.events.KeywordDelayEvent
 import com.mayburger.dzikirqu.model.events.KeywordEvent
-import com.mayburger.dzikirqu.ui.adapters.MainPagerAdapter
+import com.mayburger.dzikirqu.ui.adapters.TabPagerAdapter
 import com.mayburger.dzikirqu.ui.base.BaseActivity
 import com.mayburger.dzikirqu.ui.search.ayah.SearchAyahFragment
 import com.mayburger.dzikirqu.ui.search.prayer.SearchPrayerFragment
@@ -81,7 +81,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>(), S
             StringProvider.getInstance().getString(LocaleConstants.AYAH),
         )
         pager.adapter =
-            MainPagerAdapter(
+            TabPagerAdapter(
                 this,
                 arrayListOf(SearchPrayerFragment(), SearchSurahFragment(), SearchAyahFragment())
             )

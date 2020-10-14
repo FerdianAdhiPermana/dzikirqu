@@ -114,8 +114,8 @@ class AppDataManager @Inject constructor(
         return mRoomHelper.getAyahBySurahId(surahId)
     }
 
-    override suspend fun getAyahByJuz(juz: Int): List<AyahDataModel> {
-        return mRoomHelper.getAyahByJuz(juz)
+    override suspend fun getAyahByJuz(juz: Int, limit: Int): List<AyahDataModel> {
+        return mRoomHelper.getAyahByJuz(juz,limit)
     }
 
     override suspend fun getAyahByTranslation(query: String): List<AyahDataModel> {

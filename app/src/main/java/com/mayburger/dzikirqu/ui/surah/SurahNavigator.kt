@@ -1,4 +1,4 @@
-package com.mayburger.dzikirqu.ui.main.surah
+package com.mayburger.dzikirqu.ui.surah
 
 import com.mayburger.dzikirqu.ui.base.BaseNavigator
 

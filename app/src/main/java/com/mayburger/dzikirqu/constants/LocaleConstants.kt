@@ -45,6 +45,7 @@ object LocaleConstants {
     //N
     const val NEXT_PRAYER = "Next Prayer"
     const val NEXT_PRAYER_S = "Next Prayer:"
+    const val N_DUA = "%s Du'a"
 
     //S
     const val SUNRISE = "Sunrise"

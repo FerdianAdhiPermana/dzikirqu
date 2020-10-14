@@ -34,10 +34,6 @@ class ReadQuranViewModel @ViewModelInject constructor(
         }
     }
 
-    fun back(){
-        navigator?.finishActivity()
-    }
-
     val surah = _surahId.switchMap{
         liveData(IO){
             try{

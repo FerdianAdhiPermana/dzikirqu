@@ -7,13 +7,15 @@
 
         <variable
             name="viewModel"
-            type="com.mayburger.dzikirqu.ui.main.surah.SurahViewModel" />
+            type="com.mayburger.dzikirqu.ui.surah.fragment.SurahPageViewModel" />
 
         <import type="com.mayburger.dzikirqu.constants.RecyclerConstants" />
 
         <import type="com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper" />
 
         <import type="com.mayburger.dzikirqu.constants.LocaleConstants" />
+
+        <import type="com.mayburger.dzikirqu.constants.SurahTypeConstants" />
 
         <import type="android.view.View" />
 
@@ -28,7 +30,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorWhite">
+            android:background="@color/colorGreyBackground">
 
             <ProgressBar
                 android:layout_width="wrap_content"
@@ -44,14 +46,26 @@
                 recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="@{viewModel.isLoaded() ? View.VISIBLE : View.GONE}"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:nestedScrollingEnabled="false"
+                android:visibility="@{viewModel.isLoaded() &amp;&amp; viewModel.type == SurahTypeConstants.TYPE_SURAH ? View.VISIBLE : View.GONE}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:surahAdapter="@{viewModel.surahs}" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvJuz"
+                recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                android:visibility="@{viewModel.isLoaded() &amp;&amp; viewModel.type == SurahTypeConstants.TYPE_JUZ ? View.VISIBLE : View.GONE}"
+                app:juzAdapter="@{viewModel.juz}"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
     </RelativeLayout>
 

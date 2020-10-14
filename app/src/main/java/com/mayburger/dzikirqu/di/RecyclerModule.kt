@@ -20,37 +20,47 @@ object RecyclerModule {
     }
 
     @Provides
-    internal fun provideBookAdapter():BookAdapter{
+    internal fun provideBookAdapter(): BookAdapter {
         return BookAdapter()
     }
 
     @Provides
-    internal fun providePageAdapter():HorizontalSelectionAdapter<ItemPageNumberViewModel>{
+    internal fun providePageAdapter(): HorizontalSelectionAdapter<ItemPageNumberViewModel> {
         return HorizontalSelectionAdapter()
     }
 
     @Provides
-    internal fun providePrayerListAdapter():PrayerAdapter{
+    internal fun providePrayerListAdapter(): PrayerAdapter {
         return PrayerAdapter()
     }
+
     @Provides
-    internal fun providePrayerPagerAdapter():PrayerPagerAdapter{
+    internal fun providePrayerPagerAdapter(): PrayerPagerAdapter {
         return PrayerPagerAdapter()
     }
+
     @Provides
-    internal fun provideHighlightAdapter():HighlightAdapter{
+    internal fun provideHighlightAdapter(): HighlightAdapter {
         return HighlightAdapter()
     }
+
     @Provides
-    internal fun provideSurahAdapter():SurahAdapter{
+    internal fun provideSurahAdapter(): SurahAdapter {
         return SurahAdapter()
     }
+
     @Provides
-    internal fun provideAyahAdapter():AyahAdapter{
+    internal fun provideJuzAdapter(): JuzAdapter {
+        return JuzAdapter()
+    }
+
+    @Provides
+    internal fun provideAyahAdapter(): AyahAdapter {
         return AyahAdapter()
     }
+
     @Provides
-    internal fun provideSearchAyahAdapter():SearchAyahAdapter{
+    internal fun provideSearchAyahAdapter(): SearchAyahAdapter {
         return SearchAyahAdapter()
     }
 

@@ -24,10 +24,6 @@ class ReadPrayerViewModel @ViewModelInject constructor(
     val showAudio = ObservableField(false)
     val showNavigation = ObservableField(false)
 
-    fun back(){
-        navigator?.finishActivity()
-    }
-
     fun next(){
         navigator?.mutatePosition(1)
     }

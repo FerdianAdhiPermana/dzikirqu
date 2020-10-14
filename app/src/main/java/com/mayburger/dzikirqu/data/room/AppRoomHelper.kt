@@ -126,8 +126,8 @@ class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelpe
         return db.getAyahDao().getAyahBySurahId(surahId, hawk.language)
     }
 
-    override suspend fun getAyahByJuz(juz: Int): List<AyahDataModel> {
-        return db.getAyahDao().getAyahByJuz(juz, hawk.language)
+    override suspend fun getAyahByJuz(juz: Int, limit: Int): List<AyahDataModel> {
+        return db.getAyahDao().getAyahByJuz(juz, hawk.language,limit)
     }
 
     override suspend fun getAyahByTranslation(query: String): List<AyahDataModel> {

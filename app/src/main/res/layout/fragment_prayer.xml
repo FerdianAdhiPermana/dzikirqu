@@ -73,6 +73,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPrayer"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 prayerAdapter="@{viewModel.prayer}"
                 recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
                 android:layout_width="match_parent"

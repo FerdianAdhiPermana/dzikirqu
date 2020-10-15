@@ -98,7 +98,7 @@ object AdapterBinding {
     @JvmStatic
     fun addAyahs(
         recyclerView: RecyclerView,
-        items: LiveData<List<ItemAyahViewModel>>
+        items: LiveData<List<Any>>
     ) {
         val adapter = recyclerView.adapter as AyahAdapter?
         if (adapter != null) {
@@ -108,6 +108,7 @@ object AdapterBinding {
             }
         }
     }
+
     @BindingAdapter("searchAyahAdapter")
     @JvmStatic
     fun addSearchAyahs(

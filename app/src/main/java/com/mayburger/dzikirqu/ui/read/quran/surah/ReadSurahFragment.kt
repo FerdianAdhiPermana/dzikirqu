@@ -1,30 +1,30 @@
-package com.mayburger.dzikirqu.ui.read.quran
+package com.mayburger.dzikirqu.ui.read.quran.surah
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
-import com.mayburger.dzikirqu.databinding.FragmentReadQuranBinding
+import com.mayburger.dzikirqu.databinding.FragmentReadSurahBinding
 import com.mayburger.dzikirqu.model.AyahDataModel
 import com.mayburger.dzikirqu.ui.adapters.AyahAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.read.ReadActivity
 import com.mayburger.dzikirqu.ui.read.quran.options.ReadQuranBSDFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_read_quran.*
+import kotlinx.android.synthetic.main.fragment_read_surah.*
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class ReadQuranFragment : BaseFragment<FragmentReadQuranBinding, ReadQuranViewModel>(),
-    ReadQuranNavigator, AyahAdapter.Callback {
+class ReadSurahFragment : BaseFragment<FragmentReadSurahBinding, ReadSurahViewModel>(),
+    ReadSurahNavigator, AyahAdapter.Callback {
 
     override val bindingVariable: Int
         get() = BR.viewModel
     override val layoutId: Int
-        get() = R.layout.fragment_read_quran
-    override val viewModel: ReadQuranViewModel by viewModels()
+        get() = R.layout.fragment_read_surah
+    override val viewModel: ReadSurahViewModel by viewModels()
 
     @Inject
     lateinit var ayahAdapter: AyahAdapter
@@ -34,9 +34,8 @@ class ReadQuranFragment : BaseFragment<FragmentReadQuranBinding, ReadQuranViewMo
         viewDataBinding?.lifecycleOwner = viewLifecycleOwner
         viewModel.navigator = this
         viewModel._surahId.value =
-            requireActivity().intent.getIntExtra(ReadActivity.EXTRA_SURAH_ID, 1)
-        ayahAdapter.isHasBismillah(viewModel._surahId.value != 1)
-        rvQuran.adapter = ayahAdapter
+            requireActivity().intent.getIntExtra(ReadActivity.EXTRA_SURAH_ID, -1)
+        rvAyah.adapter = ayahAdapter
         ayahAdapter.setListener(this)
     }
 
@@ -45,12 +44,12 @@ class ReadQuranFragment : BaseFragment<FragmentReadQuranBinding, ReadQuranViewMo
         if (position != 0) {
             position -= 1
         }
-        rvQuran.scrollToPosition(position)
+        rvAyah.scrollToPosition(position)
     }
 
-    override fun onSelectedItem(surah: AyahDataModel) {
+    override fun onSelectedItem(ayah: AyahDataModel) {
         viewModel.surah.value?.let {
-            showBottomSheet(ReadQuranBSDFragment.newInstance(it, surah), ReadQuranBSDFragment.TAG)
+            showBottomSheet(ReadQuranBSDFragment.newInstance(it, ayah), ReadQuranBSDFragment.TAG)
         }
     }
 }

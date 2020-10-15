@@ -60,6 +60,5 @@ class PrayerFragment : BaseFragment<FragmentPrayerBinding, PrayerViewModel>(),
 
     override fun onSelectedItem(prayer: PrayerDataModel) {
         ReadActivity.start(requireActivity(),prayer=prayer,bookTitle = viewModel.bookTitle.value)
-//        ReadPrayerFragment.getBundle(arguments?.getInt(ARG_BOOK_ID)?:0,prayer.id,prayer.title?:"")
     }
 }

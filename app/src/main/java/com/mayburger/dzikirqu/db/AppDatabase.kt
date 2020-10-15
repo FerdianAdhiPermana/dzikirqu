@@ -9,7 +9,7 @@ import com.mayburger.dzikirqu.model.*
 
 @Database(
     entities = [BookDataModel::class, PrayerDataModel::class, HighlightDataModel::class, SurahDataModel::class, AyahDataModel::class],
-    version = 2
+    version = 3
 )
 @TypeConverters(
     ListPrayerTypeConverter::class,

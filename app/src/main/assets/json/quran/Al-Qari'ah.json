@@ -1,1 +1,179 @@
-[{"chapter_id":101,"juz_number":30,"text_madani":"الْقَارِعَةُ","translations":[{"language_name":"english","text":"The Striking Calamity -"},{"language_name":"indonesian","text":"Hari Kiamat,"}],"verse_number":1},{"chapter_id":101,"juz_number":30,"text_madani":"مَا الْقَارِعَةُ","translations":[{"language_name":"english","text":"What is the Striking Calamity?"},{"language_name":"indonesian","text":"Apakah hari Kiamat itu?"}],"verse_number":2},{"chapter_id":101,"juz_number":30,"text_madani":"وَمَا أَدْرَاكَ مَا الْقَارِعَةُ","translations":[{"language_name":"english","text":"And what can make you know what is the Striking Calamity?"},{"language_name":"indonesian","text":"Dan tahukah kamu apakah hari Kiamat itu?"}],"verse_number":3},{"chapter_id":101,"juz_number":30,"text_madani":"يَوْمَ يَكُونُ النَّاسُ كَالْفَرَاشِ الْمَبْثُوثِ","translations":[{"language_name":"indonesian","text":"Pada hari itu manusia seperti laron yang beterbangan,"},{"language_name":"english","text":"It is the Day when people will be like moths, dispersed,"}],"verse_number":4},{"chapter_id":101,"juz_number":30,"text_madani":"وَتَكُونُ الْجِبَالُ كَالْعِهْنِ الْمَنفُوشِ","translations":[{"language_name":"indonesian","text":"dan gunung-gunung seperti bulu yang dihambur-hamburkan."},{"language_name":"english","text":"And the mountains will be like wool, fluffed up."}],"verse_number":5},{"chapter_id":101,"juz_number":30,"text_madani":"فَأَمَّا مَن ثَقُلَتْ مَوَازِينُهُ","translations":[{"language_name":"english","text":"Then as for one whose scales are heavy [with good deeds],"},{"language_name":"indonesian","text":"Maka adapun orang yang berat timbangan (kebaikan)nya,"}],"verse_number":6},{"chapter_id":101,"juz_number":30,"text_madani":"فَهُوَ فِي عِيشَةٍ رَّاضِيَةٍ","translations":[{"language_name":"indonesian","text":"maka dia berada dalam kehidupan yang memuaskan (senang)."},{"language_name":"english","text":"He will be in a pleasant life."}],"verse_number":7},{"chapter_id":101,"juz_number":30,"text_madani":"وَأَمَّا مَنْ خَفَّتْ مَوَازِينُهُ","translations":[{"language_name":"english","text":"But as for one whose scales are light,"},{"language_name":"indonesian","text":"Dan adapun orang yang ringan timbangan (kebaikan)nya,"}],"verse_number":8},{"chapter_id":101,"juz_number":30,"text_madani":"فَأُمُّهُ هَاوِيَةٌ","translations":[{"language_name":"english","text":"His refuge will be an abyss."},{"language_name":"indonesian","text":"maka tempat kembalinya adalah neraka Hawiyah."}],"verse_number":9},{"chapter_id":101,"juz_number":30,"text_madani":"وَمَا أَدْرَاكَ مَا هِيَهْ","translations":[{"language_name":"english","text":"And what can make you know what that is?"},{"language_name":"indonesian","text":"Dan tahukah kamu apakah neraka Hawiyah itu?"}],"verse_number":10},{"chapter_id":101,"juz_number":30,"text_madani":"نَارٌ حَامِيَةٌ","translations":[{"language_name":"indonesian","text":"(Yaitu) api yang sangat panas."},{"language_name":"english","text":"It is a Fire, intensely hot."}],"verse_number":11}]
+[
+  {
+    "chapter_id": 101,
+    "use_bismillah": true,
+    "juz_number": 30,
+    "text_madani": "الْقَارِعَةُ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "The Striking Calamity -"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Hari Kiamat,"
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "مَا الْقَارِعَةُ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "What is the Striking Calamity?"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Apakah hari Kiamat itu?"
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "وَمَا أَدْرَاكَ مَا الْقَارِعَةُ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "And what can make you know what is the Striking Calamity?"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Dan tahukah kamu apakah hari Kiamat itu?"
+      }
+    ],
+    "verse_number": 3
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "يَوْمَ يَكُونُ النَّاسُ كَالْفَرَاشِ الْمَبْثُوثِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Pada hari itu manusia seperti laron yang beterbangan,"
+      },
+      {
+        "language_name": "english",
+        "text": "It is the Day when people will be like moths, dispersed,"
+      }
+    ],
+    "verse_number": 4
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "وَتَكُونُ الْجِبَالُ كَالْعِهْنِ الْمَنفُوشِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "dan gunung-gunung seperti bulu yang dihambur-hamburkan."
+      },
+      {
+        "language_name": "english",
+        "text": "And the mountains will be like wool, fluffed up."
+      }
+    ],
+    "verse_number": 5
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "فَأَمَّا مَن ثَقُلَتْ مَوَازِينُهُ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Then as for one whose scales are heavy [with good deeds],"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Maka adapun orang yang berat timbangan (kebaikan)nya,"
+      }
+    ],
+    "verse_number": 6
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "فَهُوَ فِي عِيشَةٍ رَّاضِيَةٍ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "maka dia berada dalam kehidupan yang memuaskan (senang)."
+      },
+      {
+        "language_name": "english",
+        "text": "He will be in a pleasant life."
+      }
+    ],
+    "verse_number": 7
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "وَأَمَّا مَنْ خَفَّتْ مَوَازِينُهُ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "But as for one whose scales are light,"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Dan adapun orang yang ringan timbangan (kebaikan)nya,"
+      }
+    ],
+    "verse_number": 8
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "فَأُمُّهُ هَاوِيَةٌ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "His refuge will be an abyss."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "maka tempat kembalinya adalah neraka Hawiyah."
+      }
+    ],
+    "verse_number": 9
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "وَمَا أَدْرَاكَ مَا هِيَهْ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "And what can make you know what that is?"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Dan tahukah kamu apakah neraka Hawiyah itu?"
+      }
+    ],
+    "verse_number": 10
+  },
+  {
+    "chapter_id": 101,
+    "juz_number": 30,
+    "text_madani": "نَارٌ حَامِيَةٌ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "(Yaitu) api yang sangat panas."
+      },
+      {
+        "language_name": "english",
+        "text": "It is a Fire, intensely hot."
+      }
+    ],
+    "verse_number": 11
+  }
+]

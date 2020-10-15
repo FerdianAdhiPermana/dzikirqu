@@ -10,4 +10,5 @@ class ItemPrayerViewModel (val data: PrayerDataModel) {
     var position = ObservableField(0)
     val size = ObservableField(String.format(StringProvider.getInstance().getString(LocaleConstants.N_DUA),data.data?.size.toString()))
     val title = ObservableField("")
+    val index = ObservableField("")
 }

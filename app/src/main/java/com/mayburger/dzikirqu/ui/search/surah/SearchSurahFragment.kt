@@ -39,7 +39,7 @@ class SearchSurahFragment : BaseFragment<FragmentSearchSurahBinding, SearchSurah
         surahAdapter.setListener(this)
     }
 
-    override fun onSelectedItem(surah: SurahDataModel) {
+    override fun onSelectedSurah(surah: SurahDataModel) {
         ReadActivity.start(requireActivity(),surahId = surah.id)
     }
 

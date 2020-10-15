@@ -1,1 +1,83 @@
-[{"chapter_id":97,"juz_number":30,"text_madani":"إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ","translations":[{"language_name":"english","text":"Indeed, We sent the Qur\u0027an down during the Night of Decree."},{"language_name":"indonesian","text":"Sesungguhnya Kami telah menurunkannya (Al-Qur\u0027an) pada malam qadar."}],"verse_number":1},{"chapter_id":97,"juz_number":30,"text_madani":"وَمَا أَدْرَاكَ مَا لَيْلَةُ الْقَدْرِ","translations":[{"language_name":"indonesian","text":"Dan tahukah kamu apakah malam kemuliaan itu?"},{"language_name":"english","text":"And what can make you know what is the Night of Decree?"}],"verse_number":2},{"chapter_id":97,"juz_number":30,"text_madani":"لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ","translations":[{"language_name":"english","text":"The Night of Decree is better than a thousand months."},{"language_name":"indonesian","text":"Malam kemuliaan itu lebih baik daripada seribu bulan."}],"verse_number":3},{"chapter_id":97,"juz_number":30,"text_madani":"تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ","translations":[{"language_name":"indonesian","text":"Pada malam itu turun para malaikat dan Rµh (Jibril) dengan izin Tuhannya untuk mengatur semua urusan."},{"language_name":"english","text":"The angels and the Spirit descend therein by permission of their Lord for every matter."}],"verse_number":4},{"chapter_id":97,"juz_number":30,"text_madani":"سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ","translations":[{"language_name":"english","text":"Peace it is until the emergence of dawn."},{"language_name":"indonesian","text":"Sejahteralah (malam itu) sampai terbit fajar."}],"verse_number":5}]
+[
+  {
+    "chapter_id": 97,
+    "use_bismillah": true,
+    "juz_number": 30,
+    "text_madani": "إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Indeed, We sent the Qur\u0027an down during the Night of Decree."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Sesungguhnya Kami telah menurunkannya (Al-Qur\u0027an) pada malam qadar."
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 97,
+    "juz_number": 30,
+    "text_madani": "وَمَا أَدْرَاكَ مَا لَيْلَةُ الْقَدْرِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Dan tahukah kamu apakah malam kemuliaan itu?"
+      },
+      {
+        "language_name": "english",
+        "text": "And what can make you know what is the Night of Decree?"
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 97,
+    "juz_number": 30,
+    "text_madani": "لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "The Night of Decree is better than a thousand months."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Malam kemuliaan itu lebih baik daripada seribu bulan."
+      }
+    ],
+    "verse_number": 3
+  },
+  {
+    "chapter_id": 97,
+    "juz_number": 30,
+    "text_madani": "تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Pada malam itu turun para malaikat dan Rµh (Jibril) dengan izin Tuhannya untuk mengatur semua urusan."
+      },
+      {
+        "language_name": "english",
+        "text": "The angels and the Spirit descend therein by permission of their Lord for every matter."
+      }
+    ],
+    "verse_number": 4
+  },
+  {
+    "chapter_id": 97,
+    "juz_number": 30,
+    "text_madani": "سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Peace it is until the emergence of dawn."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Sejahteralah (malam itu) sampai terbit fajar."
+      }
+    ],
+    "verse_number": 5
+  }
+]

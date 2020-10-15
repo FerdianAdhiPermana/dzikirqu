@@ -35,19 +35,22 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadViewModel>(),ReadNavi
         const val EXTRA_PRAYER = "extra_prayer"
         const val EXTRA_BOOK_TITLE = "extra_book_title"
         const val EXTRA_SURAH_ID = "extra_surah_id"
+        const val EXTRA_JUZ_ID = "extra_juz_id"
         const val EXTRA_VERSE_ID = "extra_verse_id"
         fun start(
             context: Context,
             prayer: PrayerDataModel? = null,
             bookTitle: String? = null,
             surahId: Int? = null,
-            verseId:Int?= null
+            verseId:Int?= null,
+            juzId:Int?=null
         ) {
             val intent = Intent(context, ReadActivity::class.java)
             intent.putExtra(EXTRA_PRAYER, prayer)
             intent.putExtra(EXTRA_BOOK_TITLE, bookTitle)
             intent.putExtra(EXTRA_SURAH_ID, surahId)
             intent.putExtra(EXTRA_VERSE_ID,verseId)
+            intent.putExtra(EXTRA_JUZ_ID,juzId)
             context.startActivity(intent)
         }
     }
@@ -59,10 +62,17 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadViewModel>(),ReadNavi
         viewModel.navigator = this
         val navigator: Int
         val surahId = intent?.getIntExtra(EXTRA_SURAH_ID, -1)
-        navigator = if (surahId != -1) {
-            R.navigation.nav_read_quran
-        } else {
-            R.navigation.nav_read_prayer
+        val juzId = intent?.getIntExtra(EXTRA_JUZ_ID, -1)
+        navigator = when {
+            surahId != -1 -> {
+                R.navigation.nav_read_surah
+            }
+            juzId != -1 -> {
+                R.navigation.nav_read_juz
+            }
+            else -> {
+                R.navigation.nav_read_prayer
+            }
         }
         val host = NavHostFragment.create(navigator)
         supportFragmentManager.beginTransaction()
@@ -105,8 +115,6 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadViewModel>(),ReadNavi
 
     override fun showBottomSheet(fragment: BaseFragment<*, *>, tag: String) {
         super.showBottomSheet(fragment, tag)
-        sheetBehavior.collapse()
-        sheetBehavior.hide()
         sheetBehavior.collapse()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.sheet_container, fragment, tag)

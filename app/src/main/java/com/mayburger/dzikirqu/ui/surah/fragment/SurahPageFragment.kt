@@ -20,7 +20,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class SurahPageFragment : BaseFragment<FragmentSurahPageBinding, SurahPageViewModel>(),
     SurahPageNavigator,
-    SurahAdapter.Callback {
+    SurahAdapter.Callback,JuzAdapter.Callback{
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -65,13 +65,17 @@ class SurahPageFragment : BaseFragment<FragmentSurahPageBinding, SurahPageViewMo
                 rvJuz.visibility = View.VISIBLE
                 rvSurah.visibility = View.GONE
                 rvJuz.adapter = juzAdapter
+                juzAdapter.setListener(this)
                 viewModel._refreshJuz.value = true
             }
         }
     }
 
-
-    override fun onSelectedItem(surah: SurahDataModel) {
+    override fun onSelectedSurah(surah: SurahDataModel) {
         ReadActivity.start(requireActivity(), surahId = surah.id)
+    }
+
+    override fun onSelectedJuz(juz: Int) {
+        ReadActivity.start(requireActivity(),juzId = juz)
     }
 }

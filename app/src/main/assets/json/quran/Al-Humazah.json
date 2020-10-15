@@ -1,1 +1,147 @@
-[{"chapter_id":104,"juz_number":30,"text_madani":"وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ","translations":[{"language_name":"english","text":"Woe to every scorner and mocker"},{"language_name":"indonesian","text":"Celakalah bagi setiap pengumpat dan pencela,"}],"verse_number":1},{"chapter_id":104,"juz_number":30,"text_madani":"الَّذِي جَمَعَ مَالًا وَعَدَّدَهُ","translations":[{"language_name":"indonesian","text":"yang mengumpulkan harta dan menghitung-hitungnya"},{"language_name":"english","text":"Who collects wealth and [continuously] counts it."}],"verse_number":2},{"chapter_id":104,"juz_number":30,"text_madani":"يَحْسَبُ أَنَّ مَالَهُ أَخْلَدَهُ","translations":[{"language_name":"indonesian","text":"dia (manusia) mengira bahwa hartanya itu dapat mengekalkannya."},{"language_name":"english","text":"He thinks that his wealth will make him immortal."}],"verse_number":3},{"chapter_id":104,"juz_number":30,"text_madani":"كَلَّا ۖ لَيُنبَذَنَّ فِي الْحُطَمَةِ","translations":[{"language_name":"indonesian","text":"Sekali-kali tidak! Pasti dia akan dilemparkan ke dalam (neraka) Hu¯amah."},{"language_name":"english","text":"No! He will surely be thrown into the Crusher."}],"verse_number":4},{"chapter_id":104,"juz_number":30,"text_madani":"وَمَا أَدْرَاكَ مَا الْحُطَمَةُ","translations":[{"language_name":"indonesian","text":"Dan tahukah kamu apakah (neraka) Hu¯amah itu?"},{"language_name":"english","text":"And what can make you know what is the Crusher?"}],"verse_number":5},{"chapter_id":104,"juz_number":30,"text_madani":"نَارُ اللَّهِ الْمُوقَدَةُ","translations":[{"language_name":"indonesian","text":"(Yaitu) api (azab) Allah yang dinyalakan,"},{"language_name":"english","text":"It is the fire of Allah, [eternally] fueled,"}],"verse_number":6},{"chapter_id":104,"juz_number":30,"text_madani":"الَّتِي تَطَّلِعُ عَلَى الْأَفْئِدَةِ","translations":[{"language_name":"english","text":"Which mounts directed at the hearts."},{"language_name":"indonesian","text":"yang (membakar) sampai ke hati."}],"verse_number":7},{"chapter_id":104,"juz_number":30,"text_madani":"إِنَّهَا عَلَيْهِم مُّؤْصَدَةٌ","translations":[{"language_name":"english","text":"Indeed, Hellfire will be closed down upon them"},{"language_name":"indonesian","text":"Sungguh, api itu ditutup rapat atas (diri) mereka,"}],"verse_number":8},{"chapter_id":104,"juz_number":30,"text_madani":"فِي عَمَدٍ مُّمَدَّدَةٍ","translations":[{"language_name":"indonesian","text":"(sedang mereka itu) diikat pada tiang-tiang yang panjang."},{"language_name":"english","text":"In extended columns."}],"verse_number":9}]
+[
+  {
+    "chapter_id": 104,
+    "juz_number": 30,
+    "use_bismillah": true,
+    "text_madani": "وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Woe to every scorner and mocker"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Celakalah bagi setiap pengumpat dan pencela,"
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 104,
+    "juz_number": 30,
+    "text_madani": "الَّذِي جَمَعَ مَالًا وَعَدَّدَهُ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "yang mengumpulkan harta dan menghitung-hitungnya"
+      },
+      {
+        "language_name": "english",
+        "text": "Who collects wealth and [continuously] counts it."
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 104,
+    "juz_number": 30,
+    "text_madani": "يَحْسَبُ أَنَّ مَالَهُ أَخْلَدَهُ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "dia (manusia) mengira bahwa hartanya itu dapat mengekalkannya."
+      },
+      {
+        "language_name": "english",
+        "text": "He thinks that his wealth will make him immortal."
+      }
+    ],
+    "verse_number": 3
+  },
+  {
+    "chapter_id": 104,
+    "juz_number": 30,
+    "text_madani": "كَلَّا ۖ لَيُنبَذَنَّ فِي الْحُطَمَةِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Sekali-kali tidak! Pasti dia akan dilemparkan ke dalam (neraka) Hu¯amah."
+      },
+      {
+        "language_name": "english",
+        "text": "No! He will surely be thrown into the Crusher."
+      }
+    ],
+    "verse_number": 4
+  },
+  {
+    "chapter_id": 104,
+    "juz_number": 30,
+    "text_madani": "وَمَا أَدْرَاكَ مَا الْحُطَمَةُ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Dan tahukah kamu apakah (neraka) Hu¯amah itu?"
+      },
+      {
+        "language_name": "english",
+        "text": "And what can make you know what is the Crusher?"
+      }
+    ],
+    "verse_number": 5
+  },
+  {
+    "chapter_id": 104,
+    "juz_number": 30,
+    "text_madani": "نَارُ اللَّهِ الْمُوقَدَةُ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "(Yaitu) api (azab) Allah yang dinyalakan,"
+      },
+      {
+        "language_name": "english",
+        "text": "It is the fire of Allah, [eternally] fueled,"
+      }
+    ],
+    "verse_number": 6
+  },
+  {
+    "chapter_id": 104,
+    "juz_number": 30,
+    "text_madani": "الَّتِي تَطَّلِعُ عَلَى الْأَفْئِدَةِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Which mounts directed at the hearts."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "yang (membakar) sampai ke hati."
+      }
+    ],
+    "verse_number": 7
+  },
+  {
+    "chapter_id": 104,
+    "juz_number": 30,
+    "text_madani": "إِنَّهَا عَلَيْهِم مُّؤْصَدَةٌ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Indeed, Hellfire will be closed down upon them"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Sungguh, api itu ditutup rapat atas (diri) mereka,"
+      }
+    ],
+    "verse_number": 8
+  },
+  {
+    "chapter_id": 104,
+    "juz_number": 30,
+    "text_madani": "فِي عَمَدٍ مُّمَدَّدَةٍ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "(sedang mereka itu) diikat pada tiang-tiang yang panjang."
+      },
+      {
+        "language_name": "english",
+        "text": "In extended columns."
+      }
+    ],
+    "verse_number": 9
+  }
+]

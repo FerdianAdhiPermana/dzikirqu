@@ -1,1 +1,99 @@
-[{"chapter_id":114,"juz_number":30,"text_madani":"قُلْ أَعُوذُ بِرَبِّ النَّاسِ","translations":[{"language_name":"english","text":"Say, \"I seek refuge in the Lord of mankind,"},{"language_name":"indonesian","text":"Katakanlah, “Aku berlindung kepada Tuhannya manusia,"}],"verse_number":1},{"chapter_id":114,"juz_number":30,"text_madani":"مَلِكِ النَّاسِ","translations":[{"language_name":"english","text":"The Sovereign of mankind."},{"language_name":"indonesian","text":"Raja manusia,"}],"verse_number":2},{"chapter_id":114,"juz_number":30,"text_madani":"إِلَٰهِ النَّاسِ","translations":[{"language_name":"english","text":"The God of mankind,"},{"language_name":"indonesian","text":"sembahan manusia,"}],"verse_number":3},{"chapter_id":114,"juz_number":30,"text_madani":"مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ","translations":[{"language_name":"english","text":"From the evil of the retreating whisperer -"},{"language_name":"indonesian","text":"dari kejahatan (bisikan) setan yang bersembunyi,"}],"verse_number":4},{"chapter_id":114,"juz_number":30,"text_madani":"الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ","translations":[{"language_name":"english","text":"Who whispers [evil] into the breasts of mankind -"},{"language_name":"indonesian","text":"yang membisikkan (kejahatan) ke dalam dada manusia,"}],"verse_number":5},{"chapter_id":114,"juz_number":30,"text_madani":"مِنَ الْجِنَّةِ وَالنَّاسِ","translations":[{"language_name":"english","text":"From among the jinn and mankind.\""},{"language_name":"indonesian","text":"dari (golongan) jin dan manusia.”"}],"verse_number":6}]
+[
+  {
+    "chapter_id": 114,
+    "use_bismillah": true,
+    "juz_number": 30,
+    "text_madani": "قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Say, \"I seek refuge in the Lord of mankind,"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Katakanlah, “Aku berlindung kepada Tuhannya manusia,"
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 114,
+    "juz_number": 30,
+    "text_madani": "مَلِكِ النَّاسِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "The Sovereign of mankind."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Raja manusia,"
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 114,
+    "juz_number": 30,
+    "text_madani": "إِلَٰهِ النَّاسِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "The God of mankind,"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "sembahan manusia,"
+      }
+    ],
+    "verse_number": 3
+  },
+  {
+    "chapter_id": 114,
+    "juz_number": 30,
+    "text_madani": "مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "From the evil of the retreating whisperer -"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "dari kejahatan (bisikan) setan yang bersembunyi,"
+      }
+    ],
+    "verse_number": 4
+  },
+  {
+    "chapter_id": 114,
+    "juz_number": 30,
+    "text_madani": "الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Who whispers [evil] into the breasts of mankind -"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "yang membisikkan (kejahatan) ke dalam dada manusia,"
+      }
+    ],
+    "verse_number": 5
+  },
+  {
+    "chapter_id": 114,
+    "juz_number": 30,
+    "text_madani": "مِنَ الْجِنَّةِ وَالنَّاسِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "From among the jinn and mankind.\""
+      },
+      {
+        "language_name": "indonesian",
+        "text": "dari (golongan) jin dan manusia.”"
+      }
+    ],
+    "verse_number": 6
+  }
+]

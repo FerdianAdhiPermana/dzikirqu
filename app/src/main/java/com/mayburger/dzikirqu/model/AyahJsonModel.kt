@@ -9,6 +9,7 @@ class AyahJsonModel(
     var juz_number: Int,
     var chapter_id: Int,
     var verse_number: Int,
+    var use_bismillah:Boolean?=false,
     var translations: ArrayList<Translations>
 ) {
     class Translations(

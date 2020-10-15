@@ -1,1 +1,131 @@
-[{"chapter_id":95,"juz_number":30,"text_madani":"وَالتِّينِ وَالزَّيْتُونِ","translations":[{"language_name":"indonesian","text":"Demi (buah) Tin dan (buah) Zaitun,"},{"language_name":"english","text":"By the fig and the olive"}],"verse_number":1},{"chapter_id":95,"juz_number":30,"text_madani":"وَطُورِ سِينِينَ","translations":[{"language_name":"english","text":"And [by] Mount Sinai"},{"language_name":"indonesian","text":"demi gunung Sinai,"}],"verse_number":2},{"chapter_id":95,"juz_number":30,"text_madani":"وَهَٰذَا الْبَلَدِ الْأَمِينِ","translations":[{"language_name":"english","text":"And [by] this secure city [Makkah],"},{"language_name":"indonesian","text":"dan demi negeri (Mekah) yang aman ini."}],"verse_number":3},{"chapter_id":95,"juz_number":30,"text_madani":"لَقَدْ خَلَقْنَا الْإِنسَانَ فِي أَحْسَنِ تَقْوِيمٍ","translations":[{"language_name":"english","text":"We have certainly created man in the best of stature;"},{"language_name":"indonesian","text":"Sungguh, Kami telah menciptakan manusia dalam bentuk yang sebaik-baiknya,"}],"verse_number":4},{"chapter_id":95,"juz_number":30,"text_madani":"ثُمَّ رَدَدْنَاهُ أَسْفَلَ سَافِلِينَ","translations":[{"language_name":"indonesian","text":"kemudian Kami kembalikan dia ke tempat yang serendah-rendahnya,"},{"language_name":"english","text":"Then We return him to the lowest of the low,"}],"verse_number":5},{"chapter_id":95,"juz_number":30,"text_madani":"إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ فَلَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ","translations":[{"language_name":"english","text":"Except for those who believe and do righteous deeds, for they will have a reward uninterrupted."},{"language_name":"indonesian","text":"kecuali orang-orang yang beriman dan mengerjakan kebajikan; maka mereka akan mendapat pahala yang tidak ada putus-putusnya."}],"verse_number":6},{"chapter_id":95,"juz_number":30,"text_madani":"فَمَا يُكَذِّبُكَ بَعْدُ بِالدِّينِ","translations":[{"language_name":"indonesian","text":"Maka apa yang menyebabkan (mereka) mendustakanmu (tentang) hari pembalasan setelah (adanya keterangan-keterangan) itu?"},{"language_name":"english","text":"So what yet causes you to deny the Recompense?"}],"verse_number":7},{"chapter_id":95,"juz_number":30,"text_madani":"أَلَيْسَ اللَّهُ بِأَحْكَمِ الْحَاكِمِينَ","translations":[{"language_name":"indonesian","text":"Bukankah Allah hakim yang paling adil?"},{"language_name":"english","text":"Is not Allah the most just of judges?"}],"verse_number":8}]
+[
+  {
+    "chapter_id": 95,
+    "juz_number": 30,
+    "use_bismillah": true,
+    "text_madani": "وَالتِّينِ وَالزَّيْتُونِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Demi (buah) Tin dan (buah) Zaitun,"
+      },
+      {
+        "language_name": "english",
+        "text": "By the fig and the olive"
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 95,
+    "juz_number": 30,
+    "text_madani": "وَطُورِ سِينِينَ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "And [by] Mount Sinai"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "demi gunung Sinai,"
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 95,
+    "juz_number": 30,
+    "text_madani": "وَهَٰذَا الْبَلَدِ الْأَمِينِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "And [by] this secure city [Makkah],"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "dan demi negeri (Mekah) yang aman ini."
+      }
+    ],
+    "verse_number": 3
+  },
+  {
+    "chapter_id": 95,
+    "juz_number": 30,
+    "text_madani": "لَقَدْ خَلَقْنَا الْإِنسَانَ فِي أَحْسَنِ تَقْوِيمٍ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "We have certainly created man in the best of stature;"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Sungguh, Kami telah menciptakan manusia dalam bentuk yang sebaik-baiknya,"
+      }
+    ],
+    "verse_number": 4
+  },
+  {
+    "chapter_id": 95,
+    "juz_number": 30,
+    "text_madani": "ثُمَّ رَدَدْنَاهُ أَسْفَلَ سَافِلِينَ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "kemudian Kami kembalikan dia ke tempat yang serendah-rendahnya,"
+      },
+      {
+        "language_name": "english",
+        "text": "Then We return him to the lowest of the low,"
+      }
+    ],
+    "verse_number": 5
+  },
+  {
+    "chapter_id": 95,
+    "juz_number": 30,
+    "text_madani": "إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ فَلَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Except for those who believe and do righteous deeds, for they will have a reward uninterrupted."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "kecuali orang-orang yang beriman dan mengerjakan kebajikan; maka mereka akan mendapat pahala yang tidak ada putus-putusnya."
+      }
+    ],
+    "verse_number": 6
+  },
+  {
+    "chapter_id": 95,
+    "juz_number": 30,
+    "text_madani": "فَمَا يُكَذِّبُكَ بَعْدُ بِالدِّينِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Maka apa yang menyebabkan (mereka) mendustakanmu (tentang) hari pembalasan setelah (adanya keterangan-keterangan) itu?"
+      },
+      {
+        "language_name": "english",
+        "text": "So what yet causes you to deny the Recompense?"
+      }
+    ],
+    "verse_number": 7
+  },
+  {
+    "chapter_id": 95,
+    "juz_number": 30,
+    "text_madani": "أَلَيْسَ اللَّهُ بِأَحْكَمِ الْحَاكِمِينَ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Bukankah Allah hakim yang paling adil?"
+      },
+      {
+        "language_name": "english",
+        "text": "Is not Allah the most just of judges?"
+      }
+    ],
+    "verse_number": 8
+  }
+]

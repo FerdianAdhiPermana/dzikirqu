@@ -35,6 +35,41 @@ object QuranUtils {
         }.toCollection(arrayListOf())
     }
 
+    fun getJuzNames():ArrayList<String>{
+        val names = ArrayList<String>()
+        names.add("Alīf-Lām-Mīm")
+        names.add("Sayaqūlu")
+        names.add("Tilka ’r-Rusulu")
+        names.add("Kullu-TTa`āmi")
+        names.add("Wa’l-muḥṣanātu")
+        names.add("Lā yuḥibbu-’llāhu")
+        names.add("Wa ’Idha Samiʿū")
+        names.add("Wa-law annanā")
+        names.add("Qāla ’l-mala’u")
+        names.add("Wa-’aʿlamū")
+        names.add("Yaʿtazerūn")
+        names.add("Wa mā min dābbatin")
+        names.add("Wa mā ubarri’u")
+        names.add("Rubamā")
+        names.add("Subḥāna ’lladhī")
+        names.add("Qāla ’alam")
+        names.add("Iqtaraba li’n-nāsi")
+        names.add("Qad ’aflaḥa")
+        names.add("Wa-qāla ’lladhīna")
+        names.add("A’man Khalaqa")
+        names.add("Wa la tujādilū")
+        names.add("Wa-man yaqnut")
+        names.add("Wa-Mali")
+        names.add("Fa-man ’aẓlamu")
+        names.add("Ilayhi yuraddu")
+        names.add("Ḥā’ Mīm")
+        names.add("Qāla fa-mā khaṭbukum")
+        names.add("Qad samiʿa ’llāhu")
+        names.add("Tabāraka ’lladhī")
+        names.add("‘Amma")
+        return names
+    }
+
     suspend fun overridePrayer(context:Context){
         val books = Firebase.firestore.collection("books").get().await().documents
         val json = Gson().fromJson<ArrayList<BookDataModel>>(

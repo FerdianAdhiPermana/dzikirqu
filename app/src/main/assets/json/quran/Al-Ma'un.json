@@ -1,1 +1,115 @@
-[{"chapter_id":107,"juz_number":30,"text_madani":"أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ","translations":[{"language_name":"english","text":"Have you seen the one who denies the Recompense?"},{"language_name":"indonesian","text":"Tahukah kamu (orang) yang mendustakan agama?"}],"verse_number":1},{"chapter_id":107,"juz_number":30,"text_madani":"فَذَٰلِكَ الَّذِي يَدُعُّ الْيَتِيمَ","translations":[{"language_name":"indonesian","text":"Maka itulah orang yang menghardik anak yatim,"},{"language_name":"english","text":"For that is the one who drives away the orphan"}],"verse_number":2},{"chapter_id":107,"juz_number":30,"text_madani":"وَلَا يَحُضُّ عَلَىٰ طَعَامِ الْمِسْكِينِ","translations":[{"language_name":"indonesian","text":"dan tidak mendorong memberi makan orang miskin."},{"language_name":"english","text":"And does not encourage the feeding of the poor."}],"verse_number":3},{"chapter_id":107,"juz_number":30,"text_madani":"فَوَيْلٌ لِّلْمُصَلِّينَ","translations":[{"language_name":"indonesian","text":"Maka celakalah orang yang shalat,"},{"language_name":"english","text":"So woe to those who pray"}],"verse_number":4},{"chapter_id":107,"juz_number":30,"text_madani":"الَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ","translations":[{"language_name":"english","text":"[But] who are heedless of their prayer -"},{"language_name":"indonesian","text":"(yaitu) orang-orang yang lalai terhadap shalatnya,"}],"verse_number":5},{"chapter_id":107,"juz_number":30,"text_madani":"الَّذِينَ هُمْ يُرَاءُونَ","translations":[{"language_name":"indonesian","text":"yang berbuat ria,"},{"language_name":"english","text":"Those who make show [of their deeds]"}],"verse_number":6},{"chapter_id":107,"juz_number":30,"text_madani":"وَيَمْنَعُونَ الْمَاعُونَ","translations":[{"language_name":"english","text":"And withhold [simple] assistance."},{"language_name":"indonesian","text":"dan enggan (memberikan) bantuan."}],"verse_number":7}]
+[
+  {
+    "chapter_id": 107,
+    "juz_number": 30,
+    "use_bismillah": true,
+    "text_madani": "أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Have you seen the one who denies the Recompense?"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Tahukah kamu (orang) yang mendustakan agama?"
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 107,
+    "juz_number": 30,
+    "text_madani": "فَذَٰلِكَ الَّذِي يَدُعُّ الْيَتِيمَ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Maka itulah orang yang menghardik anak yatim,"
+      },
+      {
+        "language_name": "english",
+        "text": "For that is the one who drives away the orphan"
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 107,
+    "juz_number": 30,
+    "text_madani": "وَلَا يَحُضُّ عَلَىٰ طَعَامِ الْمِسْكِينِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "dan tidak mendorong memberi makan orang miskin."
+      },
+      {
+        "language_name": "english",
+        "text": "And does not encourage the feeding of the poor."
+      }
+    ],
+    "verse_number": 3
+  },
+  {
+    "chapter_id": 107,
+    "juz_number": 30,
+    "text_madani": "فَوَيْلٌ لِّلْمُصَلِّينَ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Maka celakalah orang yang shalat,"
+      },
+      {
+        "language_name": "english",
+        "text": "So woe to those who pray"
+      }
+    ],
+    "verse_number": 4
+  },
+  {
+    "chapter_id": 107,
+    "juz_number": 30,
+    "text_madani": "الَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "[But] who are heedless of their prayer -"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "(yaitu) orang-orang yang lalai terhadap shalatnya,"
+      }
+    ],
+    "verse_number": 5
+  },
+  {
+    "chapter_id": 107,
+    "juz_number": 30,
+    "text_madani": "الَّذِينَ هُمْ يُرَاءُونَ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "yang berbuat ria,"
+      },
+      {
+        "language_name": "english",
+        "text": "Those who make show [of their deeds]"
+      }
+    ],
+    "verse_number": 6
+  },
+  {
+    "chapter_id": 107,
+    "juz_number": 30,
+    "text_madani": "وَيَمْنَعُونَ الْمَاعُونَ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "And withhold [simple] assistance."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "dan enggan (memberikan) bantuan."
+      }
+    ],
+    "verse_number": 7
+  }
+]

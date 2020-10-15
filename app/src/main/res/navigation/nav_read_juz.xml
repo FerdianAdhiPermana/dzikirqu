@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_read_quran"
-    app:startDestination="@id/readQuranFragment">
-
-
+    app:startDestination="@id/readJuzFragment">
     <fragment
-        android:id="@+id/readQuranFragment"
-        android:name="com.mayburger.dzikirqu.ui.read.quran.ReadQuranFragment"
-        android:label="ReadQuranFragment" />
+        android:id="@+id/readJuzFragment"
+        android:name="com.mayburger.dzikirqu.ui.read.quran.juz.ReadJuzFragment"
+        android:label="ReadJuzFragment" />
 </navigation>

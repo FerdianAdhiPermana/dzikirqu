@@ -26,7 +26,9 @@ class AyahDataModel(
     @ColumnInfo(name = "translation")
     var translation: String = "",
     @ColumnInfo(name = "language")
-    var language:String = ""
+    var language:String = "",
+    @ColumnInfo(name= "useBismillah")
+    var use_bismillah:Boolean? = false,
 ) : Parcelable{
     @ColumnInfo(name = "ids")
     @PrimaryKey(autoGenerate = true)

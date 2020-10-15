@@ -106,7 +106,8 @@ class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelpe
                     it.chapter_id,
                     it.text_madani,
                     it.translations.filter { it.language_name == "english" }[0].text,
-                    "en"
+                    "en",
+                    it.use_bismillah
                 )
             )
             db.getAyahDao().insertAyah(
@@ -116,7 +117,8 @@ class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelpe
                     it.chapter_id,
                     it.text_madani,
                     it.translations.filter { it.language_name == "indonesian" }[0].text,
-                    "id"
+                    "id",
+                    it.use_bismillah
                 )
             )
         }

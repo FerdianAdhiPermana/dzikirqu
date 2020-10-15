@@ -1,1 +1,275 @@
-[{"chapter_id":86,"juz_number":30,"text_madani":"وَالسَّمَاءِ وَالطَّارِقِ","translations":[{"language_name":"english","text":"By the sky and the night comer -"},{"language_name":"indonesian","text":"Demi langit dan yang datang pada malam hari."}],"verse_number":1},{"chapter_id":86,"juz_number":30,"text_madani":"وَمَا أَدْرَاكَ مَا الطَّارِقُ","translations":[{"language_name":"english","text":"And what can make you know what is the night comer?"},{"language_name":"indonesian","text":"Dan tahukah kamu apakah yang datang pada malam hari itu?"}],"verse_number":2},{"chapter_id":86,"juz_number":30,"text_madani":"النَّجْمُ الثَّاقِبُ","translations":[{"language_name":"indonesian","text":"(yaitu) bintang yang bersinar tajam,"},{"language_name":"english","text":"It is the piercing star -"}],"verse_number":3},{"chapter_id":86,"juz_number":30,"text_madani":"إِن كُلُّ نَفْسٍ لَّمَّا عَلَيْهَا حَافِظٌ","translations":[{"language_name":"english","text":"There is no soul but that it has over it a protector."},{"language_name":"indonesian","text":"setiap orang pasti ada penjaganya."}],"verse_number":4},{"chapter_id":86,"juz_number":30,"text_madani":"فَلْيَنظُرِ الْإِنسَانُ مِمَّ خُلِقَ","translations":[{"language_name":"indonesian","text":"Maka hendaklah manusia memperhatikan dari apa dia diciptakan."},{"language_name":"english","text":"So let man observe from what he was created."}],"verse_number":5},{"chapter_id":86,"juz_number":30,"text_madani":"خُلِقَ مِن مَّاءٍ دَافِقٍ","translations":[{"language_name":"english","text":"He was created from a fluid, ejected,"},{"language_name":"indonesian","text":"Dia diciptakan dari air (mani) yang terpancar,"}],"verse_number":6},{"chapter_id":86,"juz_number":30,"text_madani":"يَخْرُجُ مِن بَيْنِ الصُّلْبِ وَالتَّرَائِبِ","translations":[{"language_name":"indonesian","text":"yang keluar dari antara tulang punggung (sulbi) dan tulang dada."},{"language_name":"english","text":"Emerging from between the backbone and the ribs."}],"verse_number":7},{"chapter_id":86,"juz_number":30,"text_madani":"إِنَّهُ عَلَىٰ رَجْعِهِ لَقَادِرٌ","translations":[{"language_name":"indonesian","text":"Sungguh, Allah benar-benar kuasa untuk mengembalikannya (hidup setelah mati)."},{"language_name":"english","text":"Indeed, Allah, to return him [to life], is Able."}],"verse_number":8},{"chapter_id":86,"juz_number":30,"text_madani":"يَوْمَ تُبْلَى السَّرَائِرُ","translations":[{"language_name":"english","text":"The Day when secrets will be put on trial,"},{"language_name":"indonesian","text":"Pada hari ditampakkan segala rahasia,"}],"verse_number":9},{"chapter_id":86,"juz_number":30,"text_madani":"فَمَا لَهُ مِن قُوَّةٍ وَلَا نَاصِرٍ","translations":[{"language_name":"english","text":"Then man will have no power or any helper."},{"language_name":"indonesian","text":"maka manusia tidak lagi mempunyai suatu kekuatan dan tidak (pula) ada penolong."}],"verse_number":10},{"chapter_id":86,"juz_number":30,"text_madani":"وَالسَّمَاءِ ذَاتِ الرَّجْعِ","translations":[{"language_name":"indonesian","text":"Demi langit yang mengandung hujan,"},{"language_name":"english","text":"By the sky which returns [rain]"}],"verse_number":11},{"chapter_id":86,"juz_number":30,"text_madani":"وَالْأَرْضِ ذَاتِ الصَّدْعِ","translations":[{"language_name":"indonesian","text":"dan bumi yang mempunyai tumbuh-tumbuhan,"},{"language_name":"english","text":"And [by] the earth which cracks open,"}],"verse_number":12},{"chapter_id":86,"juz_number":30,"text_madani":"إِنَّهُ لَقَوْلٌ فَصْلٌ","translations":[{"language_name":"indonesian","text":"sungguh, (Al-Qur\u0027an) itu benar-benar firman pemisah (antara yang hak dan yang batil),"},{"language_name":"english","text":"Indeed, the Qur\u0027an is a decisive statement,"}],"verse_number":13},{"chapter_id":86,"juz_number":30,"text_madani":"وَمَا هُوَ بِالْهَزْلِ","translations":[{"language_name":"indonesian","text":"dan (Al-Qur\u0027an) itu bukanlah sendagurauan."},{"language_name":"english","text":"And it is not amusement."}],"verse_number":14},{"chapter_id":86,"juz_number":30,"text_madani":"إِنَّهُمْ يَكِيدُونَ كَيْدًا","translations":[{"language_name":"indonesian","text":"Sungguh, mereka (orang kafir) merencanakan tipu daya yang jahat."},{"language_name":"english","text":"Indeed, they are planning a plan,"}],"verse_number":15},{"chapter_id":86,"juz_number":30,"text_madani":"وَأَكِيدُ كَيْدًا","translations":[{"language_name":"indonesian","text":"Dan Aku pun membuat rencana (tipu daya) yang jitu."},{"language_name":"english","text":"But I am planning a plan."}],"verse_number":16},{"chapter_id":86,"juz_number":30,"text_madani":"فَمَهِّلِ الْكَافِرِينَ أَمْهِلْهُمْ رُوَيْدًا","translations":[{"language_name":"indonesian","text":"Karena itu berilah penangguhan kepada orang-orang kafir itu. Berilah mereka itu kesempatan untuk sementara waktu."},{"language_name":"english","text":"So allow time for the disbelievers. Leave them awhile."}],"verse_number":17}]
+[
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "use_bismillah": true,
+    "text_madani": "وَالسَّمَاءِ وَالطَّارِقِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "By the sky and the night comer -"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Demi langit dan yang datang pada malam hari."
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "وَمَا أَدْرَاكَ مَا الطَّارِقُ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "And what can make you know what is the night comer?"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Dan tahukah kamu apakah yang datang pada malam hari itu?"
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "النَّجْمُ الثَّاقِبُ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "(yaitu) bintang yang bersinar tajam,"
+      },
+      {
+        "language_name": "english",
+        "text": "It is the piercing star -"
+      }
+    ],
+    "verse_number": 3
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "إِن كُلُّ نَفْسٍ لَّمَّا عَلَيْهَا حَافِظٌ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "There is no soul but that it has over it a protector."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "setiap orang pasti ada penjaganya."
+      }
+    ],
+    "verse_number": 4
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "فَلْيَنظُرِ الْإِنسَانُ مِمَّ خُلِقَ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Maka hendaklah manusia memperhatikan dari apa dia diciptakan."
+      },
+      {
+        "language_name": "english",
+        "text": "So let man observe from what he was created."
+      }
+    ],
+    "verse_number": 5
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "خُلِقَ مِن مَّاءٍ دَافِقٍ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "He was created from a fluid, ejected,"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Dia diciptakan dari air (mani) yang terpancar,"
+      }
+    ],
+    "verse_number": 6
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "يَخْرُجُ مِن بَيْنِ الصُّلْبِ وَالتَّرَائِبِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "yang keluar dari antara tulang punggung (sulbi) dan tulang dada."
+      },
+      {
+        "language_name": "english",
+        "text": "Emerging from between the backbone and the ribs."
+      }
+    ],
+    "verse_number": 7
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "إِنَّهُ عَلَىٰ رَجْعِهِ لَقَادِرٌ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Sungguh, Allah benar-benar kuasa untuk mengembalikannya (hidup setelah mati)."
+      },
+      {
+        "language_name": "english",
+        "text": "Indeed, Allah, to return him [to life], is Able."
+      }
+    ],
+    "verse_number": 8
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "يَوْمَ تُبْلَى السَّرَائِرُ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "The Day when secrets will be put on trial,"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Pada hari ditampakkan segala rahasia,"
+      }
+    ],
+    "verse_number": 9
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "فَمَا لَهُ مِن قُوَّةٍ وَلَا نَاصِرٍ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Then man will have no power or any helper."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "maka manusia tidak lagi mempunyai suatu kekuatan dan tidak (pula) ada penolong."
+      }
+    ],
+    "verse_number": 10
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "وَالسَّمَاءِ ذَاتِ الرَّجْعِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Demi langit yang mengandung hujan,"
+      },
+      {
+        "language_name": "english",
+        "text": "By the sky which returns [rain]"
+      }
+    ],
+    "verse_number": 11
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "وَالْأَرْضِ ذَاتِ الصَّدْعِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "dan bumi yang mempunyai tumbuh-tumbuhan,"
+      },
+      {
+        "language_name": "english",
+        "text": "And [by] the earth which cracks open,"
+      }
+    ],
+    "verse_number": 12
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "إِنَّهُ لَقَوْلٌ فَصْلٌ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "sungguh, (Al-Qur\u0027an) itu benar-benar firman pemisah (antara yang hak dan yang batil),"
+      },
+      {
+        "language_name": "english",
+        "text": "Indeed, the Qur\u0027an is a decisive statement,"
+      }
+    ],
+    "verse_number": 13
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "وَمَا هُوَ بِالْهَزْلِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "dan (Al-Qur\u0027an) itu bukanlah sendagurauan."
+      },
+      {
+        "language_name": "english",
+        "text": "And it is not amusement."
+      }
+    ],
+    "verse_number": 14
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "إِنَّهُمْ يَكِيدُونَ كَيْدًا",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Sungguh, mereka (orang kafir) merencanakan tipu daya yang jahat."
+      },
+      {
+        "language_name": "english",
+        "text": "Indeed, they are planning a plan,"
+      }
+    ],
+    "verse_number": 15
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "وَأَكِيدُ كَيْدًا",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Dan Aku pun membuat rencana (tipu daya) yang jitu."
+      },
+      {
+        "language_name": "english",
+        "text": "But I am planning a plan."
+      }
+    ],
+    "verse_number": 16
+  },
+  {
+    "chapter_id": 86,
+    "juz_number": 30,
+    "text_madani": "فَمَهِّلِ الْكَافِرِينَ أَمْهِلْهُمْ رُوَيْدًا",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Karena itu berilah penangguhan kepada orang-orang kafir itu. Berilah mereka itu kesempatan untuk sementara waktu."
+      },
+      {
+        "language_name": "english",
+        "text": "So allow time for the disbelievers. Leave them awhile."
+      }
+    ],
+    "verse_number": 17
+  }
+]

@@ -20,17 +20,17 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:background="@drawable/shp_white_selector_8dp"
         android:clickable="true"
         android:clipToPadding="false"
+        android:elevation="2dp"
         android:focusable="true"
-        android:foreground="@drawable/selector_8dp"
         android:padding="2dp"
         tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shp_white_8dp"
             android:elevation="2dp">
 
             <ImageView

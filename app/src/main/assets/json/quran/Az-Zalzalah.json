@@ -1,1 +1,131 @@
-[{"chapter_id":99,"juz_number":30,"text_madani":"إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا","translations":[{"language_name":"english","text":"When the earth is shaken with its [final] earthquake"},{"language_name":"indonesian","text":"Apabila bumi diguncangkan dengan guncangan yang dahsyat,"}],"verse_number":1},{"chapter_id":99,"juz_number":30,"text_madani":"وَأَخْرَجَتِ الْأَرْضُ أَثْقَالَهَا","translations":[{"language_name":"english","text":"And the earth discharges its burdens"},{"language_name":"indonesian","text":"dan bumi telah mengeluarkan beban-beban berat (yang dikandung)nya,"}],"verse_number":2},{"chapter_id":99,"juz_number":30,"text_madani":"وَقَالَ الْإِنسَانُ مَا لَهَا","translations":[{"language_name":"english","text":"And man says, \"What is [wrong] with it?\" -"},{"language_name":"indonesian","text":"Dan manusia bertanya, “Apa yang terjadi pada bumi ini?”"}],"verse_number":3},{"chapter_id":99,"juz_number":30,"text_madani":"يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا","translations":[{"language_name":"indonesian","text":"Pada hari itu bumi menyampaikan beritanya,"},{"language_name":"english","text":"That Day, it will report its news"}],"verse_number":4},{"chapter_id":99,"juz_number":30,"text_madani":"بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا","translations":[{"language_name":"english","text":"Because your Lord has commanded it."},{"language_name":"indonesian","text":"karena sesungguhnya Tuhanmu telah memerintahkan (yang sedemikian itu) padanya."}],"verse_number":5},{"chapter_id":99,"juz_number":30,"text_madani":"يَوْمَئِذٍ يَصْدُرُ النَّاسُ أَشْتَاتًا لِّيُرَوْا أَعْمَالَهُمْ","translations":[{"language_name":"english","text":"That Day, the people will depart separated [into categories] to be shown [the result of] their deeds."},{"language_name":"indonesian","text":"Pada hari itu manusia keluar dari kuburnya dalam keadaan berkelompok-kelompok, untuk diperlihatkan kepada mereka (balasan) semua perbuatannya."}],"verse_number":6},{"chapter_id":99,"juz_number":30,"text_madani":"فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ","translations":[{"language_name":"english","text":"So whoever does an atom\u0027s weight of good will see it,"},{"language_name":"indonesian","text":"Maka barangsiapa mengerjakan kebaikan seberat zarrah, niscaya dia akan melihat (balasan)nya,"}],"verse_number":7},{"chapter_id":99,"juz_number":30,"text_madani":"وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ","translations":[{"language_name":"english","text":"And whoever does an atom\u0027s weight of evil will see it."},{"language_name":"indonesian","text":"dan barangsiapa mengerjakan kejahatan seberat zarrah, niscaya dia akan melihat (balasan)nya."}],"verse_number":8}]
+[
+  {
+    "chapter_id": 99,
+    "juz_number": 30,
+    "use_bismillah": true,
+    "text_madani": "إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "When the earth is shaken with its [final] earthquake"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Apabila bumi diguncangkan dengan guncangan yang dahsyat,"
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 99,
+    "juz_number": 30,
+    "text_madani": "وَأَخْرَجَتِ الْأَرْضُ أَثْقَالَهَا",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "And the earth discharges its burdens"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "dan bumi telah mengeluarkan beban-beban berat (yang dikandung)nya,"
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 99,
+    "juz_number": 30,
+    "text_madani": "وَقَالَ الْإِنسَانُ مَا لَهَا",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "And man says, \"What is [wrong] with it?\" -"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Dan manusia bertanya, “Apa yang terjadi pada bumi ini?”"
+      }
+    ],
+    "verse_number": 3
+  },
+  {
+    "chapter_id": 99,
+    "juz_number": 30,
+    "text_madani": "يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Pada hari itu bumi menyampaikan beritanya,"
+      },
+      {
+        "language_name": "english",
+        "text": "That Day, it will report its news"
+      }
+    ],
+    "verse_number": 4
+  },
+  {
+    "chapter_id": 99,
+    "juz_number": 30,
+    "text_madani": "بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Because your Lord has commanded it."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "karena sesungguhnya Tuhanmu telah memerintahkan (yang sedemikian itu) padanya."
+      }
+    ],
+    "verse_number": 5
+  },
+  {
+    "chapter_id": 99,
+    "juz_number": 30,
+    "text_madani": "يَوْمَئِذٍ يَصْدُرُ النَّاسُ أَشْتَاتًا لِّيُرَوْا أَعْمَالَهُمْ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "That Day, the people will depart separated [into categories] to be shown [the result of] their deeds."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Pada hari itu manusia keluar dari kuburnya dalam keadaan berkelompok-kelompok, untuk diperlihatkan kepada mereka (balasan) semua perbuatannya."
+      }
+    ],
+    "verse_number": 6
+  },
+  {
+    "chapter_id": 99,
+    "juz_number": 30,
+    "text_madani": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "So whoever does an atom\u0027s weight of good will see it,"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Maka barangsiapa mengerjakan kebaikan seberat zarrah, niscaya dia akan melihat (balasan)nya,"
+      }
+    ],
+    "verse_number": 7
+  },
+  {
+    "chapter_id": 99,
+    "juz_number": 30,
+    "text_madani": "وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "And whoever does an atom\u0027s weight of evil will see it."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "dan barangsiapa mengerjakan kejahatan seberat zarrah, niscaya dia akan melihat (balasan)nya."
+      }
+    ],
+    "verse_number": 8
+  }
+]

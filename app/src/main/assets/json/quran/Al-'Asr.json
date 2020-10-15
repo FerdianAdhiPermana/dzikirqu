@@ -1,1 +1,51 @@
-[{"chapter_id":103,"juz_number":30,"text_madani":"وَالْعَصْرِ","translations":[{"language_name":"english","text":"By time,"},{"language_name":"indonesian","text":"Demi masa,"}],"verse_number":1},{"chapter_id":103,"juz_number":30,"text_madani":"إِنَّ الْإِنسَانَ لَفِي خُسْرٍ","translations":[{"language_name":"english","text":"Indeed, mankind is in loss,"},{"language_name":"indonesian","text":"sungguh, manusia berada dalam kerugian,"}],"verse_number":2},{"chapter_id":103,"juz_number":30,"text_madani":"إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ","translations":[{"language_name":"english","text":"Except for those who have believed and done righteous deeds and advised each other to truth and advised each other to patience."},{"language_name":"indonesian","text":"kecuali orang-orang yang beriman dan mengerjakan kebajikan serta saling menasihati untuk kebenaran dan saling menasihati untuk kesabaran."}],"verse_number":3}]
+[
+  {
+    "chapter_id": 103,
+    "juz_number": 30,
+    "use_bismillah": true,
+    "text_madani": "وَالْعَصْرِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "By time,"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Demi masa,"
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 103,
+    "juz_number": 30,
+    "text_madani": "إِنَّ الْإِنسَانَ لَفِي خُسْرٍ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Indeed, mankind is in loss,"
+      },
+      {
+        "language_name": "indonesian",
+        "text": "sungguh, manusia berada dalam kerugian,"
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 103,
+    "juz_number": 30,
+    "text_madani": "إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Except for those who have believed and done righteous deeds and advised each other to truth and advised each other to patience."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "kecuali orang-orang yang beriman dan mengerjakan kebajikan serta saling menasihati untuk kebenaran dan saling menasihati untuk kesabaran."
+      }
+    ],
+    "verse_number": 3
+  }
+]

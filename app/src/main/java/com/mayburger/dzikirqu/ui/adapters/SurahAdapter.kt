@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.databinding.ItemEmptyBinding
-import com.mayburger.dzikirqu.databinding.ItemPrayerEmptyBinding
 import com.mayburger.dzikirqu.databinding.ItemSurahBinding
 import com.mayburger.dzikirqu.model.SurahDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemSurahViewModel
@@ -78,7 +77,7 @@ class SurahAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     interface Callback {
-        fun onSelectedItem(surah: SurahDataModel)
+        fun onSelectedSurah(surah: SurahDataModel)
     }
 
     inner class SurahViewHolder(private val mBinding: ItemSurahBinding) :
@@ -87,7 +86,7 @@ class SurahAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         override fun onBind(position: Int) {
             if (data.isNotEmpty()) {
                 val viewModel = data[position]
-                mBinding.root.setOnClickListener { mListener?.onSelectedItem(data[position].data) }
+                mBinding.root.setOnClickListener { mListener?.onSelectedSurah(data[position].data) }
                 mBinding.viewModel = viewModel
             }
         }

@@ -1,1 +1,114 @@
-[{"chapter_id":1,"juz_number":1,"text_madani":"بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ","translations":[{"language_name":"english","text":"In the name of Allah, the Entirely Merciful, the Especially Merciful."},{"language_name":"indonesian","text":"Dengan nama Allah Yang Maha Pengasih, Maha Penyayang"}],"verse_number":1},{"chapter_id":1,"juz_number":1,"text_madani":"الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ","translations":[{"language_name":"indonesian","text":"Segala puji bagi Allah, Tuhan seluruh alam,"},{"language_name":"english","text":"[All] praise is [due] to Allah, Lord of the worlds -"}],"verse_number":2},{"chapter_id":1,"juz_number":1,"text_madani":"الرَّحْمَٰنِ الرَّحِيمِ","translations":[{"language_name":"indonesian","text":"Yang Maha Pengasih, Maha Penyayang,"},{"language_name":"english","text":"The Entirely Merciful, the Especially Merciful,"}],"verse_number":3},{"chapter_id":1,"juz_number":1,"text_madani":"مَالِكِ يَوْمِ الدِّينِ","translations":[{"language_name":"english","text":"Sovereign of the Day of Recompense."},{"language_name":"indonesian","text":"Pemilik hari pembalasan."}],"verse_number":4},{"chapter_id":1,"juz_number":1,"text_madani":"إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ","translations":[{"language_name":"indonesian","text":"Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan."},{"language_name":"english","text":"It is You we worship and You we ask for help."}],"verse_number":5},{"chapter_id":1,"juz_number":1,"text_madani":"اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ","translations":[{"language_name":"indonesian","text":"Tunjukilah kami jalan yang lurus"},{"language_name":"english","text":"Guide us to the straight path -"}],"verse_number":6},{"chapter_id":1,"juz_number":1,"text_madani":"صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ","translations":[{"language_name":"indonesian","text":"(yaitu) jalan orang-orang yang telah Engkau beri nikmat kepadanya; bukan (jalan) mereka yang dimurkai, dan bukan (pula jalan) mereka yang sesat."},{"language_name":"english","text":"The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."}],"verse_number":7}]
+[
+  {
+    "chapter_id": 1,
+    "juz_number": 1,
+    "text_madani": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "In the name of Allah, the Entirely Merciful, the Especially Merciful."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang"
+      }
+    ],
+    "verse_number": 1
+  },
+  {
+    "chapter_id": 1,
+    "juz_number": 1,
+    "text_madani": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Segala puji bagi Allah, Tuhan seluruh alam,"
+      },
+      {
+        "language_name": "english",
+        "text": "[All] praise is [due] to Allah, Lord of the worlds -"
+      }
+    ],
+    "verse_number": 2
+  },
+  {
+    "chapter_id": 1,
+    "juz_number": 1,
+    "text_madani": "الرَّحْمَٰنِ الرَّحِيمِ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Yang Maha Pengasih, Maha Penyayang,"
+      },
+      {
+        "language_name": "english",
+        "text": "The Entirely Merciful, the Especially Merciful,"
+      }
+    ],
+    "verse_number": 3
+  },
+  {
+    "chapter_id": 1,
+    "juz_number": 1,
+    "text_madani": "مَالِكِ يَوْمِ الدِّينِ",
+    "translations": [
+      {
+        "language_name": "english",
+        "text": "Sovereign of the Day of Recompense."
+      },
+      {
+        "language_name": "indonesian",
+        "text": "Pemilik hari pembalasan."
+      }
+    ],
+    "verse_number": 4
+  },
+  {
+    "chapter_id": 1,
+    "juz_number": 1,
+    "text_madani": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan."
+      },
+      {
+        "language_name": "english",
+        "text": "It is You we worship and You we ask for help."
+      }
+    ],
+    "verse_number": 5
+  },
+  {
+    "chapter_id": 1,
+    "juz_number": 1,
+    "text_madani": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "Tunjukilah kami jalan yang lurus"
+      },
+      {
+        "language_name": "english",
+        "text": "Guide us to the straight path -"
+      }
+    ],
+    "verse_number": 6
+  },
+  {
+    "chapter_id": 1,
+    "juz_number": 1,
+    "text_madani": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+    "translations": [
+      {
+        "language_name": "indonesian",
+        "text": "(yaitu) jalan orang-orang yang telah Engkau beri nikmat kepadanya; bukan (jalan) mereka yang dimurkai, dan bukan (pula jalan) mereka yang sesat."
+      },
+      {
+        "language_name": "english",
+        "text": "The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."
+      }
+    ],
+    "verse_number": 7
+  }
+]

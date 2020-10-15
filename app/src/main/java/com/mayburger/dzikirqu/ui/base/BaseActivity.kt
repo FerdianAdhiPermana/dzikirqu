@@ -14,15 +14,12 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.facebook.stetho.Stetho
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseApp
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.util.ext.ViewUtils
-import com.mayburger.dzikirqu.util.ext.hide
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppCompatActivity(),
@@ -116,6 +113,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
 
     private fun performDataBinding() {
         viewDataBinding = DataBindingUtil.setContentView(this, layoutId)
+
         //this.mViewModel = if (mViewModel == null) viewModel else mViewModel
         viewDataBinding.apply {
             setVariable(bindingVariable, viewModel)

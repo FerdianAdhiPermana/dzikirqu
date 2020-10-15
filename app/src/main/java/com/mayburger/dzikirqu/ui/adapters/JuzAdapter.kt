@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mayburger.dzikirqu.databinding.ItemEmptyBinding
 import com.mayburger.dzikirqu.databinding.ItemJuzBinding
-import com.mayburger.dzikirqu.model.SurahDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemJuzViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
 
@@ -77,7 +76,7 @@ class JuzAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     interface Callback {
-        fun onSelectedItem(surah: SurahDataModel)
+        fun onSelectedJuz(juz: Int)
     }
 
     inner class JuzViewHolder(private val mBinding: ItemJuzBinding) :
@@ -86,6 +85,9 @@ class JuzAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         override fun onBind(position: Int) {
             if (data.isNotEmpty()) {
                 val viewModel = data[position]
+                mBinding.root.setOnClickListener {
+                    mListener?.onSelectedJuz(viewModel.number.toInt())
+                }
                 mBinding.viewModel = viewModel
             }
         }

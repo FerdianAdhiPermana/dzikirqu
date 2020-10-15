@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.mayburger.dzikirqu.ui.read.quran.ReadQuranViewModel" />
+            type="com.mayburger.dzikirqu.ui.read.quran.juz.ReadJuzViewModel" />
 
         <import type="com.mayburger.dzikirqu.constants.RecyclerConstants" />
 
@@ -16,6 +16,8 @@
         <import type="com.mayburger.dzikirqu.constants.LocaleConstants" />
 
         <import type="android.view.View" />
+
+        <import type="com.mayburger.dzikirqu.constants.SurahTypeConstants" />
 
         <import type="com.mayburger.dzikirqu.util.ext.ViewUtils" />
     </data>
@@ -56,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@{viewModel.surah.name}"
+                    android:text="@{viewModel.title}"
                     android:textColor="@color/colorBlack"
                     android:textSize="18sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -70,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@{viewModel.surah.translation}"
+                    android:text="@{viewModel.subtitle}"
                     android:textColor="@color/colorTextGrey"
                     android:textSize="14sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -91,15 +93,13 @@
                 app:layout_constraintTop_toBottomOf="@id/header" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvQuran"
-                recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
+                android:id="@+id/rvAyah"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:visibility="@{viewModel.isLoaded() ? View.VISIBLE : View.GONE}"
-                app:ayahAdapter="@{viewModel.ayahs}"
+                android:visibility="@{viewModel.isLoaded()? View.VISIBLE : View.GONE}"
+                app:ayahAdapter="@{viewModel.ayah}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/header" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
-import com.mayburger.dzikirqu.databinding.FragmentReadQuranBinding
+import com.mayburger.dzikirqu.databinding.FragmentReadQuranBsdBinding
 import com.mayburger.dzikirqu.model.AyahDataModel
 import com.mayburger.dzikirqu.model.QuranLastRead
 import com.mayburger.dzikirqu.model.SurahDataModel
@@ -16,8 +16,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class ReadQuranBSDFragment : BaseFragment<FragmentReadQuranBinding, ReadQuranBSDViewModel>(),
+class ReadQuranBSDFragment : BaseFragment<FragmentReadQuranBsdBinding, ReadQuranBSDViewModel>(),
     ReadQuranBSDNavigator {
+
 
     override val bindingVariable: Int
         get() = BR.viewModel

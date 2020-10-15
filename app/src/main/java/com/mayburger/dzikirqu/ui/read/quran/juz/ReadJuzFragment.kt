@@ -37,7 +37,7 @@ class ReadJuzFragment : BaseFragment<FragmentReadJuzBinding, ReadJuzViewModel>()
     @Inject
     lateinit var ayahAdapter: AyahAdapter
 
-    lateinit var layoutManager:LinearLayoutManager
+    lateinit var layoutManager: LinearLayoutManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,19 +50,40 @@ class ReadJuzFragment : BaseFragment<FragmentReadJuzBinding, ReadJuzViewModel>()
         rvAyah.adapter = ayahAdapter
         layoutManager = LinearLayoutManager(requireActivity())
         rvAyah.layoutManager = layoutManager
+        viewModel.ayah.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                CoroutineScope(IO).launch {
+                    setSubtitle(layoutManager.findFirstVisibleItemPosition())
+                }
+            }
+        }
         rvAyah.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                CoroutineScope(IO).launch {
-                    val position = layoutManager.findFirstVisibleItemPosition()
-                    val ayah = viewModel.ayah.value?.get(position)
-                    if (ayah is ItemAyahViewModel) {
-                        viewModel.subtitle.set(viewModel.dataManager.getSurahById(ayah.data.surahId)[0].name)
+                viewModel.ayah.observe(viewLifecycleOwner) {
+                    if (it.isNotEmpty()) {
+                        CoroutineScope(IO).launch {
+                            setSubtitle(layoutManager.findFirstVisibleItemPosition())
+                        }
                     }
                 }
             }
         })
         ayahAdapter.setListener(this)
+    }
+    
+    suspend fun setSubtitle(position: Int) {
+        if (position >= 0) {
+            val ayah = viewModel.ayah.value?.get(position)
+            if (ayah is ItemAyahViewModel) {
+                val name = viewModel.dataManager.getSurahById(ayah.data.surahId)[0].name
+                viewModel.subtitle.set(name)
+            } else {
+                setSubtitle(position + 1)
+            }
+        } else {
+            setSubtitle(position + 1)
+        }
     }
 
     override fun onLoadQuran() {

@@ -40,6 +40,12 @@ class AppDataManager @Inject constructor(
             mHawkHelper.quranLastRead = value
         }
 
+    override var quranBookmark: ArrayList<AyahDataModel>?
+        get() = mHawkHelper.quranBookmark
+        set(value) {
+            mHawkHelper.quranBookmark = value
+        }
+
     override suspend fun getBooks(): ArrayList<ItemBookViewModel> {
         val book = mFirebaseHelper.getBooks()
         mRoomHelper.setBooks(book.map { it.data }.toList())
@@ -52,22 +58,6 @@ class AppDataManager @Inject constructor(
 
     override suspend fun getBookById(id: Int): List<BookDataModel> {
         return mRoomHelper.getBookById(id)
-    }
-
-    override suspend fun setHighlights(items: List<HighlightDataModel>) {
-        mRoomHelper.setHighlights(items)
-    }
-
-    override suspend fun getHighlights(): List<HighlightDataModel> {
-        return mRoomHelper.getHighlights()
-    }
-
-    override suspend fun insertHighlight(item: HighlightDataModel) {
-        mRoomHelper.insertHighlight(item)
-    }
-
-    override suspend fun deleteHighlight(item: HighlightDataModel) {
-        mRoomHelper.deleteHighlight(item)
     }
 
     override suspend fun setBooks(items: List<BookDataModel>) {

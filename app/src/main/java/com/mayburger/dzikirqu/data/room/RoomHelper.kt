@@ -8,11 +8,6 @@ interface RoomHelper {
     suspend fun getBookById(id:Int):List<BookDataModel>
     suspend fun setBooks(items:List<BookDataModel>)
 
-    suspend fun setHighlights(items:List<HighlightDataModel>)
-    suspend fun insertHighlight(item:HighlightDataModel)
-    suspend fun getHighlights():List<HighlightDataModel>
-    suspend fun deleteHighlight(item:HighlightDataModel)
-
     suspend fun setPrayers(items:List<PrayerDataModel>)
     suspend fun getPrayerByBook(bookId:Int):List<PrayerDataModel>
     suspend fun getPrayerByTitle(title:String):List<PrayerDataModel>

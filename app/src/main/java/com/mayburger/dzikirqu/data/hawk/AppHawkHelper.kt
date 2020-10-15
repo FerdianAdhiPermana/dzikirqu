@@ -17,9 +17,16 @@ class AppHawkHelper @Inject constructor() : HawkHelper {
         const val HAWK_KEY_PRAYERTIME = "hawk_praytime"
         const val HAWK_KEY_USER_COORDINATES = "hawk_user_coordinates"
         const val HAWK_KEY_USER_CITY = "hawk_user_city"
-        const val HAWK_KEY_HIGHLIGHTS = "hawk_highlights"
         const val HAWK_KEY_QURAN_LAST_READ = "hawk_quran_last_read"
+        const val HAWK_KEY_QURAN_BOOKMARK = "hawk_key_quran_bookmarks"
     }
+
+
+    override var quranBookmark: ArrayList<AyahDataModel>?
+        get() = Hawk.get(HAWK_KEY_QURAN_BOOKMARK)
+        set(value) {
+            Hawk.put(HAWK_KEY_QURAN_BOOKMARK,value)
+        }
 
     override var quranLastRead: QuranLastRead?
         get() = Hawk.get(HAWK_KEY_QURAN_LAST_READ)

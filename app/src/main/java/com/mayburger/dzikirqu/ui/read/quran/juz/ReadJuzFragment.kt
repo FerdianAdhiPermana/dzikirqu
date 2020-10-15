@@ -14,7 +14,6 @@ import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemAyahViewModel
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.read.ReadActivity
 import com.mayburger.dzikirqu.ui.read.quran.options.ReadQuranBSDFragment
-import com.mayburger.dzikirqu.util.QuranUtils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_read_juz.*
 import kotlinx.coroutines.CoroutineScope
@@ -46,7 +45,6 @@ class ReadJuzFragment : BaseFragment<FragmentReadJuzBinding, ReadJuzViewModel>()
         viewModel._juzId.value =
             requireActivity().intent.getIntExtra(ReadActivity.EXTRA_JUZ_ID, -1)
         viewModel.title.set("Juz ${viewModel._juzId.value}")
-        viewModel.subtitle.set("Juz ${QuranUtils.getJuzNames()[viewModel._juzId.value?.minus(1) ?: 0]}")
         rvAyah.adapter = ayahAdapter
         layoutManager = LinearLayoutManager(requireActivity())
         rvAyah.layoutManager = layoutManager
@@ -71,7 +69,7 @@ class ReadJuzFragment : BaseFragment<FragmentReadJuzBinding, ReadJuzViewModel>()
         })
         ayahAdapter.setListener(this)
     }
-    
+
     suspend fun setSubtitle(position: Int) {
         if (position >= 0) {
             val ayah = viewModel.ayah.value?.get(position)

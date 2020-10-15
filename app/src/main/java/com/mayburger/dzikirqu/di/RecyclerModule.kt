@@ -40,11 +40,6 @@ object RecyclerModule {
     }
 
     @Provides
-    internal fun provideHighlightAdapter(): HighlightAdapter {
-        return HighlightAdapter()
-    }
-
-    @Provides
     internal fun provideSurahAdapter(): SurahAdapter {
         return SurahAdapter()
     }
@@ -52,6 +47,11 @@ object RecyclerModule {
     @Provides
     internal fun provideJuzAdapter(): JuzAdapter {
         return JuzAdapter()
+    }
+
+    @Provides
+    internal fun provideQuranBookmarkAdapter(): QuranBookmarkAdapter {
+        return QuranBookmarkAdapter()
     }
 
     @Provides

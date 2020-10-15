@@ -10,7 +10,6 @@ import androidx.lifecycle.switchMap
 import com.mayburger.dzikirqu.constants.LocaleConstants
 import com.mayburger.dzikirqu.data.DataManager
 import com.mayburger.dzikirqu.model.PrayerTime
-import com.mayburger.dzikirqu.model.events.HighlightEvent
 import com.mayburger.dzikirqu.model.events.QuranLastReadEvent
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
@@ -30,8 +29,6 @@ class HomeViewModel @ViewModelInject constructor(
     BaseViewModel<HomeNavigator>(dataManager, schedulerProvider) {
     override fun onEvent(obj: Any) {
         when (obj) {
-            is HighlightEvent -> {
-            }
             is QuranLastReadEvent -> {
                 buildLastRead()
             }

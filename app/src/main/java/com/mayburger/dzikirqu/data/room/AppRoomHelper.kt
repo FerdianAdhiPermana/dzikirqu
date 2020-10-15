@@ -3,7 +3,6 @@ package com.mayburger.dzikirqu.data.room
 import com.mayburger.dzikirqu.data.hawk.HawkHelper
 import com.mayburger.dzikirqu.db.AppDatabase
 import com.mayburger.dzikirqu.model.*
-import com.mayburger.dzikirqu.util.HighlightsUtil
 import javax.inject.Inject
 
 class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelper) : RoomHelper {
@@ -28,27 +27,6 @@ class AppRoomHelper @Inject constructor(val db: AppDatabase, val hawk: HawkHelpe
         items.map { book ->
             db.getBookDao().insertBook(book)
         }
-    }
-
-    override suspend fun setHighlights(items: List<HighlightDataModel>) {
-        items.map {
-            db.getHighlightDao().insertHighlight(it)
-        }
-    }
-
-    override suspend fun getHighlights(): List<HighlightDataModel> {
-        if (db.getHighlightDao().getHighlights(hawk.language).isEmpty()) {
-            setHighlights(HighlightsUtil.getDefaultHighlights(hawk.language))
-        }
-        return db.getHighlightDao().getHighlights(hawk.language)
-    }
-
-    override suspend fun insertHighlight(item: HighlightDataModel) {
-        db.getHighlightDao().insertHighlight(item)
-    }
-
-    override suspend fun deleteHighlight(item: HighlightDataModel) {
-        db.getHighlightDao().deleteHighlight(item)
     }
 
     override suspend fun setPrayers(items: List<PrayerDataModel>) {

@@ -94,6 +94,29 @@ object AdapterBinding {
         }
     }
 
+    @BindingAdapter("quranBookmarkAdapter")
+    @JvmStatic
+    fun addQuranBookmarkItems(
+        recyclerView: RecyclerView,
+        items: LiveData<List<ItemQuranBookmarkViewModel>>
+    ) {
+        val adapter = recyclerView.adapter as QuranBookmarkAdapter?
+        if (adapter != null) {
+            items.value?.let {
+                adapter.clearItems()
+                adapter.addItems(ArrayList(it))
+            }
+            if (!adapter.isLoaded) {
+                val context = recyclerView.context;
+                val controller =
+                    AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fade);
+                recyclerView.layoutAnimation = controller;
+                recyclerView.scheduleLayoutAnimation()
+                adapter.isLoaded = true
+            }
+        }
+    }
+
     @BindingAdapter("ayahAdapter")
     @JvmStatic
     fun addAyahs(
@@ -160,29 +183,4 @@ object AdapterBinding {
             }
         }
     }
-
-    @BindingAdapter("highlightAdapter")
-    @JvmStatic
-    fun addHighlights(
-        recyclerView: RecyclerView,
-        items: LiveData<List<ItemHighlightViewModel>>
-    ) {
-        val adapter = recyclerView.adapter as HighlightAdapter?
-        if (adapter != null) {
-            items.value?.let {
-                adapter.clearItems()
-                adapter.addItems(ArrayList(it))
-                if (!adapter.isLoaded) {
-                    val context = recyclerView.context;
-                    val controller =
-                        AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fade);
-                    recyclerView.layoutAnimation = controller;
-                    recyclerView.scheduleLayoutAnimation()
-                    adapter.isLoaded = true
-                }
-            }
-        }
-    }
-
-
 }

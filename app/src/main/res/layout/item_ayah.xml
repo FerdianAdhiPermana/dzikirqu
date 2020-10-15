@@ -16,9 +16,10 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@{viewModel.isIndexOdd() ? @color/colorWhite : @color/colorPrimaryBackground}">
+        android:background="@{viewModel.isIndexOdd() ? @drawable/shp_white_selector : @drawable/shp_primary_alpha5_selector}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/parent"

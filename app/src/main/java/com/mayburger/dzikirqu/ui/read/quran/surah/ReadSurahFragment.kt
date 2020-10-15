@@ -52,4 +52,6 @@ class ReadSurahFragment : BaseFragment<FragmentReadSurahBinding, ReadSurahViewMo
             showBottomSheet(ReadQuranBSDFragment.newInstance(it, ayah), ReadQuranBSDFragment.TAG)
         }
     }
+
+
 }

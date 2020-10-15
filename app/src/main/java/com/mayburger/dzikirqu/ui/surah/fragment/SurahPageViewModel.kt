@@ -7,7 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.mayburger.dzikirqu.data.DataManager
+import com.mayburger.dzikirqu.model.events.QuranBookmarkEvent
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemJuzViewModel
+import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemQuranBookmarkViewModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemSurahViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
 import com.mayburger.dzikirqu.util.rx.SchedulerProvider
@@ -20,6 +22,11 @@ class SurahPageViewModel @ViewModelInject constructor(
 ) :
     BaseViewModel<SurahPageNavigator>(dataManager, schedulerProvider) {
     override fun onEvent(obj: Any) {
+        when(obj){
+            is QuranBookmarkEvent->{
+                _refreshBookmarks.postValue(true)
+            }
+        }
     }
 
     val isLoaded = ObservableBoolean(false)
@@ -56,6 +63,22 @@ class SurahPageViewModel @ViewModelInject constructor(
                         )
                     }
                     emit(juzList.toList())
+                    isLoaded.set(true)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    val _refreshBookmarks = MutableLiveData(false)
+    val bookmarks = _refreshBookmarks.switchMap {
+        liveData(Dispatchers.IO) {
+            try {
+                if (it) {
+                    emit(dataManager.quranBookmark?.map{
+                        ItemQuranBookmarkViewModel(it)
+                    }?.toList())
                     isLoaded.set(true)
                 }
             } catch (e: Exception) {

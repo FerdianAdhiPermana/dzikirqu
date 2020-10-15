@@ -18,4 +18,8 @@ class ReadQuranBSDViewModel @ViewModelInject constructor(
         navigator?.onClickLastRead()
     }
 
+    fun onClickBookmark(){
+        navigator?.onClickBookmark()
+    }
+
 }

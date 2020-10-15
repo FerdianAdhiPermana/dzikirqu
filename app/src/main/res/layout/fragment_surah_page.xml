@@ -47,8 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:clipToPadding="false"
                 android:clipChildren="false"
+                android:clipToPadding="false"
                 android:nestedScrollingEnabled="false"
                 android:visibility="@{viewModel.isLoaded() &amp;&amp; viewModel.type == SurahTypeConstants.TYPE_SURAH ? View.VISIBLE : View.GONE}"
                 app:layout_constraintTop_toTopOf="parent"
@@ -63,6 +63,17 @@
                 android:nestedScrollingEnabled="false"
                 android:visibility="@{viewModel.isLoaded() &amp;&amp; viewModel.type == SurahTypeConstants.TYPE_JUZ ? View.VISIBLE : View.GONE}"
                 app:juzAdapter="@{viewModel.juz}"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBookmarks"
+                recyclerLayoutManager="@{RecyclerConstants.VERTICAL_LAYOUT_MANAGER}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                android:visibility="@{viewModel.isLoaded() &amp;&amp; viewModel.type == SurahTypeConstants.TYPE_BOOKMARK ? View.VISIBLE : View.GONE}"
+                app:quranBookmarkAdapter="@{viewModel.bookmarks}"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

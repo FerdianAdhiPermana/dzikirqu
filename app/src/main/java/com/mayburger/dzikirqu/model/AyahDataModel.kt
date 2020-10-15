@@ -3,8 +3,10 @@ package com.mayburger.dzikirqu.model
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.firebase.firestore.IgnoreExtraProperties
+import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
 
 
@@ -33,4 +35,7 @@ class AyahDataModel(
     @ColumnInfo(name = "ids")
     @PrimaryKey(autoGenerate = true)
     var ids: Int? = null
+    @IgnoredOnParcel
+    @Ignore
+    var surah:SurahDataModel?=null
 }

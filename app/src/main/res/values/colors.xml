@@ -6,7 +6,7 @@
 
     <color name="colorPrayer">#7F07F0</color>
 
-    <color name="colorPrimaryBackground">#0D3494A1</color>
+    <color name="colorPrimary_alpha5">#0D3494A1</color>
 
     <color name="yellow_10">#FFF0D1</color>
     <color name="yellow_40">#FCC047</color>

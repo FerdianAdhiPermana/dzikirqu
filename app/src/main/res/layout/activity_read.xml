@@ -50,7 +50,7 @@
             android:id="@+id/sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="200dp"
+            android:minHeight="300dp"
             android:background="@color/colorWhite"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 

@@ -14,9 +14,9 @@ import com.mayburger.dzikirqu.databinding.ActivityReadBinding
 import com.mayburger.dzikirqu.model.PrayerDataModel
 import com.mayburger.dzikirqu.ui.base.BaseActivity
 import com.mayburger.dzikirqu.ui.base.BaseFragment
-import com.mayburger.dzikirqu.util.ext.collapse
 import com.mayburger.dzikirqu.util.ext.hide
 import com.mayburger.dzikirqu.util.ext.isShowing
+import com.mayburger.dzikirqu.util.ext.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_read.*
 
@@ -115,7 +115,9 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadViewModel>(),ReadNavi
 
     override fun showBottomSheet(fragment: BaseFragment<*, *>, tag: String) {
         super.showBottomSheet(fragment, tag)
-        sheetBehavior.collapse()
+        sheetBehavior.show()
+        sheetBehavior.hide()
+        sheetBehavior.show()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.sheet_container, fragment, tag)
         transaction.commit()

@@ -1,18 +1,23 @@
 package com.mayburger.dzikirqu.ui.read.quran.options
 
 import android.app.Dialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import com.mayburger.dzikirqu.BR
+import com.mayburger.dzikirqu.BuildConfig
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentReadQuranBsdBinding
 import com.mayburger.dzikirqu.model.AyahDataModel
 import com.mayburger.dzikirqu.model.QuranLastRead
 import com.mayburger.dzikirqu.model.SurahDataModel
 import com.mayburger.dzikirqu.model.events.QuranBookmarkEvent
+import com.mayburger.dzikirqu.model.events.QuranCopyEvent
 import com.mayburger.dzikirqu.model.events.QuranLastReadEvent
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.util.rx.RxBus
@@ -49,18 +54,40 @@ class ReadQuranBSDFragment : BaseFragment<FragmentReadQuranBsdBinding, ReadQuran
         viewModel.navigator = this
     }
 
+    override fun onClickCopy() {
+        arguments?.getParcelable<SurahDataModel>(EXTRA_SURAH)?.let { surah ->
+            arguments?.getParcelable<AyahDataModel>(EXTRA_AYAH)?.let { ayah ->
+                val clipboard: ClipboardManager? =
+                    requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
+                val clip = ClipData.newPlainText(
+                    BuildConfig.VERSION_NAME,
+                    "${ayah.arabic}\n\n\"${ayah.translation}\"\n\n(QS. ${surah.name}: Ayat ${ayah.id})"
+                )
+                clipboard?.setPrimaryClip(clip)
+            }
+        }
+        val dialog = Dialog(requireActivity(), R.style.TransparentDialog)
+        dialog.setContentView(R.layout.dialog_bookmark)
+        dialog.findViewById<ImageView>(R.id.image).setImageResource(R.drawable.ic_copy_white)
+        dialog.show()
+        Handler().postDelayed({
+            dialog.hide()
+        }, 800)
+        RxBus.getDefault().send(QuranCopyEvent())
+    }
+
     override fun onClickBookmark() {
         arguments?.getParcelable<SurahDataModel>(EXTRA_SURAH)?.let { surah ->
             arguments?.getParcelable<AyahDataModel>(EXTRA_AYAH)?.let { ayah ->
-                val bookmarks = viewModel.dataManager.quranBookmark?.let{
+                val bookmarks = viewModel.dataManager.quranBookmark?.let {
                     it.apply {
-                        this.add(ayah.apply{
+                        this.add(ayah.apply {
                             this.surah = surah
                         })
                     }
-                }?: kotlin.run {
+                } ?: kotlin.run {
                     val array = ArrayList<AyahDataModel>()
-                    array.add(ayah.apply{ this.surah = surah })
+                    array.add(ayah.apply { this.surah = surah })
                     array
                 }
                 viewModel.dataManager.quranBookmark = bookmarks

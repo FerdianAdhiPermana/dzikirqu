@@ -5,4 +5,5 @@ import com.mayburger.dzikirqu.ui.base.BaseNavigator
 interface ReadQuranBSDNavigator:BaseNavigator{
     fun onClickLastRead()
     fun onClickBookmark()
+    fun onClickCopy()
 }

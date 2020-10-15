@@ -21,5 +21,8 @@ class ReadQuranBSDViewModel @ViewModelInject constructor(
     fun onClickBookmark(){
         navigator?.onClickBookmark()
     }
+    fun onClickCopy(){
+        navigator?.onClickCopy()
+    }
 
 }

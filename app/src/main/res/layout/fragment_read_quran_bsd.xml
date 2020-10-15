@@ -108,6 +108,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/selector"
             android:orientation="horizontal"
             android:paddingStart="8dp"
             android:paddingTop="16dp"
@@ -146,6 +147,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/selector"
+            android:onClick="@{()->viewModel.onClickCopy()}"
             android:orientation="horizontal"
             android:paddingStart="8dp"
             android:paddingTop="16dp"

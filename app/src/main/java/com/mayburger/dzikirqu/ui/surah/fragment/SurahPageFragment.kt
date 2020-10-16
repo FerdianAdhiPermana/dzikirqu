@@ -1,7 +1,9 @@
 package com.mayburger.dzikirqu.ui.surah.fragment
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
@@ -9,11 +11,13 @@ import com.mayburger.dzikirqu.constants.SurahTypeConstants
 import com.mayburger.dzikirqu.databinding.FragmentSurahPageBinding
 import com.mayburger.dzikirqu.model.AyahDataModel
 import com.mayburger.dzikirqu.model.SurahDataModel
+import com.mayburger.dzikirqu.model.events.QuranBookmarkEvent
 import com.mayburger.dzikirqu.ui.adapters.JuzAdapter
 import com.mayburger.dzikirqu.ui.adapters.QuranBookmarkAdapter
 import com.mayburger.dzikirqu.ui.adapters.SurahAdapter
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.read.ReadActivity
+import com.mayburger.dzikirqu.util.rx.RxBus
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_surah_page.*
 import javax.inject.Inject
@@ -96,5 +100,26 @@ class SurahPageFragment : BaseFragment<FragmentSurahPageBinding, SurahPageViewMo
 
     override fun onSelectedBookmark(ayah: AyahDataModel) {
         ReadActivity.start(requireActivity(),surahId = ayah.surah?.id,verseId = ayah.id)
+    }
+
+    override fun onClickDeleteBookmark(ayah: AyahDataModel) {
+        var warning: AlertDialog? =null
+        warning = AlertDialog.Builder(requireActivity())
+            .setTitle("Delete")
+            .setMessage("Are you sure you want to delete this bookmark?")
+            .setPositiveButton("Yes") { _: DialogInterface, i: Int ->
+                val bookmarks = viewModel.dataManager.quranBookmark
+                bookmarks?.filter{
+                    "${it.surahId}-${it.id}" != "${ayah.surahId}-${ayah.id}"
+                }?.apply{
+                    viewModel.dataManager.quranBookmark = this.toCollection(arrayListOf())
+                }
+                viewModel._refreshBookmarks.value = true
+                warning?.dismiss()
+            }
+            .setNegativeButton("No") { dialog: DialogInterface, i: Int ->
+                warning?.dismiss()
+            }.create()
+        warning.show()
     }
 }

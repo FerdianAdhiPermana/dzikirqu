@@ -52,6 +52,9 @@ object LocaleConstants {
     const val SEARCH_DZIKIRQU = "Search DzikirQu"
     const val SURAH = "Surah"
 
+    //P
+    const val PRAYER_TIME = "Prayer Time"
+
     //Q
     const val QURAN_VIRTUES = "Quran Virtues"
 

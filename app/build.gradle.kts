@@ -63,17 +63,17 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.0")
-    implementation("androidx.core:core-ktx:1.3.1")
+    implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
 
     // android support libraries
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.vectordrawable:vectordrawable-animated:1.1.0")
     implementation("com.amulyakhare:com.amulyakhare.textdrawable:1.0.1")
-    implementation("androidx.media:media:1.1.0")
-    implementation("androidx.exifinterface:exifinterface:1.2.0")
+    implementation("androidx.media:media:1.2.0")
+    implementation("androidx.exifinterface:exifinterface:1.3.1")
     implementation("androidx.browser:browser:1.2.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.android.material:material:1.2.1")

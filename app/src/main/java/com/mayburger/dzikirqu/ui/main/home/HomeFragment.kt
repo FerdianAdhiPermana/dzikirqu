@@ -49,13 +49,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), HomeNav
     }
 
     override fun onClickPrayTime() {
-        val extras = FragmentNavigatorExtras(
-            next to "next",
-            time to "time",
-            until to "until",
-            masjid to "masjid"
-        )
-        findNavController(this).navigate(R.id.prayTime, null, null, extras)
+        findNavController(this).navigate(R.id.action_homeFragment_to_prayTimeFragment, null, null, null)
     }
 
     override fun onClickReadQuran() {

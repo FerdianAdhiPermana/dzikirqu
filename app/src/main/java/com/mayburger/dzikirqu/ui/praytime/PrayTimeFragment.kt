@@ -2,13 +2,16 @@ package com.mayburger.dzikirqu.ui.praytime
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
-import androidx.transition.TransitionInflater
+import androidx.lifecycle.observe
+import androidx.navigation.fragment.NavHostFragment
 import com.mayburger.dzikirqu.BR
 import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.FragmentPrayTimeBinding
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_pray_time.*
 
 
 @AndroidEntryPoint
@@ -24,14 +27,21 @@ class PrayTimeFragment : BaseFragment<FragmentPrayTimeBinding, PrayTimeViewModel
         super.onViewCreated(view, savedInstanceState)
         viewDataBinding?.lifecycleOwner = viewLifecycleOwner
         viewModel.navigator = this
-        viewModel.prayerTime.observe(viewLifecycleOwner, {
+        viewModel.prayerTime.observe(viewLifecycleOwner) {
             viewModel.buildPrayerTime(it)
-        })
+        }
+
+        // This callback will only be called when MyFragment is at least Started.
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    motionLayout.transitionToStart()
+                    NavHostFragment.findNavController(this@PrayTimeFragment).popBackStack()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-        sharedElementReturnTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-    }
 }

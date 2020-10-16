@@ -78,6 +78,7 @@ class QuranBookmarkAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     interface Callback {
         fun onSelectedBookmark(ayah: AyahDataModel)
+        fun onClickDeleteBookmark(ayah:AyahDataModel)
     }
 
     inner class QuranBookmarkViewHolder(private val mBinding: ItemQuranBookmarksBinding) :
@@ -87,6 +88,9 @@ class QuranBookmarkAdapter : RecyclerView.Adapter<BaseViewHolder>() {
             if (data.isNotEmpty()) {
                 val viewModel = data[position]
                 mBinding.root.setOnClickListener { mListener?.onSelectedBookmark(data[position].data) }
+                mBinding.close.setOnClickListener{
+                    mListener?.onClickDeleteBookmark(data[position].data)
+                }
                 mBinding.viewModel = viewModel
             }
         }

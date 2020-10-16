@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.mayburger.dzikirqu.data.DataManager
-import com.mayburger.dzikirqu.model.events.QuranBookmarkEvent
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemJuzViewModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemQuranBookmarkViewModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemSurahViewModel
@@ -22,11 +21,6 @@ class SurahPageViewModel @ViewModelInject constructor(
 ) :
     BaseViewModel<SurahPageNavigator>(dataManager, schedulerProvider) {
     override fun onEvent(obj: Any) {
-        when(obj){
-            is QuranBookmarkEvent->{
-                _refreshBookmarks.postValue(true)
-            }
-        }
     }
 
     val isLoaded = ObservableBoolean(false)

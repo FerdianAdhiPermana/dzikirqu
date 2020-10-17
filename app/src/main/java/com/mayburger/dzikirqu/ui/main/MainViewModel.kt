@@ -32,7 +32,7 @@ class MainViewModel @ViewModelInject constructor(
                 Gson().fromJson(
                     FileUtils.getJsonStringFromAssets(
                         context,
-                        "json/lang/id.json"
+                        "json/lang/en.json"
                     ),
                     object : TypeToken<ArrayList<SurahJsonModel>>() {}.type
                 ), "en"

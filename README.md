@@ -16,7 +16,7 @@ Features:
 - Book of Dzikir
 - Book of Du'a
 
-[Download APK](https://drive.google.com/file/d/1QtadEzGVFdloMwRRcvXsIcG_fPBvZJU3/view?usp=sharing)
+[Download APK](https://drive.google.com/file/d/1m1RB9eB12eXKwvmc-qPe3IZENKNGGgMF/view?usp=sharing)
 
 ### Upcoming Updates InshaAllah
 - Adzan Alarm

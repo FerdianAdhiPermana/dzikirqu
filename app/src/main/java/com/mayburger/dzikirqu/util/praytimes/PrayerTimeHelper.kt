@@ -77,39 +77,53 @@ interface PrayerTimeHelper {
             prayerUntilTime: ObservableField<String>,
             now: String,
             p1: PrayerTime
-        ) {
+        ): String {
             when {
-                now < p1.fajr!! -> prayerUntilTime.set(
-                    countTimeLight(
-                        p1.fajr!!,
-                        StringProvider.getInstance().getString(FAJR)
+                now < p1.fajr!! -> {
+                    prayerUntilTime.set(
+                        countTimeLight(
+                            p1.fajr!!,
+                            StringProvider.getInstance().getString(FAJR)
+                        )
                     )
-                )
-                now < p1.dhuhr!! ->
+                    return StringProvider.getInstance().getString(FAJR)
+                }
+                now < p1.dhuhr!! -> {
                     prayerUntilTime.set(
                         countTimeLight(
                             p1.dhuhr!!,
                             StringProvider.getInstance().getString(DHUHR)
                         )
                     )
-                now < p1.asr!! -> prayerUntilTime.set(
-                    countTimeLight(
-                        p1.asr!!,
-                        StringProvider.getInstance().getString(ASR)
+                    return StringProvider.getInstance().getString(DHUHR)
+                }
+                now < p1.asr!! -> {
+                    prayerUntilTime.set(
+                        countTimeLight(
+                            p1.asr!!,
+                            StringProvider.getInstance().getString(ASR)
+                        )
                     )
-                )
-                now < p1.maghrib!! -> prayerUntilTime.set(
-                    countTimeLight(
-                        p1.maghrib!!,
-                        StringProvider.getInstance().getString(MAGHRIB)
+                    return StringProvider.getInstance().getString(ASR)
+                }
+                now < p1.maghrib!! -> {
+                    prayerUntilTime.set(
+                        countTimeLight(
+                            p1.maghrib!!,
+                            StringProvider.getInstance().getString(MAGHRIB)
+                        )
                     )
-                )
-                now < p1.isya!! -> prayerUntilTime.set(
-                    countTimeLight(
-                        p1.isya!!,
-                        StringProvider.getInstance().getString(ISYA)
+                    return StringProvider.getInstance().getString(MAGHRIB)
+                }
+                now < p1.isya!! -> {
+                    prayerUntilTime.set(
+                        countTimeLight(
+                            p1.isya!!,
+                            StringProvider.getInstance().getString(ISYA)
+                        )
                     )
-                )
+                    return StringProvider.getInstance().getString(ISYA)
+                }
                 else -> {
                     prayerUntilTime.set(
                         countTimeLight(
@@ -117,6 +131,7 @@ interface PrayerTimeHelper {
                             StringProvider.getInstance().getString(FAJR)
                         )
                     )
+                    return StringProvider.getInstance().getString(FAJR)
                 }
             }
         }
@@ -182,7 +197,7 @@ interface PrayerTimeHelper {
 //            return hours.toString() + "h " + minutes + "m ${StringProvider.getInstance().getString(LEFT_UNTIL)} " + prayer
         }
 
-        private fun countTimeLight(endTime: String, prayer: String): String {
+        fun countTimeLight(endTime: String, prayer: String): String {
             val cal = Calendar.getInstance()
             val nowHour = cal.get(Calendar.HOUR_OF_DAY)
             val nowMin = cal.get(Calendar.MINUTE)
@@ -200,9 +215,9 @@ interface PrayerTimeHelper {
 //                    "$hours ${StringProvider.getInstance().getString(HOUR)} " +
 //                    "$minutes ${StringProvider.getInstance().getString(MINUTE)}"
             return hours.toString() + "${
-                StringProvider.getInstance().getString(HOUR).substring(0, 1)
+            StringProvider.getInstance().getString(HOUR).substring(0, 1)
             } " + minutes + "${
-                StringProvider.getInstance().getString(MINUTE).substring(0, 1)
+            StringProvider.getInstance().getString(MINUTE).substring(0, 1)
             } ${StringProvider.getInstance().getString(LEFT_UNTIL)} " + prayer
         }
 

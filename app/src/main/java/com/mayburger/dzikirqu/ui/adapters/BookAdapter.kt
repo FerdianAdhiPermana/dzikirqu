@@ -2,9 +2,7 @@ package com.mayburger.dzikirqu.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.mayburger.dzikirqu.R
 import com.mayburger.dzikirqu.databinding.ItemBookEmptyBinding
 import com.mayburger.dzikirqu.databinding.ItemBookGridBinding
 import com.mayburger.dzikirqu.databinding.ItemBookHorizontalBinding
@@ -12,7 +10,6 @@ import com.mayburger.dzikirqu.model.BookDataModel
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewHolder
 import com.mayburger.dzikirqu.util.ext.ViewUtils.dpToPx
-import com.mayburger.dzikirqu.util.ext.setOnClickAnimate
 
 
 class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
@@ -123,7 +120,7 @@ class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
                     mBinding.root.layoutParams = params
                 }
                 val viewModel = data[position]
-                mBinding.root.setOnClickAnimate(ResourcesCompat.getDrawable(mBinding.root.context.resources,R.drawable.shp_grey_dark_8dp,null)){
+                mBinding.root.setOnClickListener{
                     mListener?.onSelectedItem(data[position].data)
                 }
                 mBinding.viewModel = viewModel
@@ -142,7 +139,8 @@ class BookAdapter : RecyclerView.Adapter<BaseViewHolder>() {
                     mBinding.root.layoutParams = params
                 }
                 val viewModel = data[position]
-                mBinding.root.setOnClickAnimate(ResourcesCompat.getDrawable(mBinding.root.context.resources,R.drawable.shp_grey_dark_8dp,null)){
+//                mBinding.root.setOnClickAnimate(ResourcesCompat.getDrawable(mBinding.root.context.resources,R.drawable.shp_grey_dark_8dp,null)){
+                mBinding.root.setOnClickListener{
                     mListener?.onSelectedItem(data[position].data)
                 }
                 mBinding.viewModel = viewModel

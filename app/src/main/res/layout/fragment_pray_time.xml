@@ -43,6 +43,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:slideDownAnimate="@{true}">
 
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:onClick="@{()->viewModel.backFragment()}"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <com.mayburger.dzikirqu.util.textfont.TextFont
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
@@ -88,22 +97,24 @@
                 <com.mayburger.dzikirqu.util.textfont.TextFont
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dhuhr"
+                    android:text="@{viewModel.prayerNext}"
                     android:textColor="@color/colorBlack"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    tools:text="Dhuhr" />
 
                 <com.mayburger.dzikirqu.util.textfont.TextFont
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="11:43"
+                    android:text="@{viewModel.prayerTimeText}"
                     android:textColor="@color/colorBlack"
                     android:textSize="38sp"
-                    app:typeface="black" />
+                    app:typeface="black"
+                    tools:text="11:43" />
 
                 <com.mayburger.dzikirqu.util.textfont.TextFont
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1 hours 9 minutes until Dhuhr"
+                    android:text="@{viewModel.prayerUntilTime}"
                     android:textColor="@color/colorTextGrey"
                     android:textSize="16sp"
                     tools:text="1 hours 9 minutes until Dhuhr" />
@@ -127,10 +138,11 @@
                 <com.mayburger.dzikirqu.util.textfont.TextFont
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="16:35:23"
+                    android:text="@{viewModel.currentTime}"
                     android:textColor="@color/colorWhite"
                     android:textSize="20sp"
-                    app:typeface="bold" />
+                    app:typeface="bold"
+                    tools:text="16:35:23" />
 
                 <com.mayburger.dzikirqu.util.textfont.TextFont
                     android:layout_width="wrap_content"
@@ -177,6 +189,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <com.mayburger.dzikirqu.util.textfont.TextFont
@@ -192,9 +205,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="Fajr has passed 6 hours 24 minutes ago"
-                            android:textSize="12sp" />
+                            android:text="@{viewModel.untilFajr}"
+                            android:textSize="12sp"
+                            tools:text="Fajr has passed 6 hours 24 minutes ago" />
                     </LinearLayout>
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.prayerTime.fajr}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp"
+                        app:typeface="bold" />
 
                 </LinearLayout>
 
@@ -222,6 +244,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <com.mayburger.dzikirqu.util.textfont.TextFont
@@ -237,9 +260,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="Dhuhr has passed 24 minutes ago"
-                            android:textSize="12sp" />
+                            android:text="@{viewModel.untilDhuhr}"
+                            android:textSize="12sp"
+                            tools:text="Dhuhr has passed 24 minutes ago" />
                     </LinearLayout>
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.prayerTime.dhuhr}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp"
+                        app:typeface="bold" />
 
                 </LinearLayout>
 
@@ -267,6 +299,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <com.mayburger.dzikirqu.util.textfont.TextFont
@@ -282,9 +315,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="3 hours left until Ar"
-                            android:textSize="12sp" />
+                            android:text="@{viewModel.untilAsr}"
+                            android:textSize="12sp"
+                            tools:text="3 hours left until Ar" />
                     </LinearLayout>
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.prayerTime.asr}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp"
+                        app:typeface="bold" />
 
                 </LinearLayout>
 
@@ -312,6 +354,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <com.mayburger.dzikirqu.util.textfont.TextFont
@@ -327,9 +370,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="2 hours left until Maghrib"
-                            android:textSize="12sp" />
+                            android:text="@{viewModel.untilMaghrib}"
+                            android:textSize="12sp"
+                            tools:text="2 hours left until Maghrib" />
                     </LinearLayout>
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.prayerTime.maghrib}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp"
+                        app:typeface="bold" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -356,6 +409,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <com.mayburger.dzikirqu.util.textfont.TextFont
@@ -371,9 +425,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="6 hours left until Isya"
-                            android:textSize="12sp" />
+                            android:text="@{viewModel.untilIsya}"
+                            android:textSize="12sp"
+                            tools:text="6 hours left until Isya" />
                     </LinearLayout>
+
+                    <com.mayburger.dzikirqu.util.textfont.TextFont
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.prayerTime.isya}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp"
+                        app:typeface="bold" />
 
                 </LinearLayout>
 

@@ -29,10 +29,9 @@ class PrayTimeFragment : BaseFragment<FragmentPrayTimeBinding, PrayTimeViewModel
         viewModel.navigator = this
         viewModel.prayerTime.observe(viewLifecycleOwner) {
             viewModel.buildPrayerTime(it)
+            viewModel.buildPrayers(it)
         }
 
-        // This callback will only be called when MyFragment is at least Started.
-        // This callback will only be called when MyFragment is at least Started.
         val callback: OnBackPressedCallback =
             object : OnBackPressedCallback(true /* enabled by default */) {
                 override fun handleOnBackPressed() {
@@ -41,7 +40,11 @@ class PrayTimeFragment : BaseFragment<FragmentPrayTimeBinding, PrayTimeViewModel
                 }
             }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
 
+    override fun onClickBack() {
+        motionLayout.transitionToStart()
+        NavHostFragment.findNavController(this@PrayTimeFragment).popBackStack()
     }
 
 }

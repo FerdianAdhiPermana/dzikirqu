@@ -13,4 +13,5 @@ interface HawkHelper {
     var userCity:String
     var quranLastRead: QuranLastRead?
     var quranBookmark:ArrayList<AyahDataModel>?
+    var isQuranLoaded:Boolean
 }

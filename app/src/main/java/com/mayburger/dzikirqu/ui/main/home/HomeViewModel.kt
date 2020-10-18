@@ -1,18 +1,27 @@
 package com.mayburger.dzikirqu.ui.main.home
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.CountDownTimer
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.databinding.ObservableField
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.mayburger.dzikirqu.constants.Constants
 import com.mayburger.dzikirqu.constants.LocaleConstants
 import com.mayburger.dzikirqu.data.DataManager
+import com.mayburger.dzikirqu.model.AyahJsonModel
 import com.mayburger.dzikirqu.model.PrayerTime
+import com.mayburger.dzikirqu.model.SurahJsonModel
 import com.mayburger.dzikirqu.model.events.QuranLastReadEvent
 import com.mayburger.dzikirqu.ui.adapters.viewmodels.ItemBookViewModel
 import com.mayburger.dzikirqu.ui.base.BaseViewModel
+import com.mayburger.dzikirqu.util.FileUtils
 import com.mayburger.dzikirqu.util.StringProvider
 import com.mayburger.dzikirqu.util.praytimes.PrayerTimeHelper
 import com.mayburger.dzikirqu.util.rx.SchedulerProvider
@@ -66,6 +75,47 @@ class HomeViewModel @ViewModelInject constructor(
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+        }
+    }
+
+    suspend fun setUpQuran(context: Context, progressText:TextView, progressBar: ProgressBar, onComplete:()->Unit) {
+        if (dataManager.getSurah().isEmpty()) {
+            dataManager.setSurah(
+                Gson().fromJson(
+                    FileUtils.getJsonStringFromAssets(
+                        context,
+                        "json/lang/en.json"
+                    ),
+                    object : TypeToken<ArrayList<SurahJsonModel>>() {}.type
+                ), "en"
+            )
+            dataManager.setSurah(
+                Gson().fromJson(
+                    FileUtils.getJsonStringFromAssets(
+                        context,
+                        "json/lang/id.json"
+                    ),
+                    object : TypeToken<ArrayList<SurahJsonModel>>() {}.type
+                ), "id"
+            )
+        }
+
+        if (dataManager.getAllAyahs().size != Constants.QURAN_AYAH_SIZE) {
+            dataManager.deleteAllAyahs()
+            val surah = dataManager.getSurah()
+            progressBar.max = 114
+            for (i in surah.indices) {
+                val ayah = Gson().fromJson<ArrayList<AyahJsonModel>>(
+                    FileUtils.getJsonStringFromAssets(
+                        context,
+                        "json/quran/${surah[i].name}.json"
+                    ), object : TypeToken<ArrayList<AyahJsonModel>>() {}.type
+                )
+                dataManager.insertAyah(ayah)
+                progressBar.progress = i+1
+                progressText.text = "Importing ${i+1} out of 114 surah"
+            }
+            onComplete.invoke()
         }
     }
 

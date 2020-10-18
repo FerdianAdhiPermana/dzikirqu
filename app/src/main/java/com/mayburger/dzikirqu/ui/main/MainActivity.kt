@@ -18,15 +18,11 @@ import com.mayburger.dzikirqu.databinding.ActivityMainBinding
 import com.mayburger.dzikirqu.ui.base.BaseActivity
 import com.mayburger.dzikirqu.ui.base.BaseFragment
 import com.mayburger.dzikirqu.ui.search.SearchActivity
-import com.mayburger.dzikirqu.util.QuranUtils
 import com.mayburger.dzikirqu.util.ext.hide
 import com.mayburger.dzikirqu.util.ext.isShowing
 import com.mayburger.dzikirqu.util.ext.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -45,10 +41,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         viewDataBinding.lifecycleOwner = this
         viewModel.navigator = this
         buildLocationPermission()
-        CoroutineScope(IO).launch {
-            viewModel.setUpQuran(this@MainActivity)
-            QuranUtils.overridePrayer(this@MainActivity)
-        }
         sheetBehavior = BottomSheetBehavior.from(sheet)
         buildBottomSheet(sheetBehavior)
     }

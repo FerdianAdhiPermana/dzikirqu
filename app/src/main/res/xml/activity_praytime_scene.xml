@@ -22,6 +22,14 @@
             android:layout_height="wrap_content"
             android:alpha="0" />
 
+        <Constraint
+            android:id="@+id/datetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:alpha="0" />
+
 
     </ConstraintSet>
     <ConstraintSet android:id="@+id/end">
@@ -37,8 +45,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            motion:layout_constraintTop_toBottomOf="@id/datetime">
-        </Constraint>
+            motion:layout_constraintTop_toBottomOf="@id/datetime"></Constraint>
         <Constraint
             android:id="@+id/praytime"
             android:layout_width="match_parent"
@@ -48,11 +55,21 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:alpha="1"
-            motion:layout_constraintTop_toBottomOf="@id/header">
-        </Constraint>
+            motion:layout_constraintTop_toBottomOf="@id/header"></Constraint>
+
+
+        <Constraint
+            android:id="@+id/datetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="32dp"
+            android:alpha="1"
+            motion:layout_constraintTop_toBottomOf="@id/header" />
+
     </ConstraintSet>
     <Transition
-        motion:autoTransition="animateToEnd"
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@+id/start"
         motion:duration="400" />

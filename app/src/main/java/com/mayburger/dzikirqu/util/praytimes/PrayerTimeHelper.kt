@@ -39,7 +39,6 @@ interface PrayerTimeHelper {
         @SuppressLint("CheckResult")
         suspend fun getPrayerTime(ctx: Context): PrayerTime {
             val location = SingleLocationProvider.requestSingleUpdate(ctx)
-            println("THE PRAYER TIME IS GET AND THE LOCATION IS ${location.latitude}")
             return buildPrayerTime(
                 ctx,
                 LatLng.newBuilder().setLatitude(location.latitude.toDouble())

@@ -29,7 +29,7 @@
             android:background="@color/colorGreyBackground"
             android:orientation="vertical"
             android:transitionName="root"
-            app:layoutDescription="@xml/fragment_pray_time_xml_constraintlayout2_scene">
+            app:layoutDescription="@xml/activity_praytime_scene">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout

@@ -140,4 +140,10 @@ class AppDataManager @Inject constructor(
         set(value) {
             mHawkHelper.userCity = value
         }
+
+    override var isQuranLoaded: Boolean
+        get() = mHawkHelper.isQuranLoaded
+        set(value) {
+            mHawkHelper.isQuranLoaded = value
+        }
 }

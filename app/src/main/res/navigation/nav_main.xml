@@ -7,16 +7,5 @@
         android:id="@+id/home"
         android:name="com.mayburger.dzikirqu.ui.main.home.HomeFragment"
         android:label="HomeFragment">
-        <action
-            android:id="@+id/action_homeFragment_to_prayTimeFragment"
-            app:destination="@id/prayTime"
-            app:enterAnim="@anim/fade_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out" />
     </fragment>
-    <fragment
-        android:id="@+id/prayTime"
-        android:name="com.mayburger.dzikirqu.ui.praytime.PrayTimeFragment"
-        android:label="PrayTimeFragment" />
 </navigation>
